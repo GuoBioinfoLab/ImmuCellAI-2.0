@@ -6,3 +6,8 @@ The ImmuCellAI 2.0 Website is a valuable online resource for immunology research
 Access it here: https://guolab.wchscu.cn/immucellai/
 
 # Install ImmuCellAI 2.0
+## Install using pip
+pip install immucellai2
+
+# Usage
+ImmuCellAI 2.0 expects a TPM matrix as input and can be implemented with only one line of code in Python.
