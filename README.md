@@ -10,7 +10,7 @@ Access it here: https://guolab.wchscu.cn/immucellai/
 pip install immucellai2
 
 # Usage
-ImmuCellAI 2.0 expects a TPM matrix as input and can be implemented with only one line of code in Python.
+ImmuCellAI 2.0 expects a TPM matrix as input and can be implemented with only two lines of code in Python.
 ```
 import immucellai2
 reference_data = immucellai2.load_tumor_reference_data()
