@@ -23,3 +23,4 @@ result = immucellai2.run_ImmuCellAI2(
     thread_num=8
 )
 ```
+# Citation
