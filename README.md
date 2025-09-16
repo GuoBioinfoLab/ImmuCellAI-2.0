@@ -11,7 +11,10 @@ pip install immucellai2
 
 # Usage
 ImmuCellAI 2.0 expects a TPM matrix as input and can be implemented with only one line of code in Python.
+```
 import immucellai2
+```
+```
 reference_data = immucellai2.load_tumor_reference_data() 
 result = immucellai2.run_ImmuCellAI2(
     reference_file=reference_data,
@@ -19,4 +22,4 @@ result = immucellai2.run_ImmuCellAI2(
     output_file=<file_path>,    #  User-defined
     thread_num=8
 )
-
+```
