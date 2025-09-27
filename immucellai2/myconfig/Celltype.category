@@ -1,0 +1,225 @@
+## Cell type classification and dscription
+
+
+#[NewNode]                # A unique node represents a celltype in the diagram
+   CellType:              # General/Common name 
+   AlsoKnownAs: []        # Other well-used names
+   RankedLayer:           # unrequired but meaningful parameters
+   RelatedNode:           # Classify the celltype
+      HisParentNode:      # unrequired but meaningful parameters
+      HisChidNode: []     # required parameters unless not exist cell subtypes
+   Description: ...       # unrequired but meaningful parameters
+                    
+
+
+#[NewNode]
+   CellType: stroma Cells
+   AlsoKnownAs: []
+   RankedLayer: 1
+   RelatedNode:
+      HisParentNode: 'Tumor microenvironment(TME)'
+      HisChidNode: []
+   Description: ...
+
+#[NewNode]
+   CellType: Immmue Cells
+   AlsoKnownAs: []
+   RankedLayer: 1
+   RelatedNode:
+      HisParentNode: 'Tumor microenvironment(TME)' 
+      HisChidNode: ['Lymplhoid Cells', 'Myeloid Cells']
+   Description: ...
+
+
+
+#[NewNode]
+   CellType: Lymplhoid Cells
+   AlsoKnownAs: []
+   RankedLayer: 2
+   RelatedNode:
+      HisParentNode: Immune Cells
+      HisChidNode: ['B cells','T cells','ILC']
+   Description: ...
+
+#[NewNode]
+   CellType: Myeloid Cells
+   AlsoKnownAs: []
+   RankedLayer: 2
+   RelatedNode:
+      HisParentNode: Immune Cells
+      HisChidNode: ['Macrophages', 'Granulocytes', 'DCs', 'Monocytes', 'MDSCs']
+   Description: ...
+
+
+
+#[NewNode]
+   CellType: B cells 
+   AlsoKnownAs: ['Bcells', 'B lymphocytes', 'Bcell']
+   RankedLayer: 3
+   RelatedNode: 
+      HisParentNode: Lymplhoid Cells 
+      HisChidNode: ['MZB', 'FOB', 'Breg', 'GC_B', 'plasmablast']
+      HisChidNode: ['memoryB', 'plasma', 'exhaustedB', 'Bnaive']
+   Description: ...
+
+#[NewNode]
+   CellType: T cells
+   AlsoKnownAs: ['Tcells', 'T lymphocytes', 'Tcell']
+   RankedLayer: 3
+   RelatedNode: 
+      HisParentNode: Lymplhoid Cells
+      HisChidNode: ['gdT', 'CD4T', 'CD8T','NKT']
+   Description: ...
+
+#[NewNode]
+   CellType: ILC
+   AlsoKnownAs: Innate lymphoid cells
+   RankedLayer: 3
+   RelatedNode:
+      HisParentNode: Lymplhoid Cells
+      HisChidNode: ['NK', 'ILC1', 'ILC2', 'ILC3']
+   Description: ... ...
+
+#[NewNode]
+   CellType: Macrophages
+   AlsoKnownAs: ['Macrophage']
+   RankedLayer: 3
+   RelatedNode: 
+      HisParentNode: Myeloid Cells 
+      HisChidNode: ['M0', 'M1', 'M2', 'TAM']
+   Description: ...
+
+#[NewNode]
+   CellType: Granulocytes
+   AlsoKnownAs: ['Granulocyte']
+   RankedLayer: 3
+   RelatedNode:
+      HisParentNode: Myeloid Cells
+      HisChidNode: ['basophils', 'eosinophils', 'mast_cell', 'neutrophils']
+   Description: ...
+
+#[NewNode]
+   CellType: DCs
+   AlsoKnownAs: ['DC', 'dendrithic cells']
+   RankedLayer: 3
+   RelatedNode:
+      HisParentNode: Myeloid Cells
+      HisChidNode: ['cDC1', 'cDC2', 'Langerhans', 'monoDC', 'pDC']
+   Description: ...
+
+#[NewNode]
+   CellType: Monocytes
+   AlsoKnownAs: Monocyte
+   RankedLayer: 3
+   RelatedNode:
+      HisParentNode: Myeloid Cells
+      HisChidNode: ['classical Monocytes', 'intermediate monocytes', 'nonclassical monocytes']
+   Description: ...
+
+#[NewNode]
+   CellType: MDSCs
+   AlsoKnownAs: ['MDSC', 'meyloid-derived suppressor cells']
+   RankedLayer: 3
+   RelatedNode:
+      HisParentNode: Myeloid Cells
+      HisChidNode: []
+   Description: ...
+
+
+
+#[NewNode]
+   CellType: Memory B
+   AlsoKnownAs: 
+   RankedLayer: 4
+   RelatedNode:
+      HisParentNode: B cells
+      HisChidNode: ['switched memory B', 'unswitched memory B']
+   Description: ...
+
+#[NewNode]
+   CellType: Bnaive
+   AlsoKnownAs: ['Bn', 'naive B cell', 'Naive B']
+
+
+#[NewNode]
+   CellType: gdT
+   AlsoKnownAs: ['gd T', 'gamma delta T']
+   RankedLayer: 4
+   RelatedNode:
+      HisParentNode: T cells
+      HisChidNode: NULL
+   Description: ...
+
+#[NewNode]
+   CellType: CD4T
+   AlsoKnownAs: 'CD4+ T cells' 
+   RankedLayer: 4
+   RelatedNode:
+      HisParentNode: T cells
+      HisChidNode: ['Th1/Th17', 'CD4Tnaive', 'Th1','Th', 'Th2','Th0','Th9']
+      HisChidNode: ['Treg', 'Th17', 'Th22', 'Tfh','Tfr']
+      HisChidNode: ['CD4Tcm', 'CD4Temra', 'CD4Trm', 'CD4Tem','memoryCD4T']
+   Description: ...
+
+#[NewNode]
+   CellType: CD8T
+   AlsoKnownAs: CD8+ T cells
+   RankedLayer: 4
+   RelatedNode:
+      HisParentNode: T cells
+      HisChidNode: ['CD8aa', 'memory T', 'Tc', 'exhausted_T', 'MAIT']
+      HisChidNode: ['CD8Tnaive', 'CD8Tcm', 'CD8Tem', 'CD8Temra', 'CD8Trm','memoryCD8T']
+   Description: ...
+
+#[NewNode]
+   CellType: NK
+   AlsoKnownAs: ['NK cells', 'natural killer cells']
+   RankedLayer: 4
+   RelatedNode:
+      HisParentNode: ILC
+      HisChidNode: ['cytotoxicNK', 'regulatoryNK']
+   Description: ...
+
+#[NewNode]
+   CellType: TAM
+   AlsoKnownAs: 'tumor-associated macrphages'
+
+#[NewNode]
+   CellType: classical monocyes
+   AlsoKnownAs: ['CMonocyte']
+
+#[NewNode]
+   CellType: intermediate monocyes
+   AlsoKnownAs: ['IMonocyte']
+
+#[NewNode]
+   CellType: nonclassical monocyes
+   AlsoKnownAs: ['NMonocyte']
+
+
+#[NewNode]
+   CellType: switched memory B
+   AlsoKnownAs: ['SMBcell', 'Switched memory B cells']
+   RankedLayer: 5
+   RelatedNode:
+      HisParentNode: Memory B
+      HisChidNode: NULL
+   Description: ...
+
+#[NewNode]
+   CellType: unswitched memory B
+   AlsoKnownAs: ['US_MBcell', 'Unswitched memroy B cells', 'Nonswitched memory B']
+   RankedLayer: 5
+   RelatedNode:
+      HisParentNode: Memory B
+      HisChidNode: NULL
+   Description: ...
+                           
+#[NewNode]
+   CellType: Treg
+   AlsoKnownAs: Regulatory T cells
+   RankedLayer: 5
+   RelatedNode:
+      HisParentNode: CD4T
+      HisChidNode: ['Tr1']
+   Description: ...
