@@ -5,7 +5,7 @@ ImmuCellAI 2.0 is an advanced bulk transcriptome deconvolution tool that accurat
 The ImmuCellAI 2.0 Website is a valuable online resource for immunology research, supporting the estimation of immune cell abundance across 9 major immune cell types and their corresponding 53 minor subtypes.
 Access it here: https://guolab.wchscu.cn/immucellai/
 
-# Install ImmuCellAI 2.0
+# ImmuCellAI 2.0 Python Package
 ## Install using pip
 pip install immucellai2
 
