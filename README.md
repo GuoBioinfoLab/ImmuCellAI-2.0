@@ -6,6 +6,8 @@ ImmuCellAI 2.0 is an advanced bulk transcriptome deconvolution tool for **immuno
 - **GitHub Repository**: https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/
 
 # ImmuCellAI 2.0 Python Package
+## Prerequisites
+- Python 3.8+
 ## Install using pip
 pip install immucellai2
 
