@@ -28,6 +28,30 @@ https://guolab.wchscu.cn/ImmuCellAI2/
 | `docs/` | Algorithm, parameters, input/output, and reproducibility details |
 | `immucellai2/` | Legacy Python Gibbs-sampling implementation |
 
+## System requirements
+
+- **Operating system:** Windows, Linux, or macOS. No operating-system-specific
+  code is used by the current R implementation.
+- **R:** version 4.0.0 or later.
+- **Required R packages:** `stats`, `utils`, and `parallel` (included with R;
+  all tested at version 4.6.0).
+- **Installation helper:** `remotes` is used by the commands below (tested at
+  version 2.5.0).
+- **Optional packages:** `testthat` 3.3.2 was used for package tests; benchmark
+  and downstream analysis scripts list additional packages at the top of each
+  script.
+- **Hardware:** no non-standard hardware, GPU, or high-performance computing
+  environment is required. Multicore CPUs can process samples concurrently.
+
+The package has been tested with R 4.6.0 on Windows 11 x64 and is checked by
+GitHub Actions on the current R release using the versioned `windows-latest` and
+`ubuntu-latest` hosted environments; exact runner image versions are recorded in
+each workflow run.
+
+The recorded demo timing below was obtained on Windows 11 with an Intel Core
+Ultra 7 268V CPU and 32 GB RAM; substantially less memory is sufficient for
+the bundled four-sample demo.
+
 ## Installation
 
 R 4.0 or later is required. From R, install directly from GitHub:
@@ -47,6 +71,10 @@ For a downloaded repository:
 ```r
 remotes::install_local("R-package/ImmuCellAI2.0")
 ```
+
+Installation from a local source archive took approximately 3 seconds on the
+tested desktop. Installation directly from GitHub typically takes 1-3 minutes,
+depending mainly on network speed and whether `remotes` is already installed.
 
 Detailed installation and troubleshooting instructions are in
 [`docs/INSTALLATION.md`](docs/INSTALLATION.md), and the public API is documented
@@ -106,6 +134,28 @@ immucellai2_defaults()
 
 The full command-line-style example is
 [`examples/01_standard_deconvolution.R`](examples/01_standard_deconvolution.R).
+
+## Bundled demo
+
+The repository includes a small synthetic TPM matrix
+[`example_data/toy_bulk_TPM.txt`](example_data/toy_bulk_TPM.txt) and its known
+mixture proportions
+[`example_data/toy_truth_fraction.txt`](example_data/toy_truth_fraction.txt).
+After installing the package, run the complete demo from the repository root:
+
+```bash
+Rscript examples/01_standard_deconvolution.R \
+  example_data/toy_bulk_TPM.txt \
+  example_output/toy_ImmuCellAI2 \
+  2
+```
+
+The demo writes sample-by-cell-state, subtype, and major-lineage fraction
+tables plus the genes and settings used. For the bundled input, the primary
+state-fraction table contains 4 samples and 53 immune states; all values are
+finite and each row sums to 1 when `add.unknown = FALSE`. On the test system
+described above, deconvolution took approximately 11 seconds with two CPU
+cores. Runtime varies with sample count, overlapping genes, CPU, and storage.
 
 ## Output
 
