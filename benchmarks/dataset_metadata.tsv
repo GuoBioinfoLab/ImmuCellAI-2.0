@@ -1,0 +1,7 @@
+Accession	Cohort_label	Material	Validation_category	Truth_source	Required_provenance_note
+GSE164522	Liu	CRC	pseudo-bulk tumor	Single-cell barcodes and source cell annotations	Known fractions are computational mixture proportions, not flow-cytometry measurements
+GSE176078	Wu	BRCA	pseudo-bulk tumor	Single-cell barcodes and source cell annotations	Known fractions are computational mixture proportions, not flow-cytometry measurements
+GSE146771	Zhang	CRC	pseudo-bulk tumor	Single-cell barcodes and source cell annotations	Known fractions are computational mixture proportions, not flow-cytometry measurements
+GSE107019	Xu	PBMC	real bulk PBMC	Flow-cytometry-derived proportions	Retain the original sample-name mapping and gating denominator
+GSE65133	Newman	PBMC	real bulk PBMC	Flow-cytometry-derived proportions	Use the source bulk expression and matched flow-cytometry table
+GSE107011	Monaco	PBMC	real bulk PBMC	Flow-cytometry-derived proportions	Use the source bulk expression and matched flow-cytometry table

@@ -1,0 +1,19 @@
+Package: ImmuneHierDeconv
+Type: Package
+Title: ImmuCellAI 2.0 Variational Bayesian Immune Deconvolution
+Version: 0.1.7
+Authors@R: c(person(given = "Jingmin", family = "Yang", role = c("aut", "cre"), email = "yangjingmin89@gmail.com"))
+Description: Implements the ImmuCellAI 2.0 reference-based deterministic
+    variational Bayesian framework for estimating 53 immune-cell fractions
+    from bulk RNA-seq expression matrices. The manuscript workflow uses a
+    5,510-gene marker panel and targeted hierarchical refinement of CD4 and
+    CD8 T-cell states while retaining other immune states as independent
+    branches. Flat and broader hierarchy modes and an optional residual state
+    are provided for sensitivity analyses.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 4.0.0)
+Imports: stats, utils, parallel
+Suggests: testthat
+Config/roxygen2/version: 8.0.0

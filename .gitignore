@@ -1,0 +1,15 @@
+# R build/check artifacts
+*.Rcheck/
+*.tar.gz
+.Rhistory
+.RData
+.Rproj.user/
+
+# Reproduced outputs and local protected data
+examples/output/
+analysis/icb/reproduced_results/
+analysis/icb/data/*.tsv
+benchmarks/output/
+
+# Redundant local reference export
+/data/

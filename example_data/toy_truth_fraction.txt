@@ -1,0 +1,5 @@
+sample	CD4Tn	CD8Tem	Bnaive	cMo
+Toy_1	0.55	0.2	0.15	0.1
+Toy_2	0.2	0.5	0.1	0.2
+Toy_3	0.1	0.15	0.55	0.2
+Toy_4	0.15	0.1	0.2	0.55
