@@ -1,4 +1,4 @@
-suppressPackageStartupMessages(library(ImmuneHierDeconv))
+suppressPackageStartupMessages(library(ImmuCellAI2.0))
 
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) < 1L) {

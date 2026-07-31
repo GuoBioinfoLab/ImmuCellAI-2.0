@@ -32,7 +32,7 @@ load_immucellai2_reference <- function(file = NULL) {
   if (is.null(file)) {
     file <- system.file(
       "extdata", "reference_53celltypesTPM20260518.txt",
-      package = "ImmuneHierDeconv"
+      package = "ImmuCellAI2.0"
     )
   }
   if (!nzchar(file) || !file.exists(file)) {
@@ -51,7 +51,7 @@ load_immucellai2_markers <- function(file = NULL) {
   if (is.null(file)) {
     file <- system.file(
       "extdata", "MarkerUsedDeconvolution_5510.txt",
-      package = "ImmuneHierDeconv"
+      package = "ImmuCellAI2.0"
     )
   }
   if (!nzchar(file) || !file.exists(file)) {

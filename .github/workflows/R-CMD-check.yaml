@@ -30,8 +30,8 @@ jobs:
 
       - name: Build package
         shell: bash
-        run: R CMD build R-package/ImmuneHierDeconv
+        run: R CMD build R-package/ImmuCellAI2.0
 
       - name: Check package
         shell: bash
-        run: R CMD check --no-manual --as-cran ImmuneHierDeconv_*.tar.gz
+        run: R CMD check --no-manual --as-cran ImmuCellAI2.0_*.tar.gz

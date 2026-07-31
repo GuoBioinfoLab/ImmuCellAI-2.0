@@ -20,8 +20,8 @@ https://guolab.wchscu.cn/ImmuCellAI2/
 
 | Path | Contents |
 |---|---|
-| `R-package/ImmuneHierDeconv/` | Complete ImmuCellAI 2.0 R package source |
-| `R-package/ImmuneHierDeconv/inst/extdata/` | 53-state reference atlas and 5,510-gene panel |
+| `R-package/ImmuCellAI2.0/` | Complete ImmuCellAI 2.0 R package source |
+| `R-package/ImmuCellAI2.0/inst/extdata/` | 53-state reference atlas and 5,510-gene panel |
 | `examples/` | Standard run, mode sensitivity, and simulation validation |
 | `benchmarks/` | Dataset-independent benchmarking workflow and metadata templates |
 | `analysis/` | TCGA immune phenotyping and ImmuICBscore code |
@@ -38,14 +38,14 @@ if (!requireNamespace("remotes", quietly = TRUE)) {
 }
 remotes::install_github(
   "GuoBioinfoLab/ImmuCellAI-2.0",
-  subdir = "R-package/ImmuneHierDeconv"
+  subdir = "R-package/ImmuCellAI2.0"
 )
 ```
 
 For a downloaded repository:
 
 ```r
-remotes::install_local("R-package/ImmuneHierDeconv")
+remotes::install_local("R-package/ImmuCellAI2.0")
 ```
 
 Detailed installation and troubleshooting instructions are in
@@ -71,7 +71,7 @@ mixed in one analysis. See [`docs/INPUT_OUTPUT.md`](docs/INPUT_OUTPUT.md).
 ## Standard analysis
 
 ```r
-library(ImmuneHierDeconv)
+library(ImmuCellAI2.0)
 
 bulk <- read_expression_matrix("bulk_TPM.txt")
 

@@ -8,7 +8,7 @@
 - Optional test dependency: testthat
 
 The manuscript implementation is the R package under
-R-package/ImmuneHierDeconv. The historical Python code under immucellai2/
+R-package/ImmuCellAI2.0. The historical Python code under immucellai2/
 does not implement the current deterministic variational Bayesian algorithm.
 
 ## Install from GitHub
@@ -20,7 +20,7 @@ if (!requireNamespace("remotes", quietly = TRUE)) {
 
 remotes::install_github(
   "GuoBioinfoLab/ImmuCellAI-2.0",
-  subdir = "R-package/ImmuneHierDeconv",
+  subdir = "R-package/ImmuCellAI2.0",
   upgrade = "never"
 )
 ~~~
@@ -28,8 +28,8 @@ remotes::install_github(
 Restart R and verify the installation:
 
 ~~~r
-library(ImmuneHierDeconv)
-packageVersion("ImmuneHierDeconv")
+library(ImmuCellAI2.0)
+packageVersion("ImmuCellAI2.0")
 immucellai2_defaults()
 dim(load_immucellai2_reference())
 length(load_immucellai2_markers())
@@ -43,7 +43,7 @@ genes.
 Set the working directory to the repository root and run:
 
 ~~~r
-remotes::install_local("R-package/ImmuneHierDeconv", upgrade = "never")
+remotes::install_local("R-package/ImmuCellAI2.0", upgrade = "never")
 ~~~
 
 On Windows, installing this package does not require compilation because it
@@ -55,9 +55,9 @@ contains only R code. Rtools is therefore not required for ordinary use.
 dir.create("temporary_R_library", showWarnings = FALSE)
 .libPaths(c(normalizePath("temporary_R_library"), .libPaths()))
 
-remotes::install_local("R-package/ImmuneHierDeconv", lib = .libPaths()[1], dependencies = FALSE, upgrade = "never")
+remotes::install_local("R-package/ImmuCellAI2.0", lib = .libPaths()[1], dependencies = FALSE, upgrade = "never")
 
-library(ImmuneHierDeconv, lib.loc = .libPaths()[1])
+library(ImmuCellAI2.0, lib.loc = .libPaths()[1])
 stopifnot(ncol(load_immucellai2_reference()) == 53L)
 stopifnot(length(load_immucellai2_markers()) == 5510L)
 ~~~

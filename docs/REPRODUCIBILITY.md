@@ -3,7 +3,7 @@
 ## Record software and source version
 
 ```r
-packageVersion("ImmuneHierDeconv")
+packageVersion("ImmuCellAI2.0")
 sessionInfo()
 system("git rev-parse HEAD", intern = TRUE)
 ```

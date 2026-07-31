@@ -1,4 +1,4 @@
-Package: ImmuneHierDeconv
+Package: ImmuCellAI2.0
 Type: Package
 Title: ImmuCellAI 2.0 Variational Bayesian Immune Deconvolution
 Version: 0.1.7

@@ -6,7 +6,7 @@ deterministic variational Bayesian implementation described in the current
 ImmuCellAI 2.0 manuscript.
 
 For manuscript reproduction and new analyses, use the R package under
-`R-package/ImmuneHierDeconv/` and the `run_immucellai2()` entry point.
+`R-package/ImmuCellAI2.0/` and the `run_immucellai2()` entry point.
 
 The legacy Python package also expects reference resources from its historical
 distribution. Results from it should not be presented as output of the current

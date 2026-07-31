@@ -1,6 +1,6 @@
-# ImmuneHierDeconv 0.1.7
+# ImmuCellAI 2.0 R package (v0.1.7)
 
-ImmuneHierDeconv is the R implementation of the ImmuCellAI 2.0 framework
+The `ImmuCellAI2.0` R package implements the ImmuCellAI 2.0 framework
 used in the manuscript. It estimates relative fractions of 53 immune cell
 states from bulk RNA-seq TPM profiles using deterministic variational Bayesian
 inference and targeted hierarchical refinement of CD4 and CD8 T-cell states.
@@ -15,14 +15,14 @@ if (!requireNamespace("remotes", quietly = TRUE)) {
 }
 remotes::install_github(
   "GuoBioinfoLab/ImmuCellAI-2.0",
-  subdir = "R-package/ImmuneHierDeconv"
+  subdir = "R-package/ImmuCellAI2.0"
 )
 ~~~
 
 From a downloaded repository:
 
 ~~~r
-remotes::install_local("R-package/ImmuneHierDeconv")
+remotes::install_local("R-package/ImmuCellAI2.0")
 ~~~
 
 The package imports only base-recommended R packages (stats, utils, and
@@ -35,7 +35,7 @@ The input matrix must contain gene symbols in rows and samples in columns.
 Non-negative TPM values are recommended.
 
 ~~~r
-library(ImmuneHierDeconv)
+library(ImmuCellAI2.0)
 
 bulk <- read_expression_matrix("bulk_TPM.txt")
 

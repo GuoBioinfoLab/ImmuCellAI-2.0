@@ -1,5 +1,5 @@
 Method	Implementation	Key_settings	Reference_policy	Undefined_output_policy
-ImmuCellAI 2.0	ImmuneHierDeconv 0.1.7	tcell_only VB; add.unknown=FALSE; pseudo.depth=100000; n.iter=50; vb.tol=1e-6; alpha.major=10; alpha.sub=5; alpha.state=1	Packaged 53-state atlas and 5510-gene panel	Report separately
+ImmuCellAI 2.0	ImmuCellAI2.0 0.1.7	tcell_only VB; add.unknown=FALSE; pseudo.depth=100000; n.iter=50; vb.tol=1e-6; alpha.major=10; alpha.sub=5; alpha.state=1	Packaged 53-state atlas and 5510-gene panel	Report separately
 BayesPrism	BayesPrism R package	chain.length=600; burn.in=500; update.gibbs according to output level	Compatible reference supplied for the benchmark	Report separately
 CIBERSORTx	CIBERSORTx native workflow	Default settings unless documented otherwise; LM22 for standard PBMC comparison	LM22 for standard PBMC analysis; any custom matrix must be labeled	Report separately
 CITMIC	CITMIC native implementation	Default settings unless documented otherwise	Native compatible reference or documented custom reference	Report separately
