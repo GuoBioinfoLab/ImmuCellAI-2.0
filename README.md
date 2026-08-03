@@ -54,7 +54,43 @@ the bundled four-sample demo.
 
 ## Installation
 
-R 4.0 or later is required. From R, install directly from GitHub:
+R 4.0 or later is required. The package imports only the R packages `stats`,
+`utils`, and `parallel`, which are included with R.
+
+### Single-file download for offline or intranet servers
+
+Users who do not want the complete repository can download only the current R
+source package:
+
+**[Download ImmuCellAI2.0_0.1.7.tar.gz](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/download/v0.1.7/ImmuCellAI2.0_0.1.7.tar.gz)**
+
+All published package versions are available on the
+**[GitHub Releases page](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/latest)**.
+The file named `ImmuCellAI2.0_<version>.tar.gz` is the complete installable R
+package, including the R code, 53-state reference atlas, and marker-gene panel.
+Cloning or downloading the rest of the repository is not required.
+
+After transferring this single file to an intranet server, install it from R:
+
+```r
+install.packages(
+  "/path/to/ImmuCellAI2.0_0.1.7.tar.gz",
+  repos = NULL,
+  type = "source"
+)
+library(ImmuCellAI2.0)
+```
+
+Alternatively, install it from a shell:
+
+```bash
+R CMD INSTALL ImmuCellAI2.0_0.1.7.tar.gz
+```
+
+### Install directly from the repository
+
+On an internet-connected computer, the package can also be installed directly
+from GitHub:
 
 ```r
 if (!requireNamespace("remotes", quietly = TRUE)) {
@@ -66,7 +102,7 @@ remotes::install_github(
 )
 ```
 
-For a downloaded repository:
+For a downloaded complete repository:
 
 ```r
 remotes::install_local("R-package/ImmuCellAI2.0")
