@@ -1,0 +1,21 @@
+args <- commandArgs(trailingOnly = TRUE)
+config_file <- if (length(args)) args[1] else "analysis/infectious_disease_states/config.R"
+source(config_file)
+source(file.path(repo_root, "analysis", "common", "analysis_utils.R"))
+require_packages(c("data.table", "ImmuCellAI2.0"))
+dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+
+tb <- read_table_auto(tb_metadata_file)
+hiv <- read_table_auto(hiv_metadata_file)
+if (!"Run" %in% names(tb) || !"Run" %in% names(hiv)) stop("Both metadata tables must contain Run.")
+sample_ids <- unique(c(as.character(tb$Run), as.character(hiv$Run)))
+
+expression_file <- assert_file(expression_file, "Infectious-disease TPM matrix")
+header <- names(data.table::fread(expression_file, nrows = 0L, check.names = FALSE))
+matched <- intersect(sample_ids, header[-1L])
+if (!length(matched)) stop("No metadata Run identifiers overlap the expression columns.")
+dt <- data.table::fread(expression_file, select = c(header[1L], matched), check.names = FALSE)
+selected_file <- file.path(output_dir, "infectious_disease_selected_TPM.tsv")
+data.table::fwrite(dt, selected_file, sep = "\t", quote = FALSE)
+run_standard_deconvolution(selected_file, file.path(output_dir, "deconvolution"), n_cores)
+data.table::fwrite(data.frame(Run = matched), file.path(output_dir, "deconvolved_samples.tsv"), sep = "\t")

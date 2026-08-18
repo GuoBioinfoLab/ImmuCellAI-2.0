@@ -24,7 +24,7 @@ https://guolab.wchscu.cn/ImmuCellAI2/
 | `R-package/ImmuCellAI2.0/inst/extdata/` | 53-state reference atlas and 5,510-gene panel |
 | `examples/` | Standard run, mode sensitivity, and simulation validation |
 | `benchmarks/` | Dataset-independent benchmarking workflow and metadata templates |
-| `analysis/` | TCGA immune phenotyping and ImmuICBscore code |
+| `analysis/` | Complete tumor/ImmuICBscore, healthy-aging, and infectious-disease case-study code |
 | `docs/` | Algorithm, parameters, input/output, and reproducibility details |
 | `immucellai2/` | Legacy Python Gibbs-sampling implementation |
 
@@ -285,6 +285,26 @@ non-responders) is a cross-validated estimate across eight selected ICB cohorts,
 not an independent prospective validation. See
 [`analysis/icb/README.md`](analysis/icb/README.md) and the complete script in
 [`analysis/icb/immuicbscore_pooled_fivefold_cv.R`](analysis/icb/immuicbscore_pooled_fivefold_cv.R).
+## Manuscript case studies
+
+The complete downstream analysis and figure-generation workflows are organized
+as three independently configurable modules:
+
+- [`analysis/tumor_immune_phenotypes_immuicbscore/`](analysis/tumor_immune_phenotypes_immuicbscore/README.md):
+  TCGA sample selection and deconvolution, K=4 consensus immune phenotypes,
+  phenotype heatmap, survival analysis, ImmuICBscore cross-validation, TCGA
+  score association, and treatment-response cell-fraction plots.
+- [`analysis/age_associated_remodeling/`](analysis/age_associated_remodeling/README.md):
+  healthy-blood matrix alignment, age metadata grouping, 53-state
+  deconvolution, age-abundance panels, pattern heatmap, and major-lineage
+  composition.
+- [`analysis/infectious_disease_states/`](analysis/infectious_disease_states/README.md):
+  active-versus-latent tuberculosis, HIV-associated clinical comparisons,
+  longitudinal trajectories, and status-by-time interaction models.
+
+Each module provides `config.example.R`, numbered scripts, `run_all.R`, and a
+data README defining public accession metadata and input schemas. Large public
+expression matrices are intentionally not duplicated in the repository.
 
 ## Reproducibility checklist
 

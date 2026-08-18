@@ -8,7 +8,14 @@
 # Reproduced outputs and local protected data
 examples/output/
 analysis/icb/reproduced_results/
-analysis/icb/data/*.tsv
+analysis/icb/data/*.tsvanalysis/**/config.R
+analysis/**/results/
+analysis/age_associated_remodeling/data/*
+!analysis/age_associated_remodeling/data/README.md
+analysis/infectious_disease_states/data/*
+!analysis/infectious_disease_states/data/README.md
+analysis/tumor_immune_phenotypes_immuicbscore/data/*
+!analysis/tumor_immune_phenotypes_immuicbscore/data/README.md
 benchmarks/output/
 
 # Redundant local reference export

@@ -1,5 +1,9 @@
 # TCGA immune-phenotype analysis
 
+> The complete executable workflow has moved to
+> [`analysis/tumor_immune_phenotypes_immuicbscore/`](../tumor_immune_phenotypes_immuicbscore/README.md).
+> This page is retained as a concise record of the clustering rationale.
+
 The TCGA application uses the samples from cancer types selected for established
 relevance to immune checkpoint blockade. ImmuCellAI 2.0 state fractions are
 clustered across samples to identify four descriptive immune phenotypes.
