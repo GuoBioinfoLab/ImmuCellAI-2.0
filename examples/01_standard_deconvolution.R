@@ -12,7 +12,7 @@ n_cores <- if (length(args) >= 3L) as.integer(args[3]) else 1L
 bulk <- read_expression_matrix(bulk_file)
 fit <- run_immucellai2(
   bulk = bulk,
-  hierarchy.mode = "tcell_only",
+  hierarchy.mode = "tcell",
   add.unknown = FALSE,
   n.cores = n_cores,
   pseudo.depth = 1e5,

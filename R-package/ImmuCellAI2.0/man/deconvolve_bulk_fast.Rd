@@ -8,7 +8,7 @@ deconvolve_bulk_fast(
   bulk.mat,
   reference,
   hierarchy = NULL,
-  hierarchy.mode = c("hybrid", "hierarchical", "flat", "tcell_only"),
+  hierarchy.mode = c("hybrid", "hierarchical", "flat", "tcell", "tcell_only"),
   marker.n = 400,
   n.iter = 80
 )
@@ -20,7 +20,7 @@ deconvolve_bulk_fast(
 
 \item{hierarchy}{Optional hierarchy table.}
 
-\item{hierarchy.mode}{One of flat, hierarchical, or hybrid.}
+\item{hierarchy.mode}{One of flat, hierarchical, hybrid, or tcell. The legacy value tcell_only is accepted as an alias.}
 
 \item{marker.n}{Number of markers per state.}
 

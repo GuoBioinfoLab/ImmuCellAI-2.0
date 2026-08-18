@@ -8,7 +8,7 @@
 #' @export
 immucellai2_defaults <- function() {
   list(
-    hierarchy.mode = "tcell_only",
+    hierarchy.mode = "tcell",
     inference.method = "vb",
     add.unknown = FALSE,
     pseudo.depth = 1e5,
@@ -78,8 +78,8 @@ load_immucellai2_markers <- function(file = NULL) {
 #'   If omitted, the packaged 53-state atlas is used.
 #' @param marker.genes Optional character vector or marker file. If omitted,
 #'   the packaged 5,510-gene panel is used.
-#' @param hierarchy.mode One of `tcell_only`, `flat`, `hierarchical`, or
-#'   `hybrid`. The manuscript workflow uses `tcell_only`.
+#' @param hierarchy.mode One of `tcell`, `flat`, `hierarchical`, or
+#'   `hybrid`. The manuscript workflow uses `tcell`. The legacy value `tcell_only` is accepted as an alias.
 #' @param add.unknown Add an optional residual state for sensitivity analysis.
 #'   The manuscript workflow uses `FALSE`.
 #' @param n.cores Number of samples processed concurrently.
@@ -96,7 +96,7 @@ run_immucellai2 <- function(
   bulk,
   reference = NULL,
   marker.genes = NULL,
-  hierarchy.mode = "tcell_only",
+  hierarchy.mode = "tcell",
   add.unknown = FALSE,
   n.cores = 1,
   pseudo.depth = 1e5,
@@ -108,6 +108,7 @@ run_immucellai2 <- function(
   seed = 123,
   verbose = FALSE
 ) {
+  hierarchy.mode <- normalize_hierarchy_mode(hierarchy.mode)
   if (is.character(bulk) && length(bulk) == 1L) {
     bulk <- read_expression_matrix(bulk)
   }

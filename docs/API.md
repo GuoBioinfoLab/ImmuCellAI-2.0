@@ -7,7 +7,7 @@ run_immucellai2(
   bulk,
   reference = NULL,
   marker.genes = NULL,
-  hierarchy.mode = "tcell_only",
+  hierarchy.mode = "tcell",
   add.unknown = FALSE,
   n.cores = 1,
   pseudo.depth = 1e5,
@@ -36,8 +36,9 @@ run_immucellai2(
 
 ### Inference arguments
 
-- hierarchy.mode: tcell_only, flat, hierarchical, or hybrid.
-  tcell_only is the principal manuscript setting.
+- hierarchy.mode: tcell, flat, hierarchical, or hybrid.
+  tcell is the principal manuscript setting.
+  The legacy value tcell_only remains accepted for backward compatibility.
 - add.unknown: add a residual latent state. The principal analyses use FALSE.
 - pseudo.depth: fixed pseudo-count mass used after within-sample scaling.
 - n.iter: maximum number of deterministic posterior-mean updates.

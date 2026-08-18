@@ -57,7 +57,7 @@ run_standard_deconvolution <- function(expression_file, output_dir, n_cores = 1L
 
   fit <- ImmuCellAI2.0::run_immucellai2(
     bulk = expression_file,
-    hierarchy.mode = "tcell_only",
+    hierarchy.mode = "tcell",
     add.unknown = FALSE,
     n.cores = as.integer(n_cores),
     pseudo.depth = 1e5,

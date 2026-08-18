@@ -1,6 +1,7 @@
 export(create_default_53_hierarchy)
 export(create_flat_53_hierarchy)
 export(create_hybrid_53_hierarchy)
+export(create_tcell_53_hierarchy)
 export(create_tcell_only_53_hierarchy)
 export(refine_tcell_subtypes)
 export(refine_monocyte_subtypes)

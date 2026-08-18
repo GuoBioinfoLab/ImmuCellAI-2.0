@@ -6,14 +6,14 @@
 \usage{
 create_default_53_hierarchy(
   state.labels,
-  hierarchy.mode = c("flat", "hierarchical", "hybrid", "tcell_only"),
+  hierarchy.mode = c("flat", "hierarchical", "hybrid", "tcell", "tcell_only"),
   refine.tcell.subtypes = TRUE
 )
 }
 \arguments{
 \item{state.labels}{Cell-type names, usually colnames(reference).}
 
-\item{hierarchy.mode}{One of flat, hierarchical, or hybrid.}
+\item{hierarchy.mode}{One of flat, hierarchical, hybrid, or tcell. The legacy value tcell_only is accepted as an alias for tcell.}
 
 \item{refine.tcell.subtypes}{Backward-compatible option. Used only when hierarchy.mode = "hierarchical".}
 }

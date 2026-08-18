@@ -35,7 +35,7 @@ Rscript examples/01_standard_deconvolution.R \
   8
 ~~~
 
-The manuscript settings are tcell_only VB, UNKNOWN disabled, 50 maximum
+The manuscript settings are tcell VB, UNKNOWN disabled, 50 maximum
 iterations, tolerance 1e-6, and Dirichlet concentrations 10, 5, and 1.
 
 ## Prediction and truth formats

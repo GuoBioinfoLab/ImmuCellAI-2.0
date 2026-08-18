@@ -1,4 +1,4 @@
-# ImmuCellAI 2.0 R package (v0.1.7)
+# ImmuCellAI 2.0 R package (v0.1.8)
 
 The `ImmuCellAI2.0` R package implements the ImmuCellAI 2.0 framework
 used in the manuscript. It estimates relative fractions of 53 immune cell
@@ -41,7 +41,7 @@ bulk <- read_expression_matrix("bulk_TPM.txt")
 
 fit <- run_immucellai2(
   bulk = bulk,
-  hierarchy.mode = "tcell_only",
+  hierarchy.mode = "tcell",
   add.unknown = FALSE,
   n.cores = 8,
   pseudo.depth = 1e5,
@@ -59,7 +59,7 @@ head(fit$state.fraction)
 
 run_immucellai2() loads the bundled atlas and marker panel, intersects gene
 symbols, removes unusable genes, and records all settings in the returned
-object. The manuscript default is hierarchy.mode = "tcell_only" with
+object. The manuscript default is hierarchy.mode = "tcell" with
 add.unknown = FALSE.
 
 ## Main outputs
@@ -76,7 +76,7 @@ compartment. They are not absolute cell counts or whole-tissue fractions.
 
 ## Analysis modes
 
-- tcell_only: refines CD4/CD8 branches; all other states remain independent.
+- tcell: refines CD4/CD8 branches; all other states remain independent.
 - flat: applies no grouped hierarchy and is useful as a sensitivity analysis.
 - hierarchical: applies the full broad immune hierarchy.
 - hybrid: combines broader grouping with selected state refinements.

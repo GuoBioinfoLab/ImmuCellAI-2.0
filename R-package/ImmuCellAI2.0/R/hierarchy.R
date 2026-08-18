@@ -195,7 +195,7 @@ create_hybrid_53_hierarchy <- function(state.labels) {
   hierarchy
 }
 
-#' Create a T-cell-only refined hierarchy
+#' Create the T-cell refined hierarchy
 #'
 #' Only CD4/CD8 T-cell related states are modeled with an internal hierarchy.
 #' All other immune states are left as independent top-level branches, avoiding
@@ -204,7 +204,7 @@ create_hybrid_53_hierarchy <- function(state.labels) {
 #' @param state.labels Cell-type names.
 #' @return data.frame with state_name, subtype, and major_lineage.
 #' @export
-create_tcell_only_53_hierarchy <- function(state.labels) {
+create_tcell_53_hierarchy <- function(state.labels) {
   hierarchy <- data.frame(
     state_name = as.character(state.labels),
     subtype = as.character(state.labels),
@@ -239,19 +239,40 @@ create_tcell_only_53_hierarchy <- function(state.labels) {
   hierarchy
 }
 
+#' Legacy alias for the T-cell refined hierarchy
+#'
+#' `create_tcell_only_53_hierarchy()` is retained for scripts written before
+#' version 0.1.8. New code should use `create_tcell_53_hierarchy()`.
+#'
+#' @inheritParams create_tcell_53_hierarchy
+#' @return data.frame with state_name, subtype, and major_lineage.
+#' @export
+create_tcell_only_53_hierarchy <- function(state.labels) {
+  create_tcell_53_hierarchy(state.labels)
+}
+
+normalize_hierarchy_mode <- function(hierarchy.mode) {
+  mode <- match.arg(
+    hierarchy.mode,
+    choices = c("flat", "hierarchical", "hybrid", "tcell", "tcell_only")
+  )
+  if (identical(mode, "tcell_only")) mode <- "tcell"
+  mode
+}
+
 #' Create default 53-state hierarchy
 #'
 #' @param state.labels Cell-type names, usually colnames(reference).
-#' @param hierarchy.mode One of flat, hierarchical, or hybrid.
+#' @param hierarchy.mode One of flat, hierarchical, hybrid, or tcell. The legacy value tcell_only is accepted as an alias for tcell.
 #' @param refine.tcell.subtypes Backward-compatible option. Used only when hierarchy.mode = "hierarchical".
 #' @return data.frame with state_name, subtype, and major_lineage.
 #' @export
 create_default_53_hierarchy <- function(
   state.labels,
-  hierarchy.mode = c("flat", "hierarchical", "hybrid", "tcell_only"),
+  hierarchy.mode = c("flat", "hierarchical", "hybrid", "tcell", "tcell_only"),
   refine.tcell.subtypes = TRUE
 ) {
-  hierarchy.mode <- match.arg(hierarchy.mode)
+  hierarchy.mode <- normalize_hierarchy_mode(hierarchy.mode)
 
   if (hierarchy.mode == "flat") {
     return(create_flat_53_hierarchy(state.labels))
@@ -261,8 +282,8 @@ create_default_53_hierarchy <- function(
     return(create_hybrid_53_hierarchy(state.labels))
   }
 
-  if (hierarchy.mode == "tcell_only") {
-    return(create_tcell_only_53_hierarchy(state.labels))
+  if (hierarchy.mode == "tcell") {
+    return(create_tcell_53_hierarchy(state.labels))
   }
 
   hierarchy <- base_53_hierarchy(state.labels)

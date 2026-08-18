@@ -77,8 +77,8 @@ test_that("flat variational Bayesian deconvolution runs", {
   expect_equal(res$inference.method, "flat_vb")
 })
 
-test_that("tcell-only hierarchy leaves non-T states independent", {
-  h <- create_tcell_only_53_hierarchy(c("CD4Tcm", "CD4Tem", "CD8Tcm", "BGC", "cMo"))
+test_that("tcell hierarchy leaves non-T states independent", {
+  h <- create_tcell_53_hierarchy(c("CD4Tcm", "CD4Tem", "CD8Tcm", "BGC", "cMo"))
   expect_equal(h$major_lineage[h$state_name == "CD4Tcm"], "CD4T")
   expect_equal(h$subtype[h$state_name == "CD4Tem"], "CD4 Memory T")
   expect_equal(h$major_lineage[h$state_name == "CD8Tcm"], "CD8T")
@@ -86,6 +86,14 @@ test_that("tcell-only hierarchy leaves non-T states independent", {
   expect_equal(h$subtype[h$state_name == "cMo"], "cMo")
 })
 
+
+test_that("tcell_only remains a backward-compatible alias", {
+  states <- c("CD4Tcm", "CD4Tem", "CD8Tcm", "BGC", "cMo")
+  canonical <- create_default_53_hierarchy(states, hierarchy.mode = "tcell")
+  legacy <- create_default_53_hierarchy(states, hierarchy.mode = "tcell_only")
+  expect_equal(legacy, canonical)
+  expect_equal(immucellai2_defaults()$hierarchy.mode, "tcell")
+})
 test_that("fast marker score and alias evaluation run", {
   set.seed(2)
   ref <- matrix(rexp(120 * 5), nrow = 120, ncol = 5)

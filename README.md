@@ -62,7 +62,7 @@ R 4.0 or later is required. The package imports only the R packages `stats`,
 Users who do not want the complete repository can download only the current R
 source package:
 
-**[Download ImmuCellAI2.0_0.1.7.tar.gz](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/download/v0.1.7/ImmuCellAI2.0_0.1.7.tar.gz)**
+**[Download ImmuCellAI2.0_0.1.8.tar.gz](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/download/v0.1.8/ImmuCellAI2.0_0.1.8.tar.gz)**
 
 All published package versions are available on the
 **[GitHub Releases page](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/latest)**.
@@ -74,7 +74,7 @@ After transferring this single file to an intranet server, install it from R:
 
 ```r
 install.packages(
-  "/path/to/ImmuCellAI2.0_0.1.7.tar.gz",
+  "/path/to/ImmuCellAI2.0_0.1.8.tar.gz",
   repos = NULL,
   type = "source"
 )
@@ -84,7 +84,7 @@ library(ImmuCellAI2.0)
 Alternatively, install it from a shell:
 
 ```bash
-R CMD INSTALL ImmuCellAI2.0_0.1.7.tar.gz
+R CMD INSTALL ImmuCellAI2.0_0.1.8.tar.gz
 ```
 
 ### Install directly from the repository
@@ -141,7 +141,7 @@ bulk <- read_expression_matrix("bulk_TPM.txt")
 
 fit <- run_immucellai2(
   bulk = bulk,
-  hierarchy.mode = "tcell_only",
+  hierarchy.mode = "tcell",
   add.unknown = FALSE,
   n.cores = 8,
   seed = 123
@@ -156,7 +156,7 @@ intersects them with the bulk matrix, and uses the manuscript settings:
 
 ```r
 immucellai2_defaults()
-# hierarchy.mode   = "tcell_only"
+# hierarchy.mode   = "tcell"
 # inference.method = "vb"
 # add.unknown      = FALSE
 # pseudo.depth     = 1e5
@@ -241,7 +241,7 @@ or after 50 iterations. Full equations and code links are in
 
 ## Modes and UNKNOWN
 
-- `tcell_only`: manuscript default; refines CD4/CD8 branches and leaves other
+- `tcell`: manuscript default; refines CD4/CD8 branches and leaves other
   immune states as independent branches.
 - `flat`: no biologically grouped shrinkage.
 - `hierarchical`: broad hierarchy across immune lineages.
@@ -251,7 +251,7 @@ or after 50 iterations. Full equations and code links are in
   principal manuscript results.
 
 Run [`examples/02_compare_four_modes.R`](examples/02_compare_four_modes.R) to
-compare `flat` and `tcell_only`, with and without UNKNOWN, on the same data.
+compare `flat` and `tcell`, with and without UNKNOWN, on the same data.
 
 ## Reproducing validation analyses
 

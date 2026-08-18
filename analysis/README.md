@@ -18,7 +18,7 @@ run the numbered scripts or `run_all.R` from the repository root.
 All deconvolution scripts use the manuscript settings:
 
 ```r
-hierarchy.mode = "tcell_only"
+hierarchy.mode = "tcell"
 add.unknown = FALSE
 pseudo.depth = 1e5
 n.iter = 50

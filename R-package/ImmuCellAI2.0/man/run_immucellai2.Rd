@@ -8,7 +8,7 @@ run_immucellai2(
   bulk,
   reference = NULL,
   marker.genes = NULL,
-  hierarchy.mode = "tcell_only",
+  hierarchy.mode = "tcell",
   add.unknown = FALSE,
   n.cores = 1,
   pseudo.depth = 1e+05,
@@ -31,8 +31,8 @@ If omitted, the packaged 53-state atlas is used.}
 \item{marker.genes}{Optional character vector or marker file. If omitted,
 the packaged 5,510-gene panel is used.}
 
-\item{hierarchy.mode}{One of `tcell_only`, `flat`, `hierarchical`, or
-`hybrid`. The manuscript workflow uses `tcell_only`.}
+\item{hierarchy.mode}{One of `tcell`, `flat`, `hierarchical`, or
+`hybrid`. The manuscript workflow uses `tcell`.}
 
 \item{add.unknown}{Add an optional residual state for sensitivity analysis.
 The manuscript workflow uses `FALSE`.}

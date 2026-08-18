@@ -184,7 +184,7 @@ fit_flat_simplex <- function(reference, bulk, marker.n = 400, n.iter = 80) {
 #' @param bulk.mat Gene x sample bulk expression matrix.
 #' @param reference Gene x state reference expression matrix.
 #' @param hierarchy Optional hierarchy table.
-#' @param hierarchy.mode One of flat, hierarchical, or hybrid.
+#' @param hierarchy.mode One of flat, hierarchical, hybrid, or tcell. The legacy value tcell_only is accepted as an alias.
 #' @param marker.n Number of markers per state.
 #' @param n.iter Projected-gradient iterations.
 #' @return Deconvolution result list.
@@ -193,11 +193,11 @@ deconvolve_bulk_fast <- function(
   bulk.mat,
   reference,
   hierarchy = NULL,
-  hierarchy.mode = c("hybrid", "hierarchical", "flat", "tcell_only"),
+  hierarchy.mode = c("hybrid", "hierarchical", "flat", "tcell", "tcell_only"),
   marker.n = 400,
   n.iter = 80
 ) {
-  hierarchy.mode <- match.arg(hierarchy.mode)
+  hierarchy.mode <- normalize_hierarchy_mode(hierarchy.mode)
   bulk.mat <- collapse_duplicate_genes(as.matrix(bulk.mat), method = "mean")
   reference <- collapse_duplicate_genes(as.matrix(reference), method = "mean")
   common.genes <- intersect(rownames(bulk.mat), rownames(reference))

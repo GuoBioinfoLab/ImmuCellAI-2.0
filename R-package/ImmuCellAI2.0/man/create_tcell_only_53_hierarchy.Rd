@@ -2,7 +2,7 @@
 % Please edit documentation in R/hierarchy.R
 \name{create_tcell_only_53_hierarchy}
 \alias{create_tcell_only_53_hierarchy}
-\title{Create a T-cell-only refined hierarchy}
+\title{Legacy alias for the T-cell refined hierarchy}
 \usage{
 create_tcell_only_53_hierarchy(state.labels)
 }
@@ -13,7 +13,7 @@ create_tcell_only_53_hierarchy(state.labels)
 data.frame with state_name, subtype, and major_lineage.
 }
 \description{
-Only CD4/CD8 T-cell related states are modeled with an internal hierarchy.
-All other immune states are left as independent top-level branches, avoiding
-shrinkage across unrelated immune lineages.
+This compatibility wrapper is retained for scripts written before version
+0.1.8. New code should use \code{create_tcell_53_hierarchy()} and
+\code{hierarchy.mode = "tcell"}.
 }
