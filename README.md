@@ -291,7 +291,7 @@ The complete downstream analysis and figure-generation workflows are organized
 as three independently configurable modules:
 
 - [`analysis/tumor_immune_phenotypes_immuicbscore/`](analysis/tumor_immune_phenotypes_immuicbscore/README.md):
-  TCGA sample selection and deconvolution, K=4 consensus immune phenotypes,
+  tumor sample selection and deconvolution, K=4 consensus immune phenotypes,
   phenotype heatmap, survival analysis, ImmuICBscore cross-validation, TCGA
   score association, and treatment-response cell-fraction plots.
 - [`analysis/age_associated_remodeling/`](analysis/age_associated_remodeling/README.md):
