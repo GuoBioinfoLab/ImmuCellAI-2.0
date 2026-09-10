@@ -23,7 +23,7 @@ https://guolab.wchscu.cn/ImmuCellAI2/
 | `R-package/ImmuCellAI2.0/` | Complete ImmuCellAI 2.0 R package source |
 | `R-package/ImmuCellAI2.0/inst/extdata/` | 53-state reference atlas and 5,510-gene panel |
 | `examples/` | Standard run, mode sensitivity, and simulation validation |
-| `benchmarks/` | Full Figure 2 seven-method scripts, generic evaluation, simulation and metadata |
+| `benchmarks/` | Complete Figure 2 and Figure 3 seven-method workflows, generic evaluation, simulation and metadata |
 | `analysis/` | Complete tumor/ImmuICBscore, healthy-aging, and infectious-disease case-study code |
 | `docs/` | Algorithm, parameters, input/output, and reproducibility details |
 | `immucellai2/` | Legacy Python Gibbs-sampling implementation |

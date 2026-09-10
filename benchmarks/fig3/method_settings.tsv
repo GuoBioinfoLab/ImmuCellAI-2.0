@@ -1,0 +1,23 @@
+Panel	Cohort	Method	Implementation	Key settings
+A	Xu PBMC (GSE107019)	ImmuCellAI 2.0	Current R package; final flat VB result	flat; add.unknown=FALSE; alpha.major=10; alpha.sub=5; alpha.state=1; tol=1e-6; seed=123
+A	Xu PBMC (GSE107019)	BayesPrism	Package reference-state estimate	chain.length=600; burn.in=500; thinning=2; alpha=1; seed=123; first theta
+A	Xu PBMC (GSE107019)	CIBERSORT	Package default LM22	Built-in LM22 and default package parameters
+A	Xu PBMC (GSE107019)	CITMIC	Native package API	Built-in signatures; weighted=TRUE; base=10
+A	Xu PBMC (GSE107019)	DWLS	Local weighted linear-model implementation	53-state reference
+A	Xu PBMC (GSE107019)	MuSiC	MuSiC::music.basic	53-state reference; S=1; Sigma=1e-8
+A	Xu PBMC (GSE107019)	ImmuCellAI	Native package API	Built-in signatures
+B	Alizadeh/Newman (GSE65133)	ImmuCellAI 2.0	Current R package	flat; add.unknown=FALSE; alpha.major=10; alpha.sub=5; alpha.state=1; tol=1e-6; seed=123
+C	Larbi/Monaco (GSE107011)	ImmuCellAI 2.0	Current R package	tcell; add.unknown=TRUE; alpha.major=10; alpha.sub=5; alpha.state=1; tol=1e-6; seed=123
+B-C	Both PBMC cohorts	BayesPrism	Package reference-state estimate	chain.length=600; burn.in=500; thinning=2; alpha=1; seed=123; first theta
+B-C	Both PBMC cohorts	CIBERSORT	Package default LM22	Built-in LM22 and default package parameters
+B-C	Both PBMC cohorts	CITMIC	Native package API	Built-in signatures; weighted=TRUE; base=10
+B-C	Both PBMC cohorts	DWLS	DWLS::solveDampenedWLS	Top 1000 variable genes from 53-state reference
+B-C	Both PBMC cohorts	MuSiC	MuSiC::music.basic	53-state reference; S=1; Sigma=1e-8
+B-C	Both PBMC cohorts	ImmuCellAI	Native package API	Built-in signatures
+D	Synthetic runtime	ImmuCellAI 2.0	Current R package	tcell; add.unknown=FALSE; max.iter=50; tol=1e-6; alpha 10/5/1; seed=123
+D	Synthetic runtime	BayesPrism	Package reference-state estimate	chain.length=600; burn.in=500; thinning=2; alpha=1; seed=123
+D	Synthetic runtime	CIBERSORT	Local nu-SVR implementation	Top 1000 reference genes
+D	Synthetic runtime	CITMIC	Native package API	Built-in signatures
+D	Synthetic runtime	DWLS	Local residual-weighted linear model	53-state reference
+D	Synthetic runtime	MuSiC	MuSiC::music.basic	53-state reference; S=1; Sigma=1e-8
+D	Synthetic runtime	ImmuCellAI	Native package API	Built-in signatures

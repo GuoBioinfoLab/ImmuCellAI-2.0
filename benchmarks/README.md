@@ -10,6 +10,14 @@ settings. Read its method notes before interpreting CIBERSORT, DWLS or MuSiC
 labels: these archived scripts include custom or reduced implementations and
 do not constitute an official CIBERSORTx run.
 
+## Figure 3 complete PBMC validation scripts
+
+The [fig3](fig3/README.md) directory contains the complete three-cohort PBMC
+validation workflow, all seven method calls, runtime analysis, six-cohort mean
+Pearson summary, and current A-E figure assembly. Cohort-specific parameters
+and differences between the accuracy and runtime implementations are recorded
+in [method_settings.tsv](fig3/method_settings.tsv).
+
 ## Cohort categories
 
 The manuscript benchmark contains two distinct validation categories.

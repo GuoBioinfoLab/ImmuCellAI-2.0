@@ -18,6 +18,7 @@ analysis/tumor_immune_phenotypes_immuicbscore/data/*
 !analysis/tumor_immune_phenotypes_immuicbscore/data/README.md
 benchmarks/output/
 benchmarks/fig2/config.R
+benchmarks/fig3/config.R
 benchmarks/fig2/data/*
 !benchmarks/fig2/data/README.md
 
