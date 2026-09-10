@@ -96,5 +96,6 @@ See the repository-level documentation:
 - examples/: executable standard, sensitivity, and validation workflows.
 - benchmarks/: cohort metadata and performance metric scripts.
 
-The older Gibbs/MCMC code paths are retained only for compatibility. The
-manuscript workflow and run_immucellai2() use deterministic VB inference.
+The supported manuscript workflow and `run_immucellai2()` use deterministic
+VB inference. The historical Python Gibbs/MCMC implementation is not included
+in the current distribution.

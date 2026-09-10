@@ -8,9 +8,6 @@ hierarchical refinement of CD4 and CD8 T-cell states.
 This repository contains the complete R implementation used for the current
 manuscript, the 53-state reference atlas, the 5,510-gene marker panel,
 reproducible examples, benchmark utilities, and downstream analysis scripts.
-The earlier Python Gibbs-sampling implementation is retained under
-[`immucellai2/`](immucellai2/) for compatibility and is explicitly documented
-as legacy code.
 
 ## Web server
 
@@ -26,7 +23,6 @@ https://guolab.wchscu.cn/ImmuCellAI2/
 | `benchmarks/` | Complete Figure 2 and Figure 3 seven-method workflows, generic evaluation, simulation and metadata |
 | `analysis/` | Complete tumor/ImmuICBscore, healthy-aging, and infectious-disease case-study code |
 | `docs/` | Algorithm, parameters, input/output, and reproducibility details |
-| `immucellai2/` | Legacy Python Gibbs-sampling implementation |
 
 ## System requirements
 

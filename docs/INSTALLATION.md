@@ -8,8 +8,7 @@
 - Optional test dependency: testthat
 
 The manuscript implementation is the R package under
-R-package/ImmuCellAI2.0. The historical Python code under immucellai2/
-does not implement the current deterministic variational Bayesian algorithm.
+`R-package/ImmuCellAI2.0/`.
 
 ## Install from GitHub
 
