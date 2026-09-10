@@ -1,0 +1,5 @@
+File	Original_SHA256	Role	Adaptation
+compare_gse164522_variable_background_7tools.R	94F28B2A2FAAB05E7A4FE70B33BA4EC93BB36481F9B80FE4B6E5417933C791A0	Figure 2A Liu CRC	Portable inputs; current package and tcell names; conditional dependency checks
+compare_gse176078_variable_background_7tools.R	E71E3EE4FF97F2B42704C76977FC572906C9A4307981720D7BFC1643CD4FF528	Figure 2B Wu BRCA	Portable inputs; current package and tcell names; conditional dependency checks
+compare_gse146771_variable_background_7tools.R	BFD6CA04EF94B97AF32CA131122E65231621535EAB63487E6D9326CE634315AC	Figure 2C Zhang CRC	Portable inputs; current package and tcell names; conditional dependency checks
+plot_4datasets_7tools_correlation_pie_matrix_final_ordered.R	3672C044D3E6AAB8FDA9613A84C3F13FA12EE9FB9E9232F64F77671F30F320B9	Original per-cohort pie plotter	Configurable metrics; default to three Figure 2 cohorts; current method labels

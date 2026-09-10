@@ -1,5 +1,15 @@
 # Benchmark reproduction
 
+## Figure 2 complete comparison scripts
+
+The [fig2](fig2/README.md) directory contains the full original seven-method
+comparison implementations for GSE164522, GSE176078 and GSE146771, including
+cohort-specific cell mappings, method calls, evaluation, and the original pie
+plotting code. It includes a configurable runner and implementation-specific
+settings. Read its method notes before interpreting CIBERSORT, DWLS or MuSiC
+labels: these archived scripts include custom or reduced implementations and
+do not constitute an official CIBERSORTx run.
+
 ## Cohort categories
 
 The manuscript benchmark contains two distinct validation categories.

@@ -1,8 +1,8 @@
 Method	Implementation	Key_settings	Reference_policy	Undefined_output_policy
 ImmuCellAI 2.0	ImmuCellAI2.0 0.1.8	tcell VB; add.unknown=FALSE; pseudo.depth=100000; n.iter=50; vb.tol=1e-6; alpha.major=10; alpha.sub=5; alpha.state=1	Packaged 53-state atlas and 5510-gene panel	Report separately
 BayesPrism	BayesPrism R package	chain.length=600; burn.in=500; update.gibbs according to output level	Compatible reference supplied for the benchmark	Report separately
-CIBERSORTx	CIBERSORTx native workflow	Default settings unless documented otherwise; LM22 for standard PBMC comparison	LM22 for standard PBMC analysis; any custom matrix must be labeled	Report separately
+CIBERSORT	Figure 2: custom linear nu-SVR; see fig2/method_settings.tsv	Top 1000 reference genes; nu=0.25,0.5,0.75; quantile normalization	Custom 53-state reference for tumor scripts; PBMC LM22 is a separate workflow	Not an official CIBERSORTx run
 CITMIC	CITMIC native implementation	Default settings unless documented otherwise	Native compatible reference or documented custom reference	Report separately
-DWLS	DWLS native implementation	Default settings unless documented otherwise	Native/default signature where available; custom use labeled	Constant prediction is not missing
+DWLS	Figure 2: local residual-weighted linear regression	Up to 6 iterations; weight cap at 95th percentile; see fig2/method_settings.tsv	Normalized shared 53-state reference	Custom implementation, not an official DWLS package call
 ImmuCellAI	Original ImmuCellAI implementation	Default settings	Native method resources	Unavailable states remain NA
-MuSiC	MuSiC R package	Default settings unless documented otherwise	Single-cell reference required by MuSiC	Report separately
+MuSiC	Figure 2: MuSiC::music.basic	S=1; Sigma=1e-8; iter.max=1000; nu=1e-4; eps=0.01	Normalized shared 53-state reference; not the full multi-donor music_prop workflow	Local weighted-regression fallback on error or invalid weights

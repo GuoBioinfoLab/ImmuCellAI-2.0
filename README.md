@@ -23,7 +23,7 @@ https://guolab.wchscu.cn/ImmuCellAI2/
 | `R-package/ImmuCellAI2.0/` | Complete ImmuCellAI 2.0 R package source |
 | `R-package/ImmuCellAI2.0/inst/extdata/` | 53-state reference atlas and 5,510-gene panel |
 | `examples/` | Standard run, mode sensitivity, and simulation validation |
-| `benchmarks/` | Dataset-independent benchmarking workflow and metadata templates |
+| `benchmarks/` | Full Figure 2 seven-method scripts, generic evaluation, simulation and metadata |
 | `analysis/` | Complete tumor/ImmuICBscore, healthy-aging, and infectious-disease case-study code |
 | `docs/` | Algorithm, parameters, input/output, and reproducibility details |
 | `immucellai2/` | Legacy Python Gibbs-sampling implementation |
@@ -254,6 +254,11 @@ Run [`examples/02_compare_four_modes.R`](examples/02_compare_four_modes.R) to
 compare `flat` and `tcell`, with and without UNKNOWN, on the same data.
 
 ## Reproducing validation analyses
+
+The complete original Figure 2 comparison and plotting scripts are in
+[`benchmarks/fig2/`](benchmarks/fig2/README.md), with configurable inputs for
+Liu (GSE164522), Wu (GSE176078) and Zhang (GSE146771). The implementation notes
+explain the archived custom CIBERSORT/DWLS and reduced MuSiC workflows.
 
 The simulation validator expects a table with `Sample`, `TargetCell`, and
 `Truth` (or `TargetProportion`) columns. It reports Pearson correlation,

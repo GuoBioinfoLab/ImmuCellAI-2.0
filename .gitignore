@@ -17,6 +17,9 @@ analysis/infectious_disease_states/data/*
 analysis/tumor_immune_phenotypes_immuicbscore/data/*
 !analysis/tumor_immune_phenotypes_immuicbscore/data/README.md
 benchmarks/output/
+benchmarks/fig2/config.R
+benchmarks/fig2/data/*
+!benchmarks/fig2/data/README.md
 
 # Redundant local reference export
 /data/
