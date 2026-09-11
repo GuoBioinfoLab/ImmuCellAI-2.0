@@ -1,0 +1,5 @@
+*.R text eol=lf
+*.r text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.png binary

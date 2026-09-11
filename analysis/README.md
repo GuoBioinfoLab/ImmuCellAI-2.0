@@ -1,7 +1,11 @@
 # Manuscript case-study analyses
 
-This directory contains the complete downstream analysis and plotting code for
-the three ImmuCellAI 2.0 application modules in the manuscript.
+This directory contains configurable workflows and the full local analysis and
+plotting implementations for the three ImmuCellAI 2.0 application modules.
+Start with [Figures 4-6 reproduction guide](REPRODUCING_FIGURES.md) for panel
+maps, historical versus adapted entry points, and required inputs. The
+`source_archive/` directories contain 59 original implementations, including
+exploratory variants. Their provenance is recorded in [source_manifest.json](source_manifest.json).
 
 | Directory | Case study |
 |---|---|
@@ -15,7 +19,8 @@ contains a `data/README.md` with accession identifiers, exact input schemas, and
 expected filenames. Copy `config.example.R` to `config.R`, edit the paths, and
 run the numbered scripts or `run_all.R` from the repository root.
 
-All deconvolution scripts use the manuscript settings:
+The configurable deconvolution entry points use these settings (archived
+exploratory variants retain their original settings):
 
 ```r
 hierarchy.mode = "tcell"

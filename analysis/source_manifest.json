@@ -1,0 +1,1320 @@
+{
+  "description": "Full local R implementations; duplicate byte-identical copies omitted.",
+  "transformations": [
+    "UTF-8 without BOM and LF line endings",
+    "Personal absolute path prefixes replaced by documented LOCAL placeholders",
+    "Historical package/display names normalized to ImmuCellAI 2.0 naming",
+    "Hierarchy mode spelling updated to tcell; numerical analysis logic retained",
+    "Remaining cluster-directory and legacy server path prefixes replaced by LOCAL placeholders; no numerical logic changed."
+  ],
+  "files": [
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/analyze_icb_score_with_clusters.R",
+      "source_relative_file": "Fig4/analyze_icb_score_with_clusters.R",
+      "source_sha256": "5a97005cb9a7a2f12488606b606194fbba6548e7b563e8880ef090ca3d3240c1",
+      "archived_sha256": "16a3196a43187ce22695260af605e095deaeb41729b6a6ec746f4ef4abaa5821",
+      "lines": 407,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "glmnet",
+        "lightgbm",
+        "ranger"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/analyze_icb_score_with_clusters.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/analyze_tcga_cluster_score_association.R",
+      "source_relative_file": "Fig4/analyze_tcga_cluster_score_association.R",
+      "source_sha256": "99833f9e2b300f273d0beea09630d484cfc02fc42ed630b2c31855a9d5950f29",
+      "archived_sha256": "0cbde8c184647a4e532fa3ce15467ea122525fb827e9c7526a70a9a80a01c745",
+      "lines": 255,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "ranger"
+      ],
+      "local_path_templates": [
+        "<LOCAL_CLUSTER_ROOT>",
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/analyze_tcga_cluster_score_association.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/analyze_tcga_cluster_score_survival_association.R",
+      "source_relative_file": "Fig4/analyze_tcga_cluster_score_survival_association.R",
+      "source_sha256": "3b8c951eb34f30d5d3fec90af83cd8ec441e97824d054d8dd27c22675c1ed76b",
+      "archived_sha256": "f4ba75b752759ee8611940368b94225d2b1169c086288e625ec6d0fe53968048",
+      "lines": 309,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "ranger",
+        "survival",
+        "survminer"
+      ],
+      "local_path_templates": [
+        "<LOCAL_CLUSTER_ROOT>",
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/analyze_tcga_cluster_score_survival_association.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/analyze_unified_icb_score_cluster_trend_test.R",
+      "source_relative_file": "Fig4/analyze_unified_icb_score_cluster_trend_test.R",
+      "source_sha256": "55e2dbf90dcf2d45eb2564dc6cf1a1b51bf89ffd6761f7c5035e5a9036588a30",
+      "archived_sha256": "890fadba8ddad5f0340f1fffbd45656e6caf8bcedbd37e0d06973d885c5435bd",
+      "lines": 192,
+      "packages": [
+        "data.table",
+        "ggplot2"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/analyze_unified_icb_score_cluster_trend_test.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/analyze_unified_icb_score_in_tcga_clusters.R",
+      "source_relative_file": "Fig4/analyze_unified_icb_score_in_tcga_clusters.R",
+      "source_sha256": "dfa7262a616ca541ef7c4eaa0462f9222f5c8802bfc1cd481dd63de6628127c0",
+      "archived_sha256": "06f9d9fc4bf75d2726f71217454b2503c47b4eaf840fda0c085a1d0a62cd901d",
+      "lines": 209,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "ranger"
+      ],
+      "local_path_templates": [
+        "<LOCAL_CLUSTER_ROOT>",
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/analyze_unified_icb_score_in_tcga_clusters.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/analyze_unified_icb_score_original_cluster_trend_test.R",
+      "source_relative_file": "Fig4/analyze_unified_icb_score_original_cluster_trend_test.R",
+      "source_sha256": "f5375a127277ce3519b7339f0447037c7a1791e71837cb545ea9f38a3a996467",
+      "archived_sha256": "f0d744b73b92403ce5603eb83b0da8746d6f0c95b35e551c68821f39ef0d1b0d",
+      "lines": 238,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "survival"
+      ],
+      "local_path_templates": [
+        "<LOCAL_CLUSTER_ROOT>",
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/analyze_unified_icb_score_original_cluster_trend_test.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/analyze_unified_score_c3_c4_axis_correlation.R",
+      "source_relative_file": "Fig4/analyze_unified_score_c3_c4_axis_correlation.R",
+      "source_sha256": "ee2f4309ab4c45a1d3f194c52239089a6338ccc6a3e22bc9d1711b9cd0502ef8",
+      "archived_sha256": "684ad3063247409e8751fc86342f6f3779171afc9609894cd2bf7b68bc1b4124",
+      "lines": 207,
+      "packages": [
+        "data.table",
+        "ggplot2"
+      ],
+      "local_path_templates": [
+        "<LOCAL_CLUSTER_ROOT>",
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/analyze_unified_score_c3_c4_axis_correlation.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/associate_cluster4_class_with_unified_icb_score.R",
+      "source_relative_file": "Fig4/associate_cluster4_class_with_unified_icb_score.R",
+      "source_sha256": "95805ce0fc2ed089c23ae2e3b21758b4e2e0f5d0ff300c09d07b91e86e5b0d9e",
+      "archived_sha256": "6250963b7b99f6a713c7287eb4a7dba19a236c2fb41c2d659dc51dfb64faab7c",
+      "lines": 255,
+      "packages": [
+        "data.table",
+        "ggplot2"
+      ],
+      "local_path_templates": [
+        "<LOCAL_CLUSTER_ROOT>/cluster4_class.txt",
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/associate_cluster4_class_with_unified_icb_score.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/calculate_four_cluster_signature_auc.R",
+      "source_relative_file": "Fig4/calculate_four_cluster_signature_auc.R",
+      "source_sha256": "85ebe08b226e88c41cc08ef514a1df1e184effa714c2f605eca2363b315e909e",
+      "archived_sha256": "4e57dcfe7e3a980cd6f7a8e241d46e43f6bf5561a63d88d5ffa6852d10c0d55e",
+      "lines": 196,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "glmnet"
+      ],
+      "local_path_templates": [
+        "<LOCAL_CLUSTER_ROOT>",
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/calculate_four_cluster_signature_auc.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/calculate_four_cluster_signature_auc_cluster4_class.R",
+      "source_relative_file": "Fig4/calculate_four_cluster_signature_auc_cluster4_class.R",
+      "source_sha256": "c90040db2a881395c989979473beee42e931ec8512b306eb54658d204289982b",
+      "archived_sha256": "3033ab9530d22c112b2ee6f01fcf09595fa87b0eef20efd38ae30bc6a6735fff",
+      "lines": 277,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "glmnet",
+        "ranger"
+      ],
+      "local_path_templates": [
+        "<LOCAL_CLUSTER_ROOT>",
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/calculate_four_cluster_signature_auc_cluster4_class.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/compare_marker_vs_5499_gene_sets.R",
+      "source_relative_file": "Fig4/compare_marker_vs_5499_gene_sets.R",
+      "source_sha256": "69a940abb3bea8085f5ef94f71d93b57527c14e4e4f96ae3ab6fd0cf03f11cad",
+      "archived_sha256": "e744c2fe6641e59885665cd38bfdb2b3ca7cbc326579c71fc951517a6ffdbb78",
+      "lines": 395,
+      "packages": [
+        "ImmuCellAI2.0",
+        "data.table",
+        "ggplot2"
+      ],
+      "local_path_templates": [
+        "<LOCAL_PROJECT_ROOT>/GSE146771_simulate_variable_background.txt",
+        "<LOCAL_PROJECT_ROOT>/GSE164522_simulate_variable_background.txt",
+        "<LOCAL_PROJECT_ROOT>/GSE176078_simulate_variable_background.txt",
+        "<LOCAL_R_ROOT>"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/compare_marker_vs_5499_gene_sets.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/ComplexHeatmap.r",
+      "source_relative_file": "Fig4/ComplexHeatmap.r",
+      "source_sha256": "e679724a72c5db2ae0c82d689901853e273af44ded11656d59994cc31cd67563",
+      "archived_sha256": "689b595191b59b5ff54d8c6008b867f7a8e053f1c9af7ed61b56a1c434b203e5",
+      "lines": 208,
+      "packages": [
+        "ComplexHeatmap"
+      ],
+      "local_path_templates": [
+        "<LOCAL_CLUSTER_ROOT>/cluster_TCGA.k=4.consensusClass.csv",
+        "<LOCAL_CLUSTER_ROOT>/cluster4_class.txt",
+        "<LOCAL_R_ROOT>/Fig4/heatmap_cluster_TCGA.pdf",
+        "<LOCAL_R_ROOT>/Fig4/TCGA_ImmunotherapyResponsive_ImmuCellAI2_marker5000/TCGA_ImmunotherapyResponsive_ImmuCellAI2_marker5000_state_fraction_sample_by_celltype.txt"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/ComplexHeatmap.r"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/comprehensive_cluster4_unified_icb_score_association.R",
+      "source_relative_file": "Fig4/comprehensive_cluster4_unified_icb_score_association.R",
+      "source_sha256": "ba5feec401cd2fecf994a3d15a90a0e5c3c0df97f4636f592a333b7ab38578ca",
+      "archived_sha256": "749fb811ce0bed8896f1226a8d2f6e1244e06b1a17205712f1b05fb876759465",
+      "lines": 450,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "grid",
+        "survival"
+      ],
+      "local_path_templates": [
+        "<LOCAL_CLUSTER_ROOT>/cluster4_class.txt",
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/comprehensive_cluster4_unified_icb_score_association.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/ConsensusClusterPlus.r",
+      "source_relative_file": "Fig4/ConsensusClusterPlus.r",
+      "source_sha256": "117a961957f428a6e08b2bb30571b48c809b4bd08eb3e196557139a207e9fbf6",
+      "archived_sha256": "117a961957f428a6e08b2bb30571b48c809b4bd08eb3e196557139a207e9fbf6",
+      "lines": 41,
+      "packages": [
+        "ConsensusClusterPlus",
+        "dplyr",
+        "qs",
+        "tibble"
+      ],
+      "local_path_templates": [],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/ConsensusClusterPlus.r"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/Fig4AB_Code.R",
+      "source_relative_file": "Fig4/Fig4AB_Code.R",
+      "source_sha256": "a06ff78bd829a2f9ade21a8902cb8b45c8a7c2e9e54cca8d47a7ec9832b291d9",
+      "archived_sha256": "7f20e42e0de481e55ed4a23470299bca72c873465c8db30433ccf286eab2250a",
+      "lines": 186,
+      "packages": [
+        "ComplexHeatmap",
+        "ConsensusClusterPlus",
+        "data.table",
+        "dplyr",
+        "qs",
+        "tibble"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4/",
+        "<LOCAL_R_ROOT>/Fig4/cluster_TCGA/cluster_TCGA.k=5.consensusClass.csv",
+        "<LOCAL_R_ROOT>/Fig4/data6690.RData",
+        "<LOCAL_R_ROOT>/Fig4/TCGA_BRCA_ImmuCellAI2_marker9000/TCGA_BRCA_ImmuCellAI2_marker5000_state_fraction_sample_by_celltype.txt"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/Fig4AB_Code.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/fig4_01_unified_icb_score_method.R",
+      "source_relative_file": "Fig4/fig4_01_unified_icb_score_method.R",
+      "source_sha256": "0311c7a4861bd6ec36816c4515098115e521d62d29371075788d680dcdc062b7",
+      "archived_sha256": "54e0c064297831725651900ff81627eb156f6abb9e392df6fcf588989d66a56e",
+      "lines": 121,
+      "packages": [
+        "data.table",
+        "ranger"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4/Unified_ICB_score_cluster_ICB_integration"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/fig4_01_unified_icb_score_method.R",
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/code/fig4_01_unified_icb_score_method.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/fig4_02_plot_unified_icb_score_cluster_and_roc.R",
+      "source_relative_file": "Fig4/fig4_02_plot_unified_icb_score_cluster_and_roc.R",
+      "source_sha256": "9f6e5532920c6e2ce78cf4a78ea43826dd65a57e950cbc72867d5696356380a8",
+      "archived_sha256": "b0ffc09458d5db3ba2fa84ef82749611f560f2b3ac7ac383cec99dcd851d7673",
+      "lines": 227,
+      "packages": [
+        "data.table",
+        "ggplot2"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/fig4_02_plot_unified_icb_score_cluster_and_roc.R",
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/code/fig4_02_plot_unified_icb_score_cluster_and_roc.R",
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/deliverable_8cohort_cv_and_TCGA_cluster_linkage/code/fig4_02_plot_unified_icb_score_cluster_and_roc.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/fig4_03_extended_tcga_cluster_score_analysis.R",
+      "source_relative_file": "Fig4/fig4_03_extended_tcga_cluster_score_analysis.R",
+      "source_sha256": "7997b42fc984646f5cd29ba48307ecd53cf5434dd4fcdd1b93cae35d0bacbe72",
+      "archived_sha256": "76643c47bbc096a355b5a1c834e687f9bcb23dd2a5daad951c399b342e62495c",
+      "lines": 274,
+      "packages": [
+        "data.table",
+        "ggplot2"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/fig4_03_extended_tcga_cluster_score_analysis.R",
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/code/fig4_03_extended_tcga_cluster_score_analysis.R",
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/deliverable_8cohort_cv_and_TCGA_cluster_linkage/code/fig4_03_extended_tcga_cluster_score_analysis.R",
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/extended_TCGA_cluster_score_analysis/code/fig4_03_extended_tcga_cluster_score_analysis.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/fig4_04_plot_unified_icb_score_method_diagram.R",
+      "source_relative_file": "Fig4/fig4_04_plot_unified_icb_score_method_diagram.R",
+      "source_sha256": "2b9a1439ac398719169fa96b2e164f1d9ca4ab35c495388e40c67d3466d48c49",
+      "archived_sha256": "f6003448918924ccd2323d65d62b2407aa9c3580b8db80550a5ffe9d4a074a5d",
+      "lines": 184,
+      "packages": [
+        "ggplot2",
+        "grid",
+        "png"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/fig4_04_plot_unified_icb_score_method_diagram.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/fig4_05_fixed_validation_unified_icb_score.R",
+      "source_relative_file": "Fig4/fig4_05_fixed_validation_unified_icb_score.R",
+      "source_sha256": "fefc0961318184d9136c6f9eeca1d6f52ca910efcc0bf054f1cc140493de74d2",
+      "archived_sha256": "d8ffb07f7a7a423422d7875d0ef9060eb4834a355cacbcf3778e7cf075765158",
+      "lines": 292,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "ranger"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/fig4_05_fixed_validation_unified_icb_score.R",
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/code/fig4_05_fixed_validation_unified_icb_score.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/fig4_06_optimize_train_validation_auc.R",
+      "source_relative_file": "Fig4/fig4_06_optimize_train_validation_auc.R",
+      "source_sha256": "e76d3d991ac1389d493c5351483f6d08eec7fc1e5370075e83af53791806ef74",
+      "archived_sha256": "07db76949e79d116ef86741901c15d34d1fc96a297437295e3d8871f37e7bf7d",
+      "lines": 430,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "ranger"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/fig4_06_optimize_train_validation_auc.R",
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/code/fig4_06_optimize_train_validation_auc.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/level1_cluster_clinical_distribution_TCGA.R",
+      "source_relative_file": "Fig4/level1_cluster_clinical_distribution_TCGA.R",
+      "source_sha256": "35d7c803aeefad9e3f4209d48a9179e8ac0e12906955d85c12b36457cb0b1d93",
+      "archived_sha256": "e0f0c320873b6b8d8a005465691ec5d994dcd70acbf165cbd728cb502a8ab47f",
+      "lines": 275,
+      "packages": [
+        "data.table",
+        "dplyr",
+        "ggplot2",
+        "scales"
+      ],
+      "local_path_templates": [
+        "<LOCAL_CLUSTER_ROOT>/cluster_TCGA.k=4.consensusClass.csv",
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/level1_cluster_clinical_distribution_TCGA.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/optimize_c3_c4_axis_icb_response_scores.R",
+      "source_relative_file": "Fig4/optimize_c3_c4_axis_icb_response_scores.R",
+      "source_sha256": "d056975423ee91b3a245dbde5e38eb3cac7fcb3cc2dfa0238c83c0ccd2850412",
+      "archived_sha256": "362fe50adae245119dc8884f16704712da0986f2239259d8e324b58498dd9f9e",
+      "lines": 333,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "glmnet",
+        "ranger"
+      ],
+      "local_path_templates": [
+        "<LOCAL_CLUSTER_ROOT>",
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/optimize_c3_c4_axis_icb_response_scores.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/optimize_C3_C4_immunotherapy_response_model.R",
+      "source_relative_file": "Fig4/optimize_C3_C4_immunotherapy_response_model.R",
+      "source_sha256": "56998a6440ec5bd43dedc3042ea8d1ba0c1a173bfc41b90c9e105738784cd56c",
+      "archived_sha256": "d6a7f284f39a52493f0cf7da0922673b0a4efe4f119b207503d42104ccea2b9d",
+      "lines": 323,
+      "packages": [
+        "data.table",
+        "dplyr",
+        "ggplot2"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/optimize_C3_C4_immunotherapy_response_model.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/optimize_C3_C4_immunotherapy_response_model_v2_auc_target.R",
+      "source_relative_file": "Fig4/optimize_C3_C4_immunotherapy_response_model_v2_auc_target.R",
+      "source_sha256": "89fdf84be1d465a23dbf46d5628bc262b962059693a6719918d95a457384bc5f",
+      "archived_sha256": "1ca88bb5cfded0138921af4a677d73ebb19123b806c4c4e428319eed563c7169",
+      "lines": 373,
+      "packages": [
+        "data.table",
+        "e1071",
+        "gbm",
+        "ggplot2",
+        "glmnet",
+        "nnet",
+        "randomForest"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/optimize_C3_C4_immunotherapy_response_model_v2_auc_target.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/optimize_cell_fraction_only_auc_models.R",
+      "source_relative_file": "Fig4/optimize_cell_fraction_only_auc_models.R",
+      "source_sha256": "03983eef4cc6963b87caffbd7838ad4fe53fb0d683f4b3dddd451be5f9656a74",
+      "archived_sha256": "8874829ded4e840ed30b7df30e9e2044910f1e6e67f9d46e357f0c09293bb6c5",
+      "lines": 397,
+      "packages": [
+        "data.table",
+        "e1071",
+        "gbm",
+        "ggplot2",
+        "glmnet",
+        "kernlab",
+        "lightgbm",
+        "nnet",
+        "randomForest",
+        "ranger"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/optimize_cell_fraction_only_auc_models.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/optimize_cell_fraction_only_auc_models_fast.R",
+      "source_relative_file": "Fig4/optimize_cell_fraction_only_auc_models_fast.R",
+      "source_sha256": "63ac0dc6ce81f783535263b09badb539508c0a92af5c786c8c27fab8dbaad67e",
+      "archived_sha256": "9278b383d945a5765fcb8eca060f5a8718f33ed730f90708e769d29d105169e4",
+      "lines": 270,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "glmnet",
+        "lightgbm",
+        "ranger"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/optimize_cell_fraction_only_auc_models_fast.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/optimize_icb_score_more_models.R",
+      "source_relative_file": "Fig4/optimize_icb_score_more_models.R",
+      "source_sha256": "4fdc3d93eb141e75e285e0f4891a9aa0c828f5cc653df6fd751472149e3ac578",
+      "archived_sha256": "42e78e53cff25d8c5ed7316f2e73c48366657ffb29e857cb44b29dd78ada2e80",
+      "lines": 476,
+      "packages": [
+        "data.table",
+        "e1071",
+        "gbm",
+        "ggplot2",
+        "glmnet",
+        "lightgbm",
+        "nnet",
+        "ranger"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/optimize_icb_score_more_models.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/optimize_immunotherapy_auc_with_signatures_lightgbm_ranger.R",
+      "source_relative_file": "Fig4/optimize_immunotherapy_auc_with_signatures_lightgbm_ranger.R",
+      "source_sha256": "44d3f7c34db91922714a0d3f353f0316a21029af94a6041e0b90f3bbe9536e3f",
+      "archived_sha256": "12097bfef2a909213fb9a1fb2ba1410a732638142f1266226492ebcd339d107b",
+      "lines": 412,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "glmnet",
+        "lightgbm",
+        "pROC",
+        "ranger"
+      ],
+      "local_path_templates": [
+        "<LOCAL_CLUSTER_ROOT>",
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/optimize_immunotherapy_auc_with_signatures_lightgbm_ranger.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/optimize_unified_elasticnet_icb_score_loso.R",
+      "source_relative_file": "Fig4/optimize_unified_elasticnet_icb_score_loso.R",
+      "source_sha256": "9010758be81a25a8872352c873935cdd36b6565d8f3148324f857fe90cdbb945",
+      "archived_sha256": "07c9af96d9bda6a5be959dcda6c261b9ddb71b86801d5c290746d5b514b594c8",
+      "lines": 338,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "glmnet"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/optimize_unified_elasticnet_icb_score_loso.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/plot_cluster_stage_proportion_TCGA.R",
+      "source_relative_file": "Fig4/plot_cluster_stage_proportion_TCGA.R",
+      "source_sha256": "c070536d7df71c1cbc779e4e30b340f8885df615f44889b2521a5d3d6141594a",
+      "archived_sha256": "804a2cebccfd764574590715da91e2640963e715cc3fee97599cf4a557e24c45",
+      "lines": 178,
+      "packages": [
+        "data.table",
+        "dplyr",
+        "ggplot2",
+        "scales"
+      ],
+      "local_path_templates": [
+        "<LOCAL_CLUSTER_ROOT>/clinical_TCGA.txt",
+        "<LOCAL_CLUSTER_ROOT>/cluster_TCGA.k=4.consensusClass.csv",
+        "<LOCAL_R_ROOT>/Fig4",
+        "<LOCAL_R_ROOT>/Fig4/TCGA_ImmunotherapyResponsive_ImmuCellAI2_marker5000/TCGA_ImmunotherapyResponsive_ImmuCellAI2_marker5000_state_fraction_sample_by_celltype.txt"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/plot_cluster_stage_proportion_TCGA.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/plot_icb334_pre_on_response_cell_fraction.R",
+      "source_relative_file": "Fig4/plot_icb334_pre_on_response_cell_fraction.R",
+      "source_sha256": "fa5c4c369247374ca054d621ceb6116e94239673360b6021cfb4d3c9695e7af3",
+      "archived_sha256": "7050a578c0b3509c4284d3616782456ea060d057d14097bba63cc01c9b97f0a9",
+      "lines": 330,
+      "packages": [
+        "cowplot",
+        "data.table",
+        "dplyr",
+        "ggplot2",
+        "ggpubr",
+        "tidyr"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/plot_icb334_pre_on_response_cell_fraction.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/run_tcga_brca_immucellai2_marker9000.R",
+      "source_relative_file": "Fig4/run_tcga_brca_immucellai2_marker9000.R",
+      "source_sha256": "f7ddc88bda005e1f76ebba20f1ace6b9fb242c232d361bbd6d2b248d24caff04",
+      "archived_sha256": "3237aeea7508f3f9140a3b4dbed3e65286bdcdebdf9fcd96aeeb177a17ab909a",
+      "lines": 303,
+      "packages": [
+        "ImmuCellAI2.0",
+        "data.table"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>",
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/run_tcga_brca_immucellai2_marker9000.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/run_tcga_immucellai2_fig4.R",
+      "source_relative_file": "Fig4/run_tcga_immucellai2_fig4.R",
+      "source_sha256": "5292b36bd869b8ed01c8db58bdb52ba06176ba6c211948ee6cc99144e9e06205",
+      "archived_sha256": "e86d0d9642b37a8ea9489955d1f1db6417237cde4325a301f12304c7602b94f3",
+      "lines": 255,
+      "packages": [
+        "ImmuCellAI2.0",
+        "data.table"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4",
+        "<LOCAL_R_ROOT>/Fig4/TCGA_TPM_symbol.txt",
+        "<LOCAL_R_ROOT>/MarkerUsedDeconvolution.txt",
+        "<LOCAL_R_ROOT>/reference_53celltypesTPM20260518.txt"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/run_tcga_immucellai2_fig4.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/run_tcga_immunotherapy_responsive_immucellai2_marker5000.R",
+      "source_relative_file": "Fig4/run_tcga_immunotherapy_responsive_immucellai2_marker5000.R",
+      "source_sha256": "082db1398eb699295dd0705f3ed4ee2705dbb2e0dda51ce009b5b3b55986c245",
+      "archived_sha256": "4b272e7dc7ec765b413c8e15af62e246ecae5bacc89cd4eba90d0a2e33cb321b",
+      "lines": 327,
+      "packages": [
+        "ImmuCellAI2.0",
+        "data.table"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>",
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/run_tcga_immunotherapy_responsive_immucellai2_marker5000.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/select_unified_c3_c4_score.R",
+      "source_relative_file": "Fig4/select_unified_c3_c4_score.R",
+      "source_sha256": "200358a8c692f69b949959b920266c6c499f0134cccc685aac9df11283f81501",
+      "archived_sha256": "497c4c10e616e9ddfbb5f41ab0656b615466e15da27df44bcf2db1c657fa75e8",
+      "lines": 138,
+      "packages": [
+        "data.table",
+        "ggplot2"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4/C3_C4_score_external_immunotherapy_validation/C3_C4_axis_ICB_response_scores",
+        "<LOCAL_R_ROOT>/Fig4/C3_C4_score_external_immunotherapy_validation/external_immunotherapy_C3_C4_scores_with_clinical.txt"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/select_unified_c3_c4_score.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/supplement_TCGA_score_module.R",
+      "source_relative_file": "Fig4/supplement_TCGA_score_module.R",
+      "source_sha256": "c72b86e6610d9c22cd8005e015a5ee187070d5342e04f96bc10ccf1236005160",
+      "archived_sha256": "2a93cf4b67db0b8483763c0824b9ee7bce3f49b18419376b68d3c8579d8423ec",
+      "lines": 207,
+      "packages": [
+        "cowplot",
+        "data.table",
+        "dplyr",
+        "ggplot2",
+        "scales"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/supplement_TCGA_score_module.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/TCGA_sampleCluster.r",
+      "source_relative_file": "Fig4/TCGA_sampleCluster.r",
+      "source_sha256": "30fa647ffd9272aa82de8d87851be44269008d89ab98bd73abe53a64598dfe17",
+      "archived_sha256": "cac79cf5d5f4d3234c220c01b3d8536ce4923c96c7b435d9206e9a289ce301f9",
+      "lines": 190,
+      "packages": [
+        "ConsensusClusterPlus",
+        "data.table",
+        "dplyr",
+        "pheatmap",
+        "qs"
+      ],
+      "local_path_templates": [
+        "<LOCAL_LEGACY_AUX_ROOT>/Tcell_states/1.data/TCGA/GDCdata/clinical/",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/backup0106/learning/myresult/ResultDeconvolutionTCGAtumor.xlsx",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/case_TCGA/",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/case_TCGA/cluster_TCGA_Solid/",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/case_TCGA/TCGA_ImmuCellAI2_state_fraction.txt"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/TCGA_sampleCluster.r"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/validate_C3_C4_score_external_immunotherapy.R",
+      "source_relative_file": "Fig4/validate_C3_C4_score_external_immunotherapy.R",
+      "source_sha256": "ec6209e1d5a03c57b69812a60bb72c933d52212a07fb0ea16a27506a961385f0",
+      "archived_sha256": "864cdcb66a8c0065c37c3df9804d68cc7ef875f3f6732da878bcdad822741f66",
+      "lines": 399,
+      "packages": [
+        "ImmuCellAI2.0",
+        "data.table",
+        "dplyr",
+        "ggplot2",
+        "pROC"
+      ],
+      "local_path_templates": [
+        "<LOCAL_CLUSTER_ROOT>",
+        "<LOCAL_R_ROOT>",
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/validate_C3_C4_score_external_immunotherapy.R"
+      ]
+    },
+    {
+      "figure": "Fig5",
+      "archived_file": "analysis/age_associated_remodeling/source_archive/ABC_plt.r",
+      "source_relative_file": "Fig5/ABC_plt.r",
+      "source_sha256": "6575be9b6e2a9cfa8d3bcc7547ed2fd341a3d4a518bab149a19c09959001bc5c",
+      "archived_sha256": "4d33aae73561c86d4fa73d3d1b2e23eabb3d5ae320b27addd7bab9cd3745890e",
+      "lines": 593,
+      "packages": [
+        "cowplot"
+      ],
+      "local_path_templates": [
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/age/Figure3ABC.pdf",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/Figure3/result_ABC_Figure3.Rdata"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig5/ABC_plt.r"
+      ]
+    },
+    {
+      "figure": "Fig5",
+      "archived_file": "analysis/age_associated_remodeling/source_archive/boxplot.r",
+      "source_relative_file": "Fig5/boxplot.r",
+      "source_sha256": "3f4a720b0d230e84780b0768516db55be181ad5af261cc0c38f4e109fdedb90b",
+      "archived_sha256": "27aefb8459aac53f23aa11425d73ce6643ab8c0ff5e6bf699cc19c6f22b89379",
+      "lines": 1222,
+      "packages": [
+        "ComplexHeatmap",
+        "RColorBrewer",
+        "cowplot"
+      ],
+      "local_path_templates": [
+        "<LOCAL_LEGACY_AUX_ROOT>/Tcell_states/1.data/Tan_data/",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/age/",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/age/age_sample_info.csv",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/age/Figure3ABC.pdf",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/age/Figure3barplot.pdf",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/age/Figure3heatmap.pdf",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/age/FigureSupplement.pdf",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/age/result_age.xlsx",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/age/result_age2.xlsx",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/RNA_seq/code/"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig5/boxplot.r"
+      ]
+    },
+    {
+      "figure": "Fig5",
+      "archived_file": "analysis/age_associated_remodeling/source_archive/fig5_age_group_immucellai2_abundance.R",
+      "source_relative_file": "Fig5/fig5_age_group_immucellai2_abundance.R",
+      "source_sha256": "cb68302d99411d91ed615a9535b27ef7fd4daa32386d0cd98d04849aaf21b48c",
+      "archived_sha256": "e114cdc1abc50abac29a88a7f196cb57081904e93b677b84dfe9e2162196e04d",
+      "lines": 377,
+      "packages": [
+        "ImmuCellAI2.0",
+        "cowplot",
+        "data.table",
+        "dplyr",
+        "ggplot2",
+        "tidyr"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig5",
+        "<LOCAL_R_ROOT>/ImmuCellAI2.0_0.1.7.tar.gz",
+        "<LOCAL_R_ROOT>/MarkerUsedDeconvolution.txt",
+        "<LOCAL_R_ROOT>/reference_53celltypesTPM20260518.txt"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig5/fig5_age_group_immucellai2_abundance.R"
+      ]
+    },
+    {
+      "figure": "Fig5",
+      "archived_file": "analysis/age_associated_remodeling/source_archive/fig5_age_group_immucellai2_heatmap.R",
+      "source_relative_file": "Fig5/fig5_age_group_immucellai2_heatmap.R",
+      "source_sha256": "707e328dee47ebc175fb56b082773905199268571489b10b34759049249694e9",
+      "archived_sha256": "f42a9ff2ad427c5e47127e552a17b7b4ad9d9c03f9eb302bd2f1997cef3a74c8",
+      "lines": 150,
+      "packages": [
+        "ComplexHeatmap",
+        "data.table",
+        "dplyr",
+        "grid",
+        "tibble"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig5"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig5/fig5_age_group_immucellai2_heatmap.R"
+      ]
+    },
+    {
+      "figure": "Fig5",
+      "archived_file": "analysis/age_associated_remodeling/source_archive/fig5_age_group_immucellai2_major_barplot.R",
+      "source_relative_file": "Fig5/fig5_age_group_immucellai2_major_barplot.R",
+      "source_sha256": "a5455c7961746dc33654695b6bfb51ea8394a55333091143f8d11977ee0f483b",
+      "archived_sha256": "25606cef72faf83069bbd78f22df06a3237b129f461c22bab354b876f4429285",
+      "lines": 136,
+      "packages": [
+        "data.table",
+        "dplyr",
+        "ggplot2",
+        "tidyr"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig5"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig5/fig5_age_group_immucellai2_major_barplot.R"
+      ]
+    },
+    {
+      "figure": "Fig6",
+      "archived_file": "analysis/infectious_disease_states/source_archive/fig6_active_latent_tb_immucellai2_plot.R",
+      "source_relative_file": "Fig6/fig6_active_latent_tb_immucellai2_plot.R",
+      "source_sha256": "11864fed1fecb1ed78e1341f406dc5770692df039890e248fad1eb698134aeaa",
+      "archived_sha256": "3604fd4e0f36015929c20d50e401fe27ecc428a0a4e8484ae0e618cdd826025d",
+      "lines": 343,
+      "packages": [
+        "ImmuCellAI2.0",
+        "cowplot",
+        "data.table",
+        "dplyr",
+        "ggplot2",
+        "ggpubr",
+        "tidyr"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig6",
+        "<LOCAL_R_ROOT>/ImmuCellAI2.0_0.1.7.tar.gz",
+        "<LOCAL_R_ROOT>/MarkerUsedDeconvolution.txt",
+        "<LOCAL_R_ROOT>/reference_53celltypesTPM20260518.txt"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig6/fig6_active_latent_tb_immucellai2_plot.R"
+      ]
+    },
+    {
+      "figure": "Fig6",
+      "archived_file": "analysis/infectious_disease_states/source_archive/fig6_check_tex_pb_tb.R",
+      "source_relative_file": "Fig6/fig6_check_tex_pb_tb.R",
+      "source_sha256": "9854cc9d63ca618659729da84e68ad309e87b0695de9f529cb719d368e7b2c98",
+      "archived_sha256": "e8daae205c4bce24caf6f0f737fce3014927d43b4894e045b79787ce96672a3f",
+      "lines": 211,
+      "packages": [
+        "cowplot",
+        "data.table",
+        "dplyr",
+        "ggplot2",
+        "tidyr"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig6"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig6/fig6_check_tex_pb_tb.R"
+      ]
+    },
+    {
+      "figure": "Fig6",
+      "archived_file": "analysis/infectious_disease_states/source_archive/fig6_prjna683803_aids_immucellai2_analysis.R",
+      "source_relative_file": "Fig6/fig6_prjna683803_aids_immucellai2_analysis.R",
+      "source_sha256": "5361c4c68646b8db28844ebb489b6516e7bc9b9fdf10b94e221abc1531f947ad",
+      "archived_sha256": "e5c14ec555397d5432d7a8ae0abe82f2e1cd399155de716876f4d13c5708629d",
+      "lines": 539,
+      "packages": [
+        "ImmuCellAI2.0",
+        "cowplot",
+        "data.table",
+        "dplyr",
+        "ggplot2",
+        "tidyr"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig6",
+        "<LOCAL_R_ROOT>/ImmuCellAI2.0_0.1.7.tar.gz",
+        "<LOCAL_R_ROOT>/MarkerUsedDeconvolution.txt",
+        "<LOCAL_R_ROOT>/reference_53celltypesTPM20260518.txt"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig6/fig6_prjna683803_aids_immucellai2_analysis.R"
+      ]
+    },
+    {
+      "figure": "Fig6",
+      "archived_file": "analysis/infectious_disease_states/source_archive/fig6_prjna683803_aids_timecourse_p4.R",
+      "source_relative_file": "Fig6/fig6_prjna683803_aids_timecourse_p4.R",
+      "source_sha256": "02d94c74bcbd304d49da8586e7d5b153717761dfc50e78b49fcd13835e3f12fe",
+      "archived_sha256": "891d86ee433501fba076534707ef629efe17f9e2604aadce42cec865b84ddf6c",
+      "lines": 181,
+      "packages": [
+        "data.table",
+        "dplyr",
+        "ggplot2",
+        "readxl",
+        "tidyr"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig6"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig6/fig6_prjna683803_aids_timecourse_p4.R"
+      ]
+    },
+    {
+      "figure": "Fig6",
+      "archived_file": "analysis/infectious_disease_states/source_archive/fig6_prjna683803_status_time_interaction.R",
+      "source_relative_file": "Fig6/fig6_prjna683803_status_time_interaction.R",
+      "source_sha256": "d95e067b1429215dc5f73d0b4fe69e924383e0955c5aa7544eff8fac724cb90f",
+      "archived_sha256": "38c53f3c614b4828e71e065bdb902aa52919711210bce5f2965b9b32ac5b2433",
+      "lines": 329,
+      "packages": [
+        "data.table",
+        "dplyr",
+        "ggplot2",
+        "lme4",
+        "lmerTest",
+        "readxl",
+        "tidyr"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig6"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig6/fig6_prjna683803_status_time_interaction.R"
+      ]
+    },
+    {
+      "figure": "Fig6",
+      "archived_file": "analysis/infectious_disease_states/source_archive/fig6_select_early_interaction_sig8.R",
+      "source_relative_file": "Fig6/fig6_select_early_interaction_sig8.R",
+      "source_sha256": "e35b1bffcf085f73cee83b676c4df46c26c41e525d4d19e8d2a16da13db4b0e5",
+      "archived_sha256": "2d4316eb6e6371a8ef40215bbf76943788264b79610a7b95a7ce3252e1a99ca7",
+      "lines": 224,
+      "packages": [
+        "data.table",
+        "dplyr",
+        "ggplot2",
+        "readxl",
+        "tidyr"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig6"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig6/fig6_select_early_interaction_sig8.R"
+      ]
+    },
+    {
+      "figure": "Fig6",
+      "archived_file": "analysis/infectious_disease_states/source_archive/TuberAIDS_analysis.r",
+      "source_relative_file": "Fig6/TuberAIDS_analysis.r",
+      "source_sha256": "fd81604ee7ed38743ac759e10b541efb54271b4ca78b17be342eacc57d956b2d",
+      "archived_sha256": "3d7a839dd79117904cb572126e8ad1068246914e873a2a376913f631b142e3a7",
+      "lines": 475,
+      "packages": [
+        "cowplot",
+        "dplyr",
+        "ggpubr",
+        "ggsci",
+        "purrr",
+        "readxl",
+        "tibble"
+      ],
+      "local_path_templates": [
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/Tan/",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/Tan/AIDs_ARTFigure.pdf",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/Tan/AIDs_mainFigure.pdf",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/Tan/AIDs_supplementFigure.pdf",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/Tan/AIDs_zhexianFigure.pdf",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/Tan/excel_2",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/Tan/excel_2/",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/Tan/excel_2/PRJNA395234.xlsx",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/Tan/excel_2/PRJNA638653.xlsx",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/Tan/excel_2/PRJNA683803.xlsx",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/Tan/Figure6.pdf",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/Tan/Figure6.Rdata",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/Tan/PRJNA_combined.csv",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/Tan/PRJNA683803_combined.csv",
+        "<LOCAL_LEGACY_PROJECT_ROOT>/CaseStudy/Tan/Result_20250418.xlsx"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig6/TuberAIDS_analysis.r"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/icb_development/fig4_04_plot_unified_icb_score_method_diagram.R",
+      "source_relative_file": "Fig4/icb_development/fig4_04_plot_unified_icb_score_method_diagram.R",
+      "source_sha256": "da22502f64fa63a6ce0734cc0fb6fe633c9a26e0d6b27e39e06a4e1e047df56c",
+      "archived_sha256": "9c7e46c9696091f1d84f18ae57f02a8100a6e2cbe8b24de1c9e5812bb8603d74",
+      "lines": 195,
+      "packages": [
+        "ggplot2",
+        "grid",
+        "png"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/code/fig4_04_plot_unified_icb_score_method_diagram.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/icb_development/fig4_07_fivefold_cv_unified_icb_score.R",
+      "source_relative_file": "Fig4/icb_development/fig4_07_fivefold_cv_unified_icb_score.R",
+      "source_sha256": "7941f5967d7507eccfee77f18316bdde5570506ad82534aa7d7aa479375bb903",
+      "archived_sha256": "9fbdd67171eff2ff5ff5d0471c1d2b1a1ca8b0f8cad73381a23cbb22b358301f",
+      "lines": 262,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "ranger"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/code/fig4_07_fivefold_cv_unified_icb_score.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/icb_development/fig4_08_test_add_high_within_cv_cohorts.R",
+      "source_relative_file": "Fig4/icb_development/fig4_08_test_add_high_within_cv_cohorts.R",
+      "source_sha256": "35e7d8ee541368d93b5351bfd98f9226f50dd13f72c5f343b885923222b3e935",
+      "archived_sha256": "3844c69a3e53029b4b159f6193d38519f29ec1fba0f9ed473792b5445f0c9a83",
+      "lines": 184,
+      "packages": [
+        "data.table",
+        "ranger"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/code/fig4_08_test_add_high_within_cv_cohorts.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/icb_development/fig4_09_plot_expanded_7cohort_cv_roc.R",
+      "source_relative_file": "Fig4/icb_development/fig4_09_plot_expanded_7cohort_cv_roc.R",
+      "source_sha256": "96662bff62f5775bb1d159442a357d22c4c8af9f2525fc4b9ff2670dbe7ee92c",
+      "archived_sha256": "4890980925b2c72dfc630ac3440602baf447a24e3d8e9ebcd74a20bdac658f2c",
+      "lines": 122,
+      "packages": [
+        "data.table",
+        "ggplot2"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/code/fig4_09_plot_expanded_7cohort_cv_roc.R",
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/deliverable_8cohort_cv_and_TCGA_cluster_linkage/code/fig4_09_plot_expanded_7cohort_cv_roc.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/icb_development/fig4_10_search_best_8th_cohort_cv_roc.R",
+      "source_relative_file": "Fig4/icb_development/fig4_10_search_best_8th_cohort_cv_roc.R",
+      "source_sha256": "dadf976d488e9d04aec1865aeae22908dca76dcc4c8ad08ccbe9601724234426",
+      "archived_sha256": "8321f7c3a60fdc010305f87adcc9f83921a45c9ec20951c04cd28196d0b2a072",
+      "lines": 295,
+      "packages": [
+        "data.table",
+        "ggplot2",
+        "ranger"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/code/fig4_10_search_best_8th_cohort_cv_roc.R",
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/deliverable_8cohort_cv_and_TCGA_cluster_linkage/code/fig4_10_search_best_8th_cohort_cv_roc.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/icb_development/run_all_Fig4_Unified_ICB_score_cluster_ICB_integration.R",
+      "source_relative_file": "Fig4/icb_development/run_all_Fig4_Unified_ICB_score_cluster_ICB_integration.R",
+      "source_sha256": "04bb020920728570d9a1287b3dd32addc136c6c00f350160ed25b88b590b251a",
+      "archived_sha256": "2af648e6c5149eaa2ed119a3dfa03d962fc181742246fb071b3544c6ac645ebd",
+      "lines": 23,
+      "packages": [],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4/Unified_ICB_score_cluster_ICB_integration/code"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "Fig4/Unified_ICB_score_cluster_ICB_integration/code/run_all_Fig4_Unified_ICB_score_cluster_ICB_integration.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/additional/plot_tcga_k4_immune_heatmap.R",
+      "source_relative_file": "Fig4/additional/plot_tcga_k4_immune_heatmap.R",
+      "source_sha256": "6d3f0bacf56d35a1cbef966354dc42b2b030ae1340b2960cb643d982b60d1eed",
+      "archived_sha256": "f1e9c59436e63d35f1b66c4d7683d6ded4672bcc77cfc26f74851ed9f3e99335",
+      "lines": 190,
+      "packages": [
+        "ComplexHeatmap",
+        "RColorBrewer",
+        "circlize",
+        "data.table",
+        "grid"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "workspace/plot_tcga_k4_immune_heatmap.R"
+      ]
+    },
+    {
+      "figure": "Fig4",
+      "archived_file": "analysis/tumor_immune_phenotypes_immuicbscore/source_archive/additional/evaluate_consensus_cluster_tcga.R",
+      "source_relative_file": "Fig4/additional/evaluate_consensus_cluster_tcga.R",
+      "source_sha256": "75415c4f78a50b70225ad7055972b64b17b319402a35608adde96b41ed386f63",
+      "archived_sha256": "251d2879622adbe8b7b11733f53693bdd49e603ad1283ec51bad528628215d84",
+      "lines": 77,
+      "packages": [
+        "data.table"
+      ],
+      "local_path_templates": [
+        "<LOCAL_R_ROOT>/Fig4/cluster_TCGA"
+      ],
+      "source_verified": true,
+      "source_locations_normalized": [
+        "workspace/evaluate_consensus_cluster_tcga.R"
+      ]
+    }
+  ],
+  "provenance_note": "Source location labels use current product naming; SHA-256 values identify the original local files before any normalization. All 59 source hashes were verified against the local figure folders or the two additional workspace scripts."
+}

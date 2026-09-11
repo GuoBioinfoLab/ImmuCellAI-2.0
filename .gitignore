@@ -8,7 +8,10 @@
 # Reproduced outputs and local protected data
 examples/output/
 analysis/icb/reproduced_results/
-analysis/icb/data/*.tsvanalysis/**/config.R
+analysis/icb/data/*.tsv
+analysis/**/config.R
+analysis/archive_paths.R
+analysis/local_sources/
 analysis/**/results/
 analysis/age_associated_remodeling/data/*
 !analysis/age_associated_remodeling/data/README.md

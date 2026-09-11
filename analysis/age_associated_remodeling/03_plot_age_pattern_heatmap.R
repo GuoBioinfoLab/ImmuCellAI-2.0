@@ -6,13 +6,9 @@ require_packages(c("data.table", "dplyr", "ComplexHeatmap", "circlize"))
 
 fraction <- read_fraction_matrix(file.path(output_dir, "deconvolution", "state_fraction.txt"))
 meta <- read_table_auto(file.path(output_dir, "healthy_age_aligned_metadata.tsv"))
-age_group <- function(age) dplyr::case_when(
-  age >= 0 & age <= 1 ~ "0-1", age >= 10 & age <= 20 ~ "10-20",
-  age > 20 & age <= 30 ~ "20-30", age > 30 & age <= 50 ~ "30-50",
-  age > 50 & age <= 70 ~ "50-70", age > 70 & age <= 90 ~ "70-90",
-  age > 90 ~ "90+", TRUE ~ NA_character_
-)
-levels_age <- c("0-1", "10-20", "20-30", "30-50", "50-70", "70-90", "90+")
+source(file.path(repo_root, "analysis", "common", "age_groups.R"))
+age_group <- figure5_age_group
+levels_age <- figure5_age_levels
 dat <- data.frame(sample = rownames(fraction), fraction, check.names = FALSE) |>
   dplyr::left_join(meta, by = "sample") |>
   dplyr::mutate(AgeGroup = factor(age_group(age), levels = levels_age)) |>

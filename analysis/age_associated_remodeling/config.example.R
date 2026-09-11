@@ -10,6 +10,6 @@ metadata_files <- c(
   file.path(data_dir, "age_sample_info.csv"),
   file.path(data_dir, "healthy_info2_clean.csv")
 )
-sample_column_candidates <- c("sample", "Sample", "sample_id", "SampleID", "Run", "ID")
+sample_column_candidates <- c("sample", "Sample", "sample_id", "SampleID", "Sample ID", "Sample.ID", "Run", "ID")
 age_column_candidates <- c("age", "Age", "age_years", "Age_years")
 n_cores <- 8L

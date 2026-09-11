@@ -7,19 +7,9 @@ require_packages(c("data.table", "dplyr", "tidyr", "ggplot2", "patchwork"))
 fraction <- read_fraction_matrix(file.path(output_dir, "deconvolution", "state_fraction.txt"))
 meta <- read_table_auto(file.path(output_dir, "healthy_age_aligned_metadata.tsv"))
 
-age_group <- function(age) {
-  dplyr::case_when(
-    age >= 0 & age <= 1 ~ "0-1",
-    age >= 10 & age <= 20 ~ "10-20",
-    age > 20 & age <= 30 ~ "20-30",
-    age > 30 & age <= 50 ~ "30-50",
-    age > 50 & age <= 70 ~ "50-70",
-    age > 70 & age <= 90 ~ "70-90",
-    age > 90 ~ "90+",
-    TRUE ~ NA_character_
-  )
-}
-group_levels <- c("0-1", "10-20", "20-30", "30-50", "50-70", "70-90", "90+")
+source(file.path(repo_root, "analysis", "common", "age_groups.R"))
+age_group <- figure5_age_group
+group_levels <- figure5_age_levels
 dat <- data.frame(sample = rownames(fraction), fraction, check.names = FALSE) |>
   dplyr::left_join(meta, by = "sample") |>
   dplyr::mutate(AgeGroup = factor(age_group(age), levels = group_levels)) |>
@@ -34,7 +24,7 @@ if (length(missing)) stop("Missing selected cells: ", paste(missing, collapse = 
 
 long <- tidyr::pivot_longer(dat, dplyr::all_of(all_cells), names_to = "CellType", values_to = "Fraction")
 data.table::fwrite(long, file.path(output_dir, "age_selected_cells_long.tsv"), sep = "\t")
-palette <- c("#C95D5D", "#5B7FA8", "#E69F3A", "#83A66A", "#62A6A0", "#7B6AA6", "#E0C45C")
+palette <- c("#E15759", "#4E79A7", "#F28E2B", "#76B7B2", "#59A14F", "#EDC948")
 names(palette) <- group_levels
 
 trim_for_display <- function(x) {
