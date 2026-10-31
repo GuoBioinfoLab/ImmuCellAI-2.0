@@ -1,18 +1,21 @@
 # Parameter reference
 
-| Parameter | Manuscript value | Meaning |
+| Parameter | Default value | Meaning |
 |---|---:|---|
 | `hierarchy.mode` | `tcell` | Hierarchical refinement within CD4 and CD8 branches only |
 | `inference.method` | `vb` | Deterministic posterior-mean iteration |
 | `add.unknown` | `FALSE` | Optional residual state disabled |
 | `pseudo.depth` | `100000` | Total pseudo-count mass assigned to each sample |
 | `n.iter` | `50` | Maximum VB iterations |
-| `vb.tol` | `1e-6` | Maximum absolute fraction change required for convergence |
+| `vb.tol` | `1e-4` | Maximum absolute fraction change required for convergence |
 | `alpha.major` | `10` | Major-branch Dirichlet prior concentration |
 | `alpha.sub` | `5` | Subtype Dirichlet prior concentration |
 | `alpha.state` | `1` | State-level Dirichlet prior concentration |
 | `seed` | `123` | Reproducibility seed |
 | `n.cores` | user selected | Number of samples processed concurrently |
+
+These are the current default settings. For exact reproduction of an archived
+analysis, use its recorded settings, including any explicitly specified tolerance.
 
 `n.cores` changes throughput across samples but not the mathematical update for
 one sample. The VB updates within an individual sample are sequential.

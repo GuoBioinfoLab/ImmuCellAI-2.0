@@ -148,7 +148,7 @@ head(fit$state.fraction[, 1:6])
 ```
 
 `run_immucellai2()` automatically loads the packaged reference and markers,
-intersects them with the bulk matrix, and uses the manuscript settings:
+intersects them with the bulk matrix, and uses the following default settings:
 
 ```r
 immucellai2_defaults()
@@ -157,7 +157,7 @@ immucellai2_defaults()
 # add.unknown      = FALSE
 # pseudo.depth     = 1e5
 # n.iter           = 50
-# vb.tol           = 1e-6
+# vb.tol           = 1e-4
 # alpha.major      = 10
 # alpha.sub        = 5
 # alpha.state      = 1

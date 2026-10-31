@@ -1,7 +1,7 @@
-#' Published ImmuCellAI 2.0 analysis settings
+#' Default ImmuCellAI 2.0 analysis settings
 #'
-#' Returns the settings used for the principal analyses in the ImmuCellAI 2.0
-#' manuscript. The optional UNKNOWN residual is disabled in the published
+#' Returns the settings for the standard ImmuCellAI 2.0 workflow.
+#' The optional UNKNOWN residual is disabled in the default
 #' workflow and can be enabled explicitly for sensitivity analysis.
 #'
 #' @return A named list of deconvolution settings.
@@ -13,7 +13,7 @@ immucellai2_defaults <- function() {
     add.unknown = FALSE,
     pseudo.depth = 1e5,
     n.iter = 50,
-    vb.tol = 1e-6,
+    vb.tol = 1e-4,
     alpha.major = 10,
     alpha.sub = 5,
     alpha.state = 1,
@@ -101,7 +101,7 @@ run_immucellai2 <- function(
   n.cores = 1,
   pseudo.depth = 1e5,
   n.iter = 50,
-  vb.tol = 1e-6,
+  vb.tol = 1e-4,
   alpha.major = 10,
   alpha.sub = 5,
   alpha.state = 1,

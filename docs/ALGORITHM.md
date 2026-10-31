@@ -128,8 +128,9 @@ After every update,
 \left|\theta_{nk}^{(t)}-\theta_{nk}^{(t-1)}\right|.
 ```
 
-Iteration stops when `Delta < 1e-6` or after 50 updates. The algorithm returns
-the final posterior mean rather than MCMC draws.
+Iteration stops when `Delta < 1e-4` or after 50 updates. Reaching the update
+cap does not imply that the tolerance was met. The algorithm returns the
+final posterior mean rather than MCMC draws.
 
 ## Optional residual state
 

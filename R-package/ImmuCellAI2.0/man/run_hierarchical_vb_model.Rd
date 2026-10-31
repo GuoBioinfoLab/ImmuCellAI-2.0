@@ -11,7 +11,7 @@ run_hierarchical_vb_model(
   unknown.state = "UNKNOWN",
   n.iter = 80,
   burn.in = 0,
-  tol = 1e-07,
+  tol = 1e-04,
   alpha.major = 10,
   alpha.sub = 5,
   alpha.state = 1,

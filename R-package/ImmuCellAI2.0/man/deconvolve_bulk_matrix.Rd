@@ -19,7 +19,7 @@ deconvolve_bulk_matrix(
   alpha.major = 10,
   alpha.sub = 5,
   alpha.state = 1,
-  vb.tol = 1e-07,
+  vb.tol = 1e-04,
   prior.theta = NULL,
   use.unknown.update = add.unknown,
   adaptive.params = list(),

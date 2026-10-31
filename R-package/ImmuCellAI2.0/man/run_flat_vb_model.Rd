@@ -11,7 +11,7 @@ run_flat_vb_model(
   unknown.state = "UNKNOWN",
   n.iter = 80,
   burn.in = 0,
-  tol = 1e-07,
+  tol = 1e-04,
   alpha.state = 1,
   prior.theta = NULL,
   use.unknown.update = FALSE,

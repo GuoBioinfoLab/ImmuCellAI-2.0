@@ -13,7 +13,7 @@ run_immucellai2(
   n.cores = 1,
   pseudo.depth = 1e+05,
   n.iter = 50,
-  vb.tol = 1e-06,
+  vb.tol = 1e-04,
   alpha.major = 10,
   alpha.sub = 5,
   alpha.state = 1,

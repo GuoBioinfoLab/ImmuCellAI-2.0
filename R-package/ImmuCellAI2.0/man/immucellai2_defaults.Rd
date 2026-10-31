@@ -2,7 +2,7 @@
 % Please edit documentation in R/immucellai2.R
 \name{immucellai2_defaults}
 \alias{immucellai2_defaults}
-\title{Published ImmuCellAI 2.0 analysis settings}
+\title{Default ImmuCellAI 2.0 analysis settings}
 \usage{
 immucellai2_defaults()
 }
@@ -10,7 +10,7 @@ immucellai2_defaults()
 A named list of deconvolution settings.
 }
 \description{
-Returns the settings used for the principal analyses in the ImmuCellAI 2.0
-manuscript. The optional UNKNOWN residual is disabled in the published
+Returns the settings for the standard ImmuCellAI 2.0 workflow.
+The optional UNKNOWN residual is disabled in the default
 workflow and can be enabled explicitly for sensitivity analysis.
 }
