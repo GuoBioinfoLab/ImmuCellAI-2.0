@@ -206,35 +206,6 @@ Rows of `state.fraction` sum to one when `add.unknown = FALSE`. These values are
 relative fractions within the modeled immune compartment, not absolute cell
 counts or whole-tissue fractions.
 
-## Algorithm summary
-
-For gene `g`, cell state `k`, sample `n`, and iteration `t`, the responsibility
-assigned to state `k` is
-
-```math
-r_{gnk}^{(t)} =
-\frac{\theta_{nk}^{(t-1)} R_{gk}}
-{\sum_{j=1}^{K}\theta_{nj}^{(t-1)}R_{gj}}.
-```
-
-Expected state counts are
-
-```math
-c_{nk}^{(t)} = \sum_g x_{gn} r_{gnk}^{(t)}.
-```
-
-The expected counts are combined with hierarchical Dirichlet priors to update
-major-lineage, subtype, and state posterior means. Final state fractions are the
-product of conditional posterior means along each hierarchy path. Iteration
-stops when
-
-```math
-\max_k |\theta_{nk}^{(t)}-\theta_{nk}^{(t-1)}| < 10^{-6}
-```
-
-or after 50 iterations. Full equations and code links are in
-[`docs/ALGORITHM.md`](docs/ALGORITHM.md).
-
 ## Modes and UNKNOWN
 
 - `tcell`: manuscript default; refines CD4/CD8 branches and leaves other
@@ -248,78 +219,6 @@ or after 50 iterations. Full equations and code links are in
 
 Run [`examples/02_compare_four_modes.R`](examples/02_compare_four_modes.R) to
 compare `flat` and `tcell`, with and without UNKNOWN, on the same data.
-
-## Reproducing validation analyses
-
-The complete original Figure 2 comparison and plotting scripts are in
-[`benchmarks/fig2/`](benchmarks/fig2/README.md), with configurable inputs for
-Liu (GSE164522), Wu (GSE176078) and Zhang (GSE146771). The implementation notes
-explain the archived custom CIBERSORT/DWLS and reduced MuSiC workflows.
-
-The simulation validator expects a table with `Sample`, `TargetCell`, and
-`Truth` (or `TargetProportion`) columns. It reports Pearson correlation,
-Spearman correlation, RMSE, MAE, bias, slope, and intercept for every target.
-
-```bash
-Rscript examples/03_simulated_gradient_validation.R \
-  predicted_fractions.tsv truth.tsv validation_results
-```
-
-Dataset-specific files are not duplicated when redistribution is restricted or
-the file exceeds GitHub's size limit. Required filenames, accession metadata,
-and input schemas are documented in [`benchmarks/README.md`](benchmarks/README.md).
-
-## ImmuICBscore reproducibility
-
-The score uses all 53 fractions after centered log-ratio transformation,
-training-fold standardization, and a class-balanced `ranger` probability random
-forest:
-
-- `num.trees = 1200`
-- `mtry = floor(sqrt(53)) = 7`
-- `min.node.size = 8`
-- class weight = `0.5 / class prevalence`
-- five stratified folds; preprocessing is estimated within each training fold
-
-The reported pooled result (`AUC = 0.806`, `N = 334`, 120 responders and 214
-non-responders) is a cross-validated estimate across eight selected ICB cohorts,
-not an independent prospective validation. See
-[`analysis/icb/README.md`](analysis/icb/README.md) and the complete script in
-[`analysis/icb/immuicbscore_pooled_fivefold_cv.R`](analysis/icb/immuicbscore_pooled_fivefold_cv.R).
-## Manuscript case studies
-
-The complete downstream analysis and figure-generation workflows are organized
-as three independently configurable modules:
-
-- [`analysis/tumor_immune_phenotypes_immuicbscore/`](analysis/tumor_immune_phenotypes_immuicbscore/README.md):
-  tumor sample selection and deconvolution, K=4 consensus immune phenotypes,
-  phenotype heatmap, survival analysis, ImmuICBscore cross-validation, TCGA
-  score association, and treatment-response cell-fraction plots.
-- [`analysis/age_associated_remodeling/`](analysis/age_associated_remodeling/README.md):
-  healthy-blood matrix alignment, age metadata grouping, 53-state
-  deconvolution, age-abundance panels, pattern heatmap, and major-lineage
-  composition.
-- [`analysis/infectious_disease_states/`](analysis/infectious_disease_states/README.md):
-  active-versus-latent tuberculosis, HIV-associated clinical comparisons,
-  longitudinal trajectories, and status-by-time interaction models.
-
-Each module provides `config.example.R`, numbered scripts, `run_all.R`, and a
-data README defining public accession metadata and input schemas. Large public
-expression matrices are intentionally not duplicated in the repository.
-
-## Reproducibility checklist
-
-Every reported analysis should save:
-
-1. package version and Git commit;
-2. reference and marker filenames;
-3. number and names of genes used;
-4. hierarchy mode and UNKNOWN setting;
-5. all VB parameters, seed, and core count;
-6. sample mapping and truth-definition files;
-7. session information.
-
-See [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
 
 ## Citation
 
