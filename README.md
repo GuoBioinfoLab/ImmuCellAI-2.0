@@ -231,20 +231,6 @@ subtype weights, not within-parent conditional proportions. Their columns follow
 the selected computational hierarchy; lineage groups are not necessarily the
 nine broad categories used for downstream reporting.
 
-## Modes and UNKNOWN
-
-- `tcell`: manuscript default; refines CD4/CD8 branches and leaves other
-  immune subtypes as independent branches.
-- `flat`: no biologically grouped shrinkage.
-- `hierarchical`: broad hierarchy across immune lineages.
-- `hybrid`: broader lineage grouping with selected subtype refinements.
-- `add.unknown = TRUE`: adds a residual component that competes with the 53
-  annotated subtypes. It is not a biological cell type and was not used for the
-  principal manuscript results.
-
-Run [`examples/02_compare_four_modes.R`](examples/02_compare_four_modes.R) to
-compare `flat` and `tcell`, with and without UNKNOWN, on the same data.
-
 ## Citation
 
 Please cite the ImmuCellAI 2.0 manuscript when using this implementation. The
