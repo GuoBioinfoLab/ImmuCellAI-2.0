@@ -167,7 +167,7 @@ immucellai2_defaults()
 The full command-line-style example is
 [`examples/01_standard_deconvolution.R`](examples/01_standard_deconvolution.R).
 
-## Bundled demo
+## Example workflow
 
 The repository includes a small synthetic TPM matrix
 [`example_data/toy_bulk_TPM.txt`](example_data/toy_bulk_TPM.txt) and its known
