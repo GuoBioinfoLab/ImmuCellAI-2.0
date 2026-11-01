@@ -90,6 +90,23 @@ The output directory should contain:
 The package source has not been installed into the active library. Re-run the
 installation command and inspect .libPaths().
 
+### Function not found or not exported
+
+Use namespace-qualified calls such as
+`ImmuCellAI2.0::read_expression_matrix("bulk_TPM.txt")`; these do not require
+attaching the package with `library()`. The current examples require version
+0.1.9 or later. If an older version is loaded, restart R and install the current
+release using the installation instructions before running the example again.
+Reinstalling while a package is loaded does not update the active namespace.
+
+~~~r
+utils::packageVersion("ImmuCellAI2.0")
+find.package("ImmuCellAI2.0")
+~~~
+
+If several library paths contain different versions, inspect `.libPaths()` and
+ensure that the new installation is in the library used by the current R session.
+
 ### GitHub download fails behind a proxy
 
 Download the repository as a ZIP archive from GitHub and use the local

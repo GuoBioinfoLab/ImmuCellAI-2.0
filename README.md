@@ -131,11 +131,14 @@ mixed in one analysis. See [`docs/INPUT_OUTPUT.md`](docs/INPUT_OUTPUT.md).
 ## Standard analysis
 
 ```r
-library(ImmuCellAI2.0)
+if (!requireNamespace("ImmuCellAI2.0", quietly = TRUE) ||
+    getNamespaceVersion("ImmuCellAI2.0") < "0.1.9") {
+  stop("Install ImmuCellAI2.0 v0.1.9 or later in a fresh R session; see Installation above.")
+}
 
-bulk <- read_expression_matrix("bulk_TPM.txt")
+bulk <- ImmuCellAI2.0::read_expression_matrix("bulk_TPM.txt")
 
-fit <- run_immucellai2(
+fit <- ImmuCellAI2.0::run_immucellai2(
   bulk = bulk,
   hierarchy.mode = "tcell",
   add.unknown = FALSE,
@@ -143,7 +146,7 @@ fit <- run_immucellai2(
   seed = 123
 )
 
-write_deconvolution_outputs(fit, "ImmuCellAI2_results")
+ImmuCellAI2.0::write_deconvolution_outputs(fit, "ImmuCellAI2_results")
 head(fit$state.fraction[, 1:6])
 ```
 
@@ -151,7 +154,7 @@ head(fit$state.fraction[, 1:6])
 intersects them with the bulk matrix, and uses the following default settings:
 
 ```r
-immucellai2_defaults()
+ImmuCellAI2.0::immucellai2_defaults()
 # hierarchy.mode   = "tcell"
 # inference.method = "vb"
 # add.unknown      = FALSE
@@ -176,15 +179,21 @@ mixture proportions
 After installing the package and downloading the repository, run the following
 code directly in the R or RStudio console. Replace the path in `setwd()` with
 your repository folder, which contains `example_data/` and `examples/`.
+Run the complete block below. The `ImmuCellAI2.0::` prefix calls functions from
+the installed package without requiring a separate `library()` call. If you
+have just upgraded the package, restart R before running the example.
 
 ```r
-library(ImmuCellAI2.0)
+if (!requireNamespace("ImmuCellAI2.0", quietly = TRUE) ||
+    getNamespaceVersion("ImmuCellAI2.0") < "0.1.9") {
+  stop("Install ImmuCellAI2.0 v0.1.9 or later in a fresh R session; see Installation above.")
+}
 
 setwd("path/to/ImmuCellAI-2.0")
 
-bulk <- read_expression_matrix("example_data/toy_bulk_TPM.txt")
+bulk <- ImmuCellAI2.0::read_expression_matrix("example_data/toy_bulk_TPM.txt")
 
-fit <- run_immucellai2(
+fit <- ImmuCellAI2.0::run_immucellai2(
   bulk = bulk,
   hierarchy.mode = "tcell",
   add.unknown = FALSE,
@@ -198,7 +207,7 @@ fit$state.fraction[, 1:6, drop = FALSE]
 rowSums(fit$state.fraction)
 
 output_dir <- "example_output/toy_ImmuCellAI2"
-write_deconvolution_outputs(fit, output_dir)
+ImmuCellAI2.0::write_deconvolution_outputs(fit, output_dir)
 saveRDS(fit$settings, file.path(output_dir, "settings.rds"))
 writeLines(fit$genes.used, file.path(output_dir, "genes_used.txt"))
 capture.output(sessionInfo(), file = file.path(output_dir, "sessionInfo.txt"))

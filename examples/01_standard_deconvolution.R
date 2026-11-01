@@ -1,4 +1,7 @@
-suppressPackageStartupMessages(library(ImmuCellAI2.0))
+if (!requireNamespace("ImmuCellAI2.0", quietly = TRUE) ||
+    getNamespaceVersion("ImmuCellAI2.0") < "0.1.9") {
+  stop("Install ImmuCellAI2.0 v0.1.9 or later in a fresh R session; see README Installation.")
+}
 
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) < 1L) {
@@ -9,8 +12,8 @@ bulk_file <- args[1]
 output_dir <- if (length(args) >= 2L) args[2] else "ImmuCellAI2_results"
 n_cores <- if (length(args) >= 3L) as.integer(args[3]) else 1L
 
-bulk <- read_expression_matrix(bulk_file)
-fit <- run_immucellai2(
+bulk <- ImmuCellAI2.0::read_expression_matrix(bulk_file)
+fit <- ImmuCellAI2.0::run_immucellai2(
   bulk = bulk,
   hierarchy.mode = "tcell",
   add.unknown = FALSE,
@@ -24,7 +27,7 @@ fit <- run_immucellai2(
   seed = 123
 )
 
-write_deconvolution_outputs(fit, output_dir)
+ImmuCellAI2.0::write_deconvolution_outputs(fit, output_dir)
 saveRDS(fit$settings, file.path(output_dir, "settings.rds"))
 writeLines(fit$genes.used, file.path(output_dir, "genes_used.txt"))
 capture.output(sessionInfo(), file = file.path(output_dir, "sessionInfo.txt"))

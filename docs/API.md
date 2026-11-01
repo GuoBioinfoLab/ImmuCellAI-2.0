@@ -1,9 +1,13 @@
 # R API
 
+The examples use ImmuCellAI2.0 v0.1.9 or later. Namespace-qualified calls do not
+require attaching the package with `library()`. After upgrading, restart R so
+that an older loaded namespace is not reused.
+
 ## Recommended entry point
 
 ~~~r
-run_immucellai2(
+ImmuCellAI2.0::run_immucellai2(
   bulk,
   reference = NULL,
   marker.genes = NULL,
@@ -53,8 +57,8 @@ run_immucellai2(
 ## Packaged resources
 
 ~~~r
-reference <- load_immucellai2_reference()
-markers <- load_immucellai2_markers()
+reference <- ImmuCellAI2.0::load_immucellai2_reference()
+markers <- ImmuCellAI2.0::load_immucellai2_markers()
 ~~~
 
 reference is a genes-by-53-states matrix. markers is a vector of 5,510
@@ -64,7 +68,7 @@ genes, reference genes, and marker genes.
 ## Reading input
 
 ~~~r
-bulk <- read_expression_matrix("bulk_TPM.txt")
+bulk <- ImmuCellAI2.0::read_expression_matrix("bulk_TPM.txt")
 ~~~
 
 The reader:
@@ -79,7 +83,7 @@ The reader:
 ## Result object
 
 ~~~r
-fit <- run_immucellai2(bulk)
+fit <- ImmuCellAI2.0::run_immucellai2(bulk)
 names(fit)
 ~~~
 
@@ -99,7 +103,7 @@ sums to one across the 53 modeled immune states.
 ## Writing results
 
 ~~~r
-write_deconvolution_outputs(fit, "ImmuCellAI2_results")
+ImmuCellAI2.0::write_deconvolution_outputs(fit, "ImmuCellAI2_results")
 ~~~
 
 Save the additional reproducibility fields explicitly:
@@ -113,7 +117,7 @@ capture.output(sessionInfo(), file = "ImmuCellAI2_results/sessionInfo.txt")
 ## Custom reference atlas
 
 ~~~r
-fit <- run_immucellai2(
+fit <- ImmuCellAI2.0::run_immucellai2(
   bulk = bulk,
   reference = "custom_reference_TPM.txt",
   marker.genes = "custom_markers.txt",

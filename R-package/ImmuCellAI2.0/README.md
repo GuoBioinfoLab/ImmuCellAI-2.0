@@ -35,11 +35,14 @@ The input matrix must contain gene symbols in rows and samples in columns.
 Non-negative TPM values are recommended.
 
 ~~~r
-library(ImmuCellAI2.0)
+if (!requireNamespace("ImmuCellAI2.0", quietly = TRUE) ||
+    getNamespaceVersion("ImmuCellAI2.0") < "0.1.9") {
+  stop("Install ImmuCellAI2.0 v0.1.9 or later in a fresh R session; see Installation above.")
+}
 
-bulk <- read_expression_matrix("bulk_TPM.txt")
+bulk <- ImmuCellAI2.0::read_expression_matrix("bulk_TPM.txt")
 
-fit <- run_immucellai2(
+fit <- ImmuCellAI2.0::run_immucellai2(
   bulk = bulk,
   hierarchy.mode = "tcell",
   add.unknown = FALSE,
@@ -53,7 +56,7 @@ fit <- run_immucellai2(
   seed = 123
 )
 
-write_deconvolution_outputs(fit, "ImmuCellAI2_results")
+ImmuCellAI2.0::write_deconvolution_outputs(fit, "ImmuCellAI2_results")
 head(fit$state.fraction)
 ~~~
 
