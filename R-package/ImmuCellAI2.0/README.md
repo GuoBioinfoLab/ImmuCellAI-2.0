@@ -1,4 +1,4 @@
-# ImmuCellAI 2.0 R package (v0.1.8)
+# ImmuCellAI 2.0 R package (v0.1.9)
 
 The `ImmuCellAI2.0` R package implements the ImmuCellAI 2.0 framework
 used in the manuscript. It estimates relative fractions of 53 immune cell

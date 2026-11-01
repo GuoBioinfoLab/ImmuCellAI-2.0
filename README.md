@@ -58,7 +58,7 @@ R 4.0 or later is required. The package imports only the R packages `stats`,
 Users who do not want the complete repository can download only the current R
 source package:
 
-**[Download ImmuCellAI2.0_0.1.8.tar.gz](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/download/v0.1.8/ImmuCellAI2.0_0.1.8.tar.gz)**
+**[Download ImmuCellAI2.0_0.1.9.tar.gz](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/download/v0.1.9/ImmuCellAI2.0_0.1.9.tar.gz)**
 
 All published package versions are available on the
 **[GitHub Releases page](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/latest)**.
@@ -70,7 +70,7 @@ After transferring this single file to an intranet server, install it from R:
 
 ```r
 install.packages(
-  "/path/to/ImmuCellAI2.0_0.1.8.tar.gz",
+  "/path/to/ImmuCellAI2.0_0.1.9.tar.gz",
   repos = NULL,
   type = "source"
 )
@@ -80,7 +80,7 @@ library(ImmuCellAI2.0)
 Alternatively, install it from a shell:
 
 ```bash
-R CMD INSTALL ImmuCellAI2.0_0.1.8.tar.gz
+R CMD INSTALL ImmuCellAI2.0_0.1.9.tar.gz
 ```
 
 ### Install directly from the repository
