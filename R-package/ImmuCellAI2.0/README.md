@@ -63,6 +63,8 @@ add.unknown = FALSE.
 
 ## Main outputs
 
+For the bundled reference:
+
 | R result | Hierarchy level | Exported file |
 |---|---|---|
 | `fit$subtype.fraction` | Finest level: 53 terminal immune subtypes | `subtype_fraction.txt` |
@@ -79,6 +81,24 @@ compartment. They are not absolute cell counts or whole-tissue fractions.
 
 The hierarchy table uses the column names `state_name`, `subtype`,
 and `major_lineage` for terminal subtype, parent cell type, and lineage.
+
+## Custom reference
+
+~~~r
+fit <- ImmuCellAI2.0::run_immucellai2_custom(
+  bulk = "bulk_TPM.txt",
+  reference = "custom_reference_TPM.txt"
+)
+head(fit$subtype.fraction)
+ImmuCellAI2.0::write_deconvolution_outputs(fit, "custom_reference_results")
+~~~
+
+Both matrices have genes in rows and samples or reference populations in
+columns. This workflow uses all shared, informative genes with deterministic
+flat Bayesian inference. No marker panel, biological hierarchy, or unknown
+component is used. Reference population names are unrestricted. The returned
+`subtype.fraction` has one column per reference population; no type or lineage
+aggregations are produced. Only `subtype_fraction.txt` is exported.
 
 ## Analysis modes
 

@@ -31,6 +31,7 @@ export(immucellai2_defaults)
 export(load_immucellai2_reference)
 export(load_immucellai2_markers)
 export(run_immucellai2)
+export(run_immucellai2_custom)
 
 importFrom(stats,sd)
 importFrom(utils,modifyList)

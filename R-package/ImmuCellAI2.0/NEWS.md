@@ -1,3 +1,14 @@
+# ImmuCellAI2.0 0.3.0
+
+- Add run_immucellai2_custom() for arbitrary reference populations, using all
+  shared informative genes and the existing deterministic flat Bayesian engine.
+  This workflow has no marker, hierarchy, or unknown-component options.
+- Supplied references in run_immucellai2() use the same simplified workflow.
+  The bundled-reference workflow retains its existing behavior.
+- Custom results contain sample-by-reference population fractions without type
+  or lineage aggregations. Add input checks, a worked script, and tests for
+  the flat posterior update, all-gene coverage, parallelism, and input handling.
+
 # ImmuCellAI2.0 0.2.0
 
 - Rename the three fraction outputs to match lineage -> cell type -> subtype:

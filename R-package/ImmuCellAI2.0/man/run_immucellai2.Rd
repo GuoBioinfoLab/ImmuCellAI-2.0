@@ -26,10 +26,12 @@ run_immucellai2(
 matrix whose first column contains gene symbols.}
 
 \item{reference}{Optional genes-by-cell-states matrix or reference file.
-If omitted, the packaged 53-state atlas is used.}
+If omitted, the packaged 53-state atlas is used. A supplied reference
+dispatches to \code{\link{run_immucellai2_custom}}, using all shared informative
+genes, flat deterministic inference, and no unknown component.}
 
 \item{marker.genes}{Optional character vector or marker file. If omitted,
-the packaged 5,510-gene panel is used.}
+the packaged 5,510-gene panel is used. Only applies to the bundled reference.}
 
 \item{hierarchy.mode}{One of `tcell`, `flat`, `hierarchical`, or
 `hybrid`. The manuscript workflow uses `tcell`.}
@@ -53,7 +55,9 @@ concentrations.}
 \item{verbose}{Print per-sample progress when running on one core.}
 }
 \value{
-The result from [deconvolve_bulk_matrix()] plus a `settings` field.
+For the bundled reference, the result from \code{\link{deconvolve_bulk_matrix}}
+plus a settings field. For a supplied reference, the result from
+\code{\link{run_immucellai2_custom}}, without hierarchy aggregations.
 }
 \description{
 This is the recommended user-facing entry point. It intersects bulk RNA-seq

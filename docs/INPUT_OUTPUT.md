@@ -17,12 +17,16 @@ the 5,510-gene marker panel. The exact retained genes are returned in
 
 The packaged file is
 `R-package/ImmuCellAI2.0/inst/extdata/reference_53celltypesTPM20260518.txt`.
-It is a genes-by-53-subtypes TPM matrix. A custom reference can be supplied, but
-its cell-subtype column names must be compatible with the selected hierarchy.
+It is a genes-by-53-subtypes TPM matrix. For a custom reference, use
+`run_immucellai2_custom(bulk, reference)`. Reference columns can have arbitrary
+population names. This workflow uses all shared, informative genes with flat
+deterministic Bayesian inference, without marker selection, a biological
+hierarchy, or an added unknown component. See the
+[custom-reference instructions](API.md#custom-reference-atlas).
 
 ## Output orientation and interpretation
 
-`subtype.fraction` is samples by terminal cell subtypes (53 with the bundled
+For the bundled-reference workflow, `subtype.fraction` is samples by terminal cell subtypes (53 with the bundled
 reference and UNKNOWN disabled). `type.fraction` and `lineage.fraction` are
 aggregations at the middle and top levels, respectively. Each matrix contains
 sample-level compositional weights, not within-parent conditional proportions.
@@ -41,6 +45,12 @@ the terminal subtype, `subtype` identifies its parent cell type, and
 `major_lineage` identifies its lineage. The top-level groups follow the chosen
 computational hierarchy; they are not necessarily the nine broad output
 categories used in downstream figures.
+
+For custom references, `subtype.fraction` instead contains one column for each
+supplied reference population, preserving the reference column order. It is not
+restricted to 53 populations. No type or lineage summaries are produced, and
+the writer exports only `subtype_fraction.txt`. Sample weights describe the
+composition relative to the supplied reference, not an absolute cell count.
 
 ## Recommended quality checks
 

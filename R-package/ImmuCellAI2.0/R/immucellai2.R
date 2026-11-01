@@ -75,9 +75,11 @@ load_immucellai2_markers <- function(file = NULL) {
 #' @param bulk A genes-by-samples numeric matrix or a path to a tab-delimited
 #'   matrix whose first column contains gene symbols.
 #' @param reference Optional genes-by-cell-states matrix or reference file.
-#'   If omitted, the packaged 53-state atlas is used.
+#'   If omitted, the packaged 53-state atlas is used. A supplied reference
+#'   dispatches to [run_immucellai2_custom()], using all shared informative genes,
+#'   flat deterministic inference, and no unknown component.
 #' @param marker.genes Optional character vector or marker file. If omitted,
-#'   the packaged 5,510-gene panel is used.
+#'   the packaged 5,510-gene panel is used. Only applies to the bundled reference.
 #' @param hierarchy.mode One of `tcell`, `flat`, `hierarchical`, or
 #'   `hybrid`. The manuscript workflow uses `tcell`. The legacy value `tcell_only` is accepted as an alias.
 #' @param add.unknown Add an optional residual state for sensitivity analysis.
@@ -90,7 +92,9 @@ load_immucellai2_markers <- function(file = NULL) {
 #'   concentrations.
 #' @param seed Reproducibility seed.
 #' @param verbose Print per-sample progress when running on one core.
-#' @return The result from [deconvolve_bulk_matrix()] plus a `settings` field.
+#' @return For the bundled reference, the result from [deconvolve_bulk_matrix()]
+#'   plus a `settings` field. For a supplied reference, the result from
+#'   [run_immucellai2_custom()], without hierarchy aggregations.
 #' @export
 run_immucellai2 <- function(
   bulk,
@@ -108,15 +112,23 @@ run_immucellai2 <- function(
   seed = 123,
   verbose = FALSE
 ) {
+  if (!is.null(reference)) {
+    if (!missing(marker.genes) || !missing(hierarchy.mode) || !missing(add.unknown) ||
+        !missing(alpha.major) || !missing(alpha.sub)) {
+      stop("Custom references use all shared genes, flat inference, and no UNKNOWN. ",
+           "Use run_immucellai2_custom(bulk, reference) without marker or hierarchy options.")
+    }
+    return(run_immucellai2_custom(
+      bulk = bulk, reference = reference, n.cores = n.cores,
+      pseudo.depth = pseudo.depth, n.iter = n.iter, vb.tol = vb.tol,
+      alpha = alpha.state, seed = seed, verbose = verbose
+    ))
+  }
   hierarchy.mode <- normalize_hierarchy_mode(hierarchy.mode)
   if (is.character(bulk) && length(bulk) == 1L) {
     bulk <- read_expression_matrix(bulk)
   }
-  if (is.null(reference)) {
-    reference <- load_immucellai2_reference()
-  } else if (is.character(reference) && length(reference) == 1L) {
-    reference <- read_expression_matrix(reference)
-  }
+  reference <- load_immucellai2_reference()
   if (is.null(marker.genes)) {
     marker.genes <- load_immucellai2_markers()
   } else if (is.character(marker.genes) && length(marker.genes) == 1L && file.exists(marker.genes)) {

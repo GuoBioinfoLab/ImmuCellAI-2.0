@@ -52,7 +52,7 @@ R 4.0 or later is required. The package imports only the R packages `stats`,
 Users who do not want the complete repository can download only the current R
 source package:
 
-**[Download ImmuCellAI2.0_0.2.0.tar.gz](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/download/v0.2.0/ImmuCellAI2.0_0.2.0.tar.gz)**
+**[Download ImmuCellAI2.0_0.3.0.tar.gz](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/download/v0.3.0/ImmuCellAI2.0_0.3.0.tar.gz)**
 
 All published package versions are available on the
 **[GitHub Releases page](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/latest)**.
@@ -64,7 +64,7 @@ After transferring this single file to an intranet server, install it from R:
 
 ```r
 install.packages(
-  "/path/to/ImmuCellAI2.0_0.2.0.tar.gz",
+  "/path/to/ImmuCellAI2.0_0.3.0.tar.gz",
   repos = NULL,
   type = "source"
 )
@@ -74,7 +74,7 @@ library(ImmuCellAI2.0)
 Alternatively, install it from a shell:
 
 ```bash
-R CMD INSTALL ImmuCellAI2.0_0.2.0.tar.gz
+R CMD INSTALL ImmuCellAI2.0_0.3.0.tar.gz
 ```
 
 ### Install directly from the repository
@@ -209,7 +209,7 @@ On the test system described above, the four-sample demo took approximately
 
 ## Output
 
-The three fraction matrices have samples in rows and the corresponding
+For the bundled reference, the three fraction matrices have samples in rows and the corresponding
 populations in columns:
 
 | R result | Hierarchy level | Exported file |
@@ -230,6 +230,33 @@ and `hierarchy_used.txt`. Cell-type and lineage results are sums of the terminal
 subtype weights, not within-parent conditional proportions. Their columns follow
 the selected computational hierarchy; lineage groups are not necessarily the
 nine broad categories used for downstream reporting.
+
+## Custom reference
+
+Supply a bulk matrix and a reference matrix with genes in rows and samples or
+reference populations in columns. The first column of each tab-delimited file
+contains gene symbols. Non-negative TPM values on a compatible scale are
+recommended; reference population names can be chosen freely.
+
+```r
+fit <- ImmuCellAI2.0::run_immucellai2_custom(
+  bulk = "bulk_TPM.txt",
+  reference = "custom_reference_TPM.txt"
+)
+head(fit$subtype.fraction)
+ImmuCellAI2.0::write_deconvolution_outputs(fit, "custom_reference_results")
+```
+
+This workflow uses all shared genes with positive expression in both inputs,
+without an immune-marker panel, biological hierarchy, or added unknown
+component. It applies deterministic flat Bayesian posterior-mean inference.
+The result contains one column per supplied reference population, with
+sample-specific mixture weights summing to one. Only `subtype_fraction.txt` is
+exported; no cell-type or lineage aggregations are inferred. The genes used and
+run settings are available in `fit$genes.used` and `fit$settings`.
+
+See [custom-reference details](docs/API.md#custom-reference-atlas) and the
+[example script](examples/04_custom_reference.R).
 
 ## Citation
 

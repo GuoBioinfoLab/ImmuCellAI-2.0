@@ -17,6 +17,8 @@ test_that("all VB entry points default to the same tolerance", {
   expect_equal(formals(run_hierarchical_vb_model)$tol, 1e-4)
   expect_equal(formals(run_flat_vb_model)$tol, 1e-4)
   expect_equal(formals(run_immucellai2)$vb.tol, 1e-4)
+  expect_equal(formals(run_immucellai2_custom)$vb.tol, 1e-4)
+  expect_equal(formals(run_immucellai2_custom)$n.iter, 50)
   expect_equal(immucellai2_defaults()$vb.tol, 1e-4)
   expect_equal(formals(run_immucellai2)$n.iter, 50)
   expect_equal(immucellai2_defaults()$n.iter, 50)
@@ -54,10 +56,10 @@ test_that("matrix and standard wrappers propagate the new default", {
     explicit <- suppressWarnings(do.call(deconvolve_bulk_matrix, c(arguments, list(vb.tol = 1e-4))))
     expect_equal(default$subtype.fraction, explicit$subtype.fraction, tolerance = 0)
   }
-  default <- suppressWarnings(run_immucellai2(bulk, reference = d$ref,
-    marker.genes = rownames(d$ref), hierarchy.mode = "flat"))
-  strict <- suppressWarnings(run_immucellai2(bulk, reference = d$ref,
-    marker.genes = rownames(d$ref), hierarchy.mode = "flat", vb.tol = 1e-6))
+  local_mocked_bindings(load_immucellai2_reference = function() d$ref,
+                        load_immucellai2_markers = function() rownames(d$ref))
+  default <- suppressWarnings(run_immucellai2(bulk, hierarchy.mode = "flat"))
+  strict <- suppressWarnings(run_immucellai2(bulk, hierarchy.mode = "flat", vb.tol = 1e-6))
   expect_equal(default$settings$vb.tol, 1e-4)
   expect_equal(default$settings$n.iter, 50)
   expect_equal(strict$settings$vb.tol, 1e-6)

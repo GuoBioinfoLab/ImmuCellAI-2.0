@@ -33,9 +33,11 @@ ImmuCellAI2.0::run_immucellai2(
 ### Reference and marker arguments
 
 - reference: optional genes-by-cell-subtypes matrix or file path. When omitted,
-  the packaged 53-subtype reference atlas is used.
+  the packaged 53-subtype reference atlas is used. Supplying a reference selects
+  the simplified custom-reference workflow described below.
 - marker.genes: optional character vector or one-gene-per-line text file.
-  When omitted, the packaged 5,510-gene panel is used.
+  For the bundled reference, the packaged 5,510-gene panel is used when omitted.
+  This option is not used with a custom reference.
 
 ### Inference arguments
 
@@ -85,7 +87,7 @@ fit <- ImmuCellAI2.0::run_immucellai2(bulk)
 names(fit)
 ~~~
 
-Important fields are:
+For the bundled reference, important fields are:
 
 - subtype.fraction: samples by 53 terminal immune subtypes;
 - type.fraction: samples by middle-level cell type;
@@ -121,14 +123,40 @@ capture.output(sessionInfo(), file = "ImmuCellAI2_results/sessionInfo.txt")
 ## Custom reference atlas
 
 ~~~r
-fit <- ImmuCellAI2.0::run_immucellai2(
-  bulk = bulk,
-  reference = "custom_reference_TPM.txt",
-  marker.genes = "custom_markers.txt",
-  hierarchy.mode = "flat"
+fit <- ImmuCellAI2.0::run_immucellai2_custom(
+  bulk = "bulk_TPM.txt",
+  reference = "custom_reference_TPM.txt"
 )
+head(fit$subtype.fraction)
+ImmuCellAI2.0::write_deconvolution_outputs(fit, "custom_reference_results")
 ~~~
 
-Custom references require independent validation. If custom subtype names are
-not among the packaged 53 labels, use lower-level functions and provide an
-explicit hierarchy table with columns state_name, subtype, and major_lineage.
+Both inputs can be numeric matrices or tab-delimited files with gene symbols in
+the first column. Rows are genes; bulk columns are samples and reference columns
+are the populations to estimate. Column names must be unique and non-empty.
+Reference population names are not restricted to the packaged 53 labels. Use
+non-negative expression on a compatible scale, preferably TPM, in both inputs.
+
+All shared genes are used without a predefined marker panel. Genes with zero
+total expression across all bulk samples or across all reference columns are
+removed. Samples or reference profiles with no expression on the retained genes
+are rejected. Duplicate gene symbols are collapsed by their mean.
+
+The workflow uses the existing deterministic flat Bayesian posterior-mean
+updates with a symmetric Dirichlet prior. It does not impose a biological
+hierarchy, add an unknown component, or adapt reference profiles. No marker,
+hierarchy, or UNKNOWN arguments are exposed by this entry point. Optional
+numerical controls are `n.cores`, `pseudo.depth`, `n.iter`, `vb.tol`, `alpha`
+(total prior concentration), `seed`, and `verbose`.
+
+`fit$subtype.fraction` contains samples in rows and the supplied reference
+populations in columns. The number and order of columns match the reference;
+weights sum to one within each sample. The result includes `genes.used`,
+`inference.method`, `phi.final.list`, and `settings`, but no `type.fraction`,
+`lineage.fraction`, or hierarchy table. The output writer saves only
+`subtype_fraction.txt` for this workflow.
+
+`run_immucellai2(bulk, reference = reference)` dispatches to the same custom
+workflow. Do not pass marker, hierarchy, or UNKNOWN options with a supplied
+reference. Omitting `reference` retains the standard bundled-reference workflow.
+Alternative references require validation for the intended application.

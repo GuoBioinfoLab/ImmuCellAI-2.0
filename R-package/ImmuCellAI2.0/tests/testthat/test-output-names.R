@@ -33,10 +33,11 @@ expect_fraction_levels <- function(fit) {
 
 test_that("standard outputs follow subtype, type, lineage in every hierarchy mode", {
   x <- output_fixture()
+  local_mocked_bindings(load_immucellai2_reference = function() x$ref,
+                        load_immucellai2_markers = function() rownames(x$ref))
   for (mode in c("tcell", "tcell_only", "flat", "hierarchical", "hybrid")) {
     for (unknown in c(FALSE, TRUE)) {
-      fit <- run_immucellai2(x$bulk, reference = x$ref,
-                            marker.genes = rownames(x$ref), hierarchy.mode = mode,
+      fit <- run_immucellai2(x$bulk, hierarchy.mode = mode,
                             add.unknown = unknown, n.iter = 3)
       expect_fraction_levels(fit)
       expect_equal(ncol(fit$subtype.fraction), 5L + as.integer(unknown))
@@ -65,7 +66,9 @@ test_that("all matrix inference and auxiliary estimators use the same output nam
 
 test_that("exported fraction filenames round-trip at the correct hierarchy level", {
   x <- output_fixture()
-  fit <- run_immucellai2(x$bulk, reference = x$ref, marker.genes = rownames(x$ref), n.iter = 3)
+  local_mocked_bindings(load_immucellai2_reference = function() x$ref,
+                        load_immucellai2_markers = function() rownames(x$ref))
+  fit <- run_immucellai2(x$bulk, n.iter = 3)
   out <- tempfile("output-names-")
   on.exit(unlink(out, recursive = TRUE), add = TRUE)
   expect_true(write_deconvolution_outputs(fit, out))
@@ -81,7 +84,9 @@ test_that("exported fraction filenames round-trip at the correct hierarchy level
 
 test_that("legacy fits and directories cannot silently mix hierarchy levels", {
   x <- output_fixture()
-  fit <- run_immucellai2(x$bulk, reference = x$ref, marker.genes = rownames(x$ref), n.iter = 3)
+  local_mocked_bindings(load_immucellai2_reference = function() x$ref,
+                        load_immucellai2_markers = function() rownames(x$ref))
+  fit <- run_immucellai2(x$bulk, n.iter = 3)
   old <- fit
   current <- c("subtype.fraction", "type.fraction", "lineage.fraction")
   legacy <- c("state.fraction", "subtype.fraction", "major.fraction")
