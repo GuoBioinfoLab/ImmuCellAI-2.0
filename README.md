@@ -18,17 +18,6 @@ reproducible examples, benchmark utilities, and downstream analysis scripts.
 
 https://guolab.wchscu.cn/ImmuCellAI2/
 
-## Repository layout
-
-| Path | Contents |
-|---|---|
-| `R-package/ImmuCellAI2.0/` | Complete ImmuCellAI 2.0 R package source |
-| `R-package/ImmuCellAI2.0/inst/extdata/` | 53-subtype reference atlas and 5,510-gene panel |
-| `examples/` | Standard run, mode sensitivity, and simulation validation |
-| `benchmarks/` | Complete Figure 2 and Figure 3 seven-method workflows, generic evaluation, simulation and metadata |
-| `analysis/` | Complete tumor/ImmuICBscore, healthy-aging, and infectious-disease case-study code |
-| `docs/` | Algorithm, parameters, input/output, and reproducibility details |
-
 ## System requirements
 
 - **Operating system:** Windows, Linux, or macOS. No operating-system-specific
