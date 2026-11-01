@@ -1,8 +1,7 @@
 # R API
 
-The examples use ImmuCellAI2.0 v0.2.0 or later. Namespace-qualified calls do not
-require attaching the package with `library()`. After upgrading, restart R so
-that an older loaded namespace is not reused.
+After installing the package, use the namespace-qualified calls below without
+attaching the package with `library()`.
 
 ## Recommended entry point
 
@@ -42,7 +41,6 @@ ImmuCellAI2.0::run_immucellai2(
 
 - hierarchy.mode: tcell, flat, hierarchical, or hybrid.
   tcell is the principal manuscript setting.
-  The legacy value tcell_only remains accepted for backward compatibility.
 - add.unknown: add a residual component. The principal analyses use FALSE.
 - pseudo.depth: fixed pseudo-count mass used after within-sample scaling.
 - n.iter: maximum number of deterministic posterior-mean updates.
@@ -100,9 +98,8 @@ Important fields are:
 The primary result is subtype.fraction. With add.unknown = FALSE, each row
 sums to one across the 53 modeled immune subtypes. Type and lineage matrices
 contain aggregated weights, not conditional within-parent proportions. Their
-columns follow the selected hierarchy, which is unchanged in v0.2.0.
-For legacy objects and the unchanged hierarchy-table column names, see
-[input/output migration notes](INPUT_OUTPUT.md#upgrading-from-v019-or-earlier).
+columns follow the selected hierarchy. See the
+[input/output specification](INPUT_OUTPUT.md) for details.
 
 ## Writing results
 
@@ -111,8 +108,7 @@ ImmuCellAI2.0::write_deconvolution_outputs(fit, "ImmuCellAI2_results")
 ~~~
 
 This writes `subtype_fraction.txt`, `type_fraction.txt`,
-`lineage_fraction.txt`, and `hierarchy_used.txt`. Do not reuse a directory
-containing old `state_fraction.txt` or `major_lineage_fraction.txt` files.
+`lineage_fraction.txt`, and `hierarchy_used.txt`.
 
 Save the additional reproducibility fields explicitly:
 

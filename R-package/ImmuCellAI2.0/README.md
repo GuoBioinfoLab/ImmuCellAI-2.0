@@ -1,4 +1,4 @@
-# ImmuCellAI 2.0 R package (v0.2.0)
+# ImmuCellAI 2.0 R package
 
 The `ImmuCellAI2.0` R package performs high-resolution immune-cell deconvolution
 of bulk RNA-seq TPM profiles. It estimates relative fractions of 53 immune-cell
@@ -36,11 +36,6 @@ The input matrix must contain gene symbols in rows and samples in columns.
 Non-negative TPM values are recommended.
 
 ~~~r
-if (!requireNamespace("ImmuCellAI2.0", quietly = TRUE) ||
-    getNamespaceVersion("ImmuCellAI2.0") < "0.2.0") {
-  stop("Install ImmuCellAI2.0 v0.2.0 or later in a fresh R session; see Installation above.")
-}
-
 bulk <- ImmuCellAI2.0::read_expression_matrix("bulk_TPM.txt")
 
 fit <- ImmuCellAI2.0::run_immucellai2(
@@ -82,12 +77,7 @@ weights, not within-parent conditional proportions.
 The fractions are compositional estimates within the modeled immune
 compartment. They are not absolute cell counts or whole-tissue fractions.
 
-Exported matrices are `subtype_fraction.txt`, `type_fraction.txt`, and
-`lineage_fraction.txt`. In v0.2.0 these replace the old state, subtype, and major
-outputs, respectively, without changing their values. In particular, the old
-`subtype.fraction` is now `type.fraction`, not the new finest-level result.
-See NEWS.md for migration instructions and use a new output directory.
-The hierarchy table retains the legacy column names `state_name`, `subtype`,
+The hierarchy table uses the column names `state_name`, `subtype`,
 and `major_lineage` for terminal subtype, parent cell type, and lineage.
 
 ## Analysis modes

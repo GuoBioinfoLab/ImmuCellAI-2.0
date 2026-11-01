@@ -136,11 +136,6 @@ mixed in one analysis. See [`docs/INPUT_OUTPUT.md`](docs/INPUT_OUTPUT.md).
 ## Standard analysis
 
 ```r
-if (!requireNamespace("ImmuCellAI2.0", quietly = TRUE) ||
-    getNamespaceVersion("ImmuCellAI2.0") < "0.2.0") {
-  stop("Install ImmuCellAI2.0 v0.2.0 or later in a fresh R session; see Installation above.")
-}
-
 bulk <- ImmuCellAI2.0::read_expression_matrix("bulk_TPM.txt")
 
 fit <- ImmuCellAI2.0::run_immucellai2(
@@ -185,15 +180,9 @@ After installing the package and downloading the repository, run the following
 code directly in the R or RStudio console. Replace the path in `setwd()` with
 your repository folder, which contains `example_data/` and `examples/`.
 Run the complete block below. The `ImmuCellAI2.0::` prefix calls functions from
-the installed package without requiring a separate `library()` call. If you
-have just upgraded the package, restart R before running the example.
+the installed package without requiring a separate `library()` call.
 
 ```r
-if (!requireNamespace("ImmuCellAI2.0", quietly = TRUE) ||
-    getNamespaceVersion("ImmuCellAI2.0") < "0.2.0") {
-  stop("Install ImmuCellAI2.0 v0.2.0 or later in a fresh R session; see Installation above.")
-}
-
 setwd("path/to/ImmuCellAI-2.0")
 
 bulk <- ImmuCellAI2.0::read_expression_matrix("example_data/toy_bulk_TPM.txt")
@@ -252,12 +241,6 @@ and `hierarchy_used.txt`. Cell-type and lineage results are sums of the terminal
 subtype weights, not within-parent conditional proportions. Their columns follow
 the selected computational hierarchy; lineage groups are not necessarily the
 nine broad categories used for downstream reporting.
-
-**Changed in v0.2.0:** old `state.fraction` is now `subtype.fraction`; old
-`subtype.fraction` is now `type.fraction`; old `major.fraction` is now
-`lineage.fraction`. Values and inference are unchanged. Use a new output
-directory when upgrading, because the meaning of `subtype_fraction.txt` has
-changed. See [migration instructions](docs/INPUT_OUTPUT.md#upgrading-from-v019-or-earlier).
 
 ## Modes and UNKNOWN
 

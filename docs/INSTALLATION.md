@@ -94,10 +94,7 @@ installation command and inspect .libPaths().
 
 Use namespace-qualified calls such as
 `ImmuCellAI2.0::read_expression_matrix("bulk_TPM.txt")`; these do not require
-attaching the package with `library()`. The current examples require version
-0.2.0 or later. If an older version is loaded, restart R and install the current
-release using the installation instructions before running the example again.
-Reinstalling while a package is loaded does not update the active namespace.
+attaching the package with `library()`. Check the active installation with:
 
 ~~~r
 utils::packageVersion("ImmuCellAI2.0")

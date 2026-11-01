@@ -1,8 +1,3 @@
-if (!requireNamespace("ImmuCellAI2.0", quietly = TRUE) ||
-    getNamespaceVersion("ImmuCellAI2.0") < "0.2.0") {
-  stop("Install ImmuCellAI2.0 v0.2.0 or later in a fresh R session; see README Installation.")
-}
-
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) < 1L) {
   stop("Usage: Rscript examples/01_standard_deconvolution.R bulk_TPM.txt [output_dir] [n_cores]")

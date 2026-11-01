@@ -35,37 +35,12 @@ When UNKNOWN is enabled, UNKNOWN is included in the compositional denominator.
 It represents residual expression not explained by the annotated reference and
 must not be reported as an immune cell population.
 
-The output names follow lineage -> cell type -> subtype. Hierarchy-table column
-names are retained for compatibility with custom inputs: `state_name` identifies
+The output names follow lineage -> cell type -> subtype. In the hierarchy table,
+`state_name` identifies
 the terminal subtype, `subtype` identifies its parent cell type, and
 `major_lineage` identifies its lineage. The top-level groups follow the chosen
 computational hierarchy; they are not necessarily the nine broad output
-categories used in downstream figures. No group assignments changed in v0.2.0.
-
-## Upgrading from v0.1.9 or earlier
-
-| Old result field / file | New result field / file | Level |
-|---|---|---|
-| `state.fraction` / `state_fraction.txt` | `subtype.fraction` / `subtype_fraction.txt` | Terminal subtype |
-| `subtype.fraction` / `subtype_fraction.txt` | `type.fraction` / `type_fraction.txt` | Cell type |
-| `major.fraction` / `major_lineage_fraction.txt` | `lineage.fraction` / `lineage_fraction.txt` | Lineage |
-
-This is a naming change only. Old aliases are not returned because the old and
-new meanings of `subtype.fraction` conflict. To migrate a previously saved fit
-without rerunning inference, rename its fields in one operation:
-
-```r
-stopifnot(all(c("state.fraction", "subtype.fraction", "major.fraction") %in% names(fit)))
-old_names <- c("state.fraction", "subtype.fraction", "major.fraction")
-names(fit)[match(old_names, names(fit))] <-
-  c("subtype.fraction", "type.fraction", "lineage.fraction")
-```
-
-Use a new output directory. The writer rejects legacy result fields and
-directories containing `state_fraction.txt` or `major_lineage_fraction.txt` to
-avoid overwriting a middle-level `subtype_fraction.txt` with terminal results.
-Historical `source_archive/` scripts and recorded data retain their original
-names; their recorded package version should be used for exact reproduction.
+categories used in downstream figures.
 
 ## Recommended quality checks
 
