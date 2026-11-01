@@ -167,27 +167,49 @@ immucellai2_defaults()
 The full command-line-style example is
 [`examples/01_standard_deconvolution.R`](examples/01_standard_deconvolution.R).
 
-## Bundled demo
+## Example workflow
 
 The repository includes a small synthetic TPM matrix
 [`example_data/toy_bulk_TPM.txt`](example_data/toy_bulk_TPM.txt) and its known
 mixture proportions
 [`example_data/toy_truth_fraction.txt`](example_data/toy_truth_fraction.txt).
-After installing the package, run the complete demo from the repository root:
+After installing the package and downloading the repository, run the following
+code directly in the R or RStudio console. Replace the path in `setwd()` with
+your repository folder, which contains `example_data/` and `examples/`.
 
-```bash
-Rscript examples/01_standard_deconvolution.R \
-  example_data/toy_bulk_TPM.txt \
-  example_output/toy_ImmuCellAI2 \
-  2
+```r
+library(ImmuCellAI2.0)
+
+setwd("path/to/ImmuCellAI-2.0")
+
+bulk <- read_expression_matrix("example_data/toy_bulk_TPM.txt")
+
+fit <- run_immucellai2(
+  bulk = bulk,
+  hierarchy.mode = "tcell",
+  add.unknown = FALSE,
+  n.cores = 2
+)
+
+dim(fit$state.fraction)
+# [1] 4 53
+
+fit$state.fraction[, 1:6, drop = FALSE]
+rowSums(fit$state.fraction)
+
+output_dir <- "example_output/toy_ImmuCellAI2"
+write_deconvolution_outputs(fit, output_dir)
+saveRDS(fit$settings, file.path(output_dir, "settings.rds"))
+writeLines(fit$genes.used, file.path(output_dir, "genes_used.txt"))
+capture.output(sessionInfo(), file = file.path(output_dir, "sessionInfo.txt"))
 ```
 
-The demo writes sample-by-cell-state, subtype, and major-lineage fraction
-tables plus the genes and settings used. For the bundled input, the primary
-state-fraction table contains 4 samples and 53 immune states; all values are
-finite and each row sums to 1 when `add.unknown = FALSE`. On the test system
-described above, deconvolution took approximately 11 seconds with two CPU
-cores. Runtime varies with sample count, overlapping genes, CPU, and storage.
+The console displays the result dimensions, the first six estimated fractions
+for each sample, and the row sums (approximately 1). The complete fraction tables
+and run settings are saved in `example_output/toy_ImmuCellAI2/`. The known mixture
+proportions are provided for comparison and are not used as inference input.
+On the test system described above, the four-sample demo took approximately
+11 seconds with two CPU cores; runtime varies across systems.
 
 ## Output
 
