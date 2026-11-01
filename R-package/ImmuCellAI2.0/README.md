@@ -1,9 +1,10 @@
 # ImmuCellAI 2.0 R package (v0.2.0)
 
-The `ImmuCellAI2.0` R package implements the ImmuCellAI 2.0 framework
-used in the manuscript. It estimates relative fractions of 53 immune cell
-states from bulk RNA-seq TPM profiles using deterministic variational Bayesian
-inference and targeted hierarchical refinement of CD4 and CD8 T-cell states.
+The `ImmuCellAI2.0` R package performs high-resolution immune-cell deconvolution
+of bulk RNA-seq TPM profiles. It estimates relative fractions of 53 immune-cell
+subtypes using deterministic variational Bayesian inference and targeted
+hierarchical refinement within the CD4 and CD8 T-cell compartments. Output
+levels follow lineage -> cell type -> subtype.
 
 ## Installation
 
@@ -26,7 +27,7 @@ remotes::install_local("R-package/ImmuCellAI2.0")
 ~~~
 
 The package imports only base-recommended R packages (stats, utils, and
-parallel). The 53-state reference atlas and 5,510-gene marker panel are
+parallel). The 53-subtype reference atlas and 5,510-gene marker panel are
 bundled in inst/extdata.
 
 ## Minimal analysis
@@ -67,12 +68,16 @@ add.unknown = FALSE.
 
 ## Main outputs
 
-- subtype.fraction: sample-by-53-terminal-subtype matrix used for reporting.
-- type.fraction: sample-by-cell-type matrix aggregated at the middle level.
-- lineage.fraction: sample-by-lineage matrix aggregated at the top level.
-- genes.used: genes retained after intersecting bulk, reference, and markers.
-- settings: parameters and dimensions required for reproducibility.
-- hierarchy: exact mapping for lineage -> cell type -> subtype.
+| R result | Hierarchy level | Exported file |
+|---|---|---|
+| `fit$subtype.fraction` | Finest level: 53 terminal immune subtypes | `subtype_fraction.txt` |
+| `fit$type.fraction` | Middle level: aggregated cell types | `type_fraction.txt` |
+| `fit$lineage.fraction` | Top level: aggregated lineages | `lineage_fraction.txt` |
+
+Additional fields are `fit$genes.used` (retained genes), `fit$settings` (analysis
+settings), and `fit$hierarchy` (the mapping used). All three fraction matrices
+have samples in rows. Cell-type and lineage values are aggregated subtype
+weights, not within-parent conditional proportions.
 
 The fractions are compositional estimates within the modeled immune
 compartment. They are not absolute cell counts or whole-tissue fractions.
@@ -87,11 +92,11 @@ and `major_lineage` for terminal subtype, parent cell type, and lineage.
 
 ## Analysis modes
 
-- tcell: refines CD4/CD8 branches; all other states remain independent.
+- tcell: refines CD4/CD8 branches; all other subtypes remain independent.
 - flat: applies no grouped hierarchy and is useful as a sensitivity analysis.
 - hierarchical: applies the full broad immune hierarchy.
-- hybrid: combines broader grouping with selected state refinements.
-- add.unknown = TRUE: adds a latent residual state for unexplained expression;
+- hybrid: combines broader grouping with selected subtype refinements.
+- add.unknown = TRUE: adds a residual component for unexplained expression;
   the residual is not an annotated biological cell population.
 
 ## Complete documentation

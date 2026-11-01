@@ -17,8 +17,8 @@ the 5,510-gene marker panel. The exact retained genes are returned in
 
 The packaged file is
 `R-package/ImmuCellAI2.0/inst/extdata/reference_53celltypesTPM20260518.txt`.
-It is a genes-by-53-states TPM matrix. A custom reference can be supplied, but
-its cell-state column names must be compatible with the selected hierarchy.
+It is a genes-by-53-subtypes TPM matrix. A custom reference can be supplied, but
+its cell-subtype column names must be compatible with the selected hierarchy.
 
 ## Output orientation and interpretation
 

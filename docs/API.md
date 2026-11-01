@@ -33,8 +33,8 @@ ImmuCellAI2.0::run_immucellai2(
 
 ### Reference and marker arguments
 
-- reference: optional genes-by-cell-states matrix or file path. When omitted,
-  the packaged 53-state reference atlas is used.
+- reference: optional genes-by-cell-subtypes matrix or file path. When omitted,
+  the packaged 53-subtype reference atlas is used.
 - marker.genes: optional character vector or one-gene-per-line text file.
   When omitted, the packaged 5,510-gene panel is used.
 
@@ -43,10 +43,10 @@ ImmuCellAI2.0::run_immucellai2(
 - hierarchy.mode: tcell, flat, hierarchical, or hybrid.
   tcell is the principal manuscript setting.
   The legacy value tcell_only remains accepted for backward compatibility.
-- add.unknown: add a residual latent state. The principal analyses use FALSE.
+- add.unknown: add a residual component. The principal analyses use FALSE.
 - pseudo.depth: fixed pseudo-count mass used after within-sample scaling.
 - n.iter: maximum number of deterministic posterior-mean updates.
-- vb.tol: stop when the largest absolute state-fraction change is smaller
+- vb.tol: stop when the largest absolute terminal-subtype fraction change is smaller
   than this value.
 - alpha.major, alpha.sub, alpha.state: Dirichlet prior concentration
   parameters at the three hierarchy levels.
@@ -61,7 +61,7 @@ reference <- ImmuCellAI2.0::load_immucellai2_reference()
 markers <- ImmuCellAI2.0::load_immucellai2_markers()
 ~~~
 
-reference is a genes-by-53-states matrix. markers is a vector of 5,510
+reference is a genes-by-53-subtypes matrix. markers is a vector of 5,510
 symbols. The genes actually used for a dataset are the intersection of bulk
 genes, reference genes, and marker genes.
 
@@ -133,6 +133,6 @@ fit <- ImmuCellAI2.0::run_immucellai2(
 )
 ~~~
 
-Custom references require independent validation. If custom state names are
+Custom references require independent validation. If custom subtype names are
 not among the packaged 53 labels, use lower-level functions and provide an
 explicit hierarchy table with columns state_name, subtype, and major_lineage.

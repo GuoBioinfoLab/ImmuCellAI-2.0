@@ -1,12 +1,17 @@
 # ImmuCellAI 2.0
 
-ImmuCellAI 2.0 estimates the relative abundance of 53 immune cell states from
-bulk RNA-seq expression profiles. The manuscript implementation uses a
-reference-based deterministic variational Bayesian (VB) model and targeted
-hierarchical refinement of CD4 and CD8 T-cell states.
+ImmuCellAI 2.0 is a reference-based method for high-resolution immune-cell
+deconvolution of bulk RNA-seq TPM profiles. It estimates the relative abundance
+of 53 immune-cell subtypes using a curated reference atlas and deterministic
+variational Bayesian (VB) inference, with targeted hierarchical refinement
+within the CD4 and CD8 T-cell compartments.
+
+Results follow the hierarchy **lineage -> cell type -> subtype**. The primary
+53-subtype result is `fit$subtype.fraction`; aggregated cell-type and lineage
+results are available as `fit$type.fraction` and `fit$lineage.fraction`.
 
 This repository contains the complete R implementation used for the current
-manuscript, the 53-state reference atlas, the 5,510-gene marker panel,
+manuscript, the 53-subtype reference atlas, the 5,510-gene marker panel,
 reproducible examples, benchmark utilities, and downstream analysis scripts.
 
 ## Web server
@@ -18,7 +23,7 @@ https://guolab.wchscu.cn/ImmuCellAI2/
 | Path | Contents |
 |---|---|
 | `R-package/ImmuCellAI2.0/` | Complete ImmuCellAI 2.0 R package source |
-| `R-package/ImmuCellAI2.0/inst/extdata/` | 53-state reference atlas and 5,510-gene panel |
+| `R-package/ImmuCellAI2.0/inst/extdata/` | 53-subtype reference atlas and 5,510-gene panel |
 | `examples/` | Standard run, mode sensitivity, and simulation validation |
 | `benchmarks/` | Complete Figure 2 and Figure 3 seven-method workflows, generic evaluation, simulation and metadata |
 | `analysis/` | Complete tumor/ImmuICBscore, healthy-aging, and infectious-disease case-study code |
@@ -63,7 +68,7 @@ source package:
 All published package versions are available on the
 **[GitHub Releases page](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/latest)**.
 The file named `ImmuCellAI2.0_<version>.tar.gz` is the complete installable R
-package, including the R code, 53-state reference atlas, and marker-gene panel.
+package, including the R code, 53-subtype reference atlas, and marker-gene panel.
 Cloning or downloading the rest of the repository is not required.
 
 After transferring this single file to an intranet server, install it from R:
@@ -203,6 +208,9 @@ fit <- ImmuCellAI2.0::run_immucellai2(
 dim(fit$subtype.fraction)
 # [1] 4 53
 
+dim(fit$type.fraction)
+dim(fit$lineage.fraction)
+
 fit$subtype.fraction[, 1:6, drop = FALSE]
 rowSums(fit$subtype.fraction)
 
@@ -213,8 +221,9 @@ writeLines(fit$genes.used, file.path(output_dir, "genes_used.txt"))
 capture.output(sessionInfo(), file = file.path(output_dir, "sessionInfo.txt"))
 ```
 
-The console displays the result dimensions, the first six estimated fractions
-for each sample, and the row sums (approximately 1). The complete fraction tables
+The console displays the dimensions at all three hierarchy levels, the first
+six subtype fractions for each sample, and the subtype row sums (approximately
+1). The complete fraction tables
 and run settings are saved in `example_output/toy_ImmuCellAI2/`. The known mixture
 proportions are provided for comparison and are not used as inference input.
 On the test system described above, the four-sample demo took approximately
@@ -222,25 +231,27 @@ On the test system described above, the four-sample demo took approximately
 
 ## Output
 
-The returned object contains:
+The three fraction matrices have samples in rows and the corresponding
+populations in columns:
 
-| Field | Orientation | Description |
+| R result | Hierarchy level | Exported file |
 |---|---|---|
-| `subtype.fraction` | sample x 53 terminal subtypes | Primary reported immune fractions |
-| `type.fraction` | sample x cell type | Fractions aggregated at the middle level |
-| `lineage.fraction` | sample x lineage | Fractions aggregated at the top level |
-| `hierarchy` | table | Mapping used for lineage -> cell type -> subtype |
-| `genes.used` | vector | Genes retained after all intersections |
-| `settings` | list | Exact analysis settings and marker counts |
+| `fit$subtype.fraction` | Finest level: 53 terminal immune subtypes | `subtype_fraction.txt` |
+| `fit$type.fraction` | Middle level: aggregated cell types | `type_fraction.txt` |
+| `fit$lineage.fraction` | Top level: aggregated lineages | `lineage_fraction.txt` |
+
+The object also includes `fit$hierarchy` (the mapping used), `fit$genes.used`
+(retained genes), and `fit$settings` (analysis settings and marker counts).
 
 Rows of `subtype.fraction` sum to one when `add.unknown = FALSE`. These values are
 relative fractions within the modeled immune compartment, not absolute cell
 counts or whole-tissue fractions.
 
-`write_deconvolution_outputs()` saves these matrices as `subtype_fraction.txt`,
-`type_fraction.txt`, and `lineage_fraction.txt`, respectively. The lineage
-groups follow the selected computational hierarchy; they are not necessarily
-the nine broad categories used for downstream reporting.
+`write_deconvolution_outputs()` writes the three fraction files listed above
+and `hierarchy_used.txt`. Cell-type and lineage results are sums of the terminal
+subtype weights, not within-parent conditional proportions. Their columns follow
+the selected computational hierarchy; lineage groups are not necessarily the
+nine broad categories used for downstream reporting.
 
 **Changed in v0.2.0:** old `state.fraction` is now `subtype.fraction`; old
 `subtype.fraction` is now `type.fraction`; old `major.fraction` is now
@@ -251,12 +262,12 @@ changed. See [migration instructions](docs/INPUT_OUTPUT.md#upgrading-from-v019-o
 ## Modes and UNKNOWN
 
 - `tcell`: manuscript default; refines CD4/CD8 branches and leaves other
-  immune states as independent branches.
+  immune subtypes as independent branches.
 - `flat`: no biologically grouped shrinkage.
 - `hierarchical`: broad hierarchy across immune lineages.
-- `hybrid`: broader lineage grouping with selected state refinements.
-- `add.unknown = TRUE`: adds a residual latent state that competes with the 53
-  annotated states. It is not a biological cell type and was not used for the
+- `hybrid`: broader lineage grouping with selected subtype refinements.
+- `add.unknown = TRUE`: adds a residual component that competes with the 53
+  annotated subtypes. It is not a biological cell type and was not used for the
   principal manuscript results.
 
 Run [`examples/02_compare_four_modes.R`](examples/02_compare_four_modes.R) to
