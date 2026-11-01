@@ -75,9 +75,9 @@ Rscript examples/01_standard_deconvolution.R \
 
 The output directory should contain:
 
-- state_fraction.txt
 - subtype_fraction.txt
-- major_lineage_fraction.txt
+- type_fraction.txt
+- lineage_fraction.txt
 - hierarchy_used.txt
 - settings.rds
 - genes_used.txt
@@ -95,7 +95,7 @@ installation command and inspect .libPaths().
 Use namespace-qualified calls such as
 `ImmuCellAI2.0::read_expression_matrix("bulk_TPM.txt")`; these do not require
 attaching the package with `library()`. The current examples require version
-0.1.9 or later. If an older version is loaded, restart R and install the current
+0.2.0 or later. If an older version is loaded, restart R and install the current
 release using the installation instructions before running the example again.
 Reinstalling while a package is loaded does not update the active namespace.
 

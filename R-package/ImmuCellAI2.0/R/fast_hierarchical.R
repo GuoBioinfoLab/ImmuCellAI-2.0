@@ -55,7 +55,9 @@ select_state_markers <- function(reference, marker.n = 50) {
 #' @param hierarchy Optional hierarchy table.
 #' @param marker.n Number of markers per state.
 #' @param normalize.scores If TRUE, normalize state scores within each sample.
-#' @return Deconvolution-like result list with state.score and state.fraction.
+#' @return Deconvolution-like result list with state.score (raw terminal scores),
+#'   subtype.fraction (terminal populations), type.fraction (middle-level
+#'   groups), and lineage.fraction (top-level branches).
 #' @export
 deconvolve_marker_score <- function(
   bulk.mat,
@@ -108,10 +110,10 @@ deconvolve_marker_score <- function(
 
   ag <- aggregate_by_hierarchy(fraction, hierarchy)
   list(
-    state.fraction = fraction,
+    subtype.fraction = fraction,
     state.score = score,
-    subtype.fraction = ag$subtype,
-    major.fraction = ag$major,
+    type.fraction = ag$subtype,
+    lineage.fraction = ag$major,
     hierarchy = hierarchy,
     marker.n = marker.n,
     genes.used = rownames(bulk),
@@ -177,7 +179,7 @@ fit_flat_simplex <- function(reference, bulk, marker.n = 400, n.iter = 80) {
 #' Fast deterministic hierarchical deconvolution
 #'
 #' Uses marker selection plus projected-gradient simplex fitting. In
-#' hierarchical mode, major lineages, subtypes, and states are fitted in a
+#' hierarchical mode, lineages, cell types, and terminal subtypes are fitted in a
 #' top-down product, which is much faster and more reproducible than MCMC for
 #' parameter sweeps.
 #'
@@ -187,7 +189,8 @@ fit_flat_simplex <- function(reference, bulk, marker.n = 400, n.iter = 80) {
 #' @param hierarchy.mode One of flat, hierarchical, hybrid, or tcell. The legacy value tcell_only is accepted as an alias.
 #' @param marker.n Number of markers per state.
 #' @param n.iter Projected-gradient iterations.
-#' @return Deconvolution result list.
+#' @return Deconvolution result list with subtype.fraction (terminal populations),
+#'   type.fraction (middle-level groups), and lineage.fraction (top-level branches).
 #' @export
 deconvolve_bulk_fast <- function(
   bulk.mat,
@@ -255,9 +258,9 @@ deconvolve_bulk_fast <- function(
 
   ag <- aggregate_by_hierarchy(w, hierarchy)
   list(
-    state.fraction = w,
-    subtype.fraction = ag$subtype,
-    major.fraction = ag$major,
+    subtype.fraction = w,
+    type.fraction = ag$subtype,
+    lineage.fraction = ag$major,
     hierarchy = hierarchy,
     hierarchy.mode = hierarchy.mode,
     marker.n = marker.n,

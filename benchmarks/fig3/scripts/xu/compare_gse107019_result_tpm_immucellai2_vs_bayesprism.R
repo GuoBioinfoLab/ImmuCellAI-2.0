@@ -47,6 +47,9 @@ if (!requireNamespace("BayesPrism", quietly = TRUE)) {
 }
 
 library(ImmuCellAI2.0)
+if (getNamespaceVersion("ImmuCellAI2.0") < "0.2.0") {
+  stop("This script requires ImmuCellAI2.0 v0.2.0 or later. Upgrade and restart R.")
+}
 library(BayesPrism)
 
 detect_sep <- function(file) {
@@ -379,7 +382,7 @@ for (i in seq_len(nrow(method_grid))) {
     seed = 123
   )
   state_names_i <- unique(c(hierarchy_i$state_name, "UNKNOWN"))
-  pred_i <- ensure_samples_by_states(ih_i$state.fraction, colnames(bulk), state_names_i)
+  pred_i <- ensure_samples_by_states(ih_i$subtype.fraction, colnames(bulk), state_names_i)
   all_ih_predictions[[cfg$Method]] <- pred_i
   all_ih_metrics[[cfg$Method]] <- evaluate_against_truth(pred_i, truth, valid_target_map, cfg$Method)
   write_deconvolution_outputs(ih_i, file.path(out_dir, cfg$Method))

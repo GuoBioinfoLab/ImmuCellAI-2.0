@@ -4,7 +4,7 @@ source(config_file)
 source(file.path(repo_root, "analysis", "common", "analysis_utils.R"))
 require_packages(c("data.table", "dplyr", "tidyr", "ggplot2", "patchwork"))
 
-fraction <- read_fraction_matrix(file.path(output_dir, "deconvolution", "state_fraction.txt"))
+fraction <- read_fraction_matrix(file.path(output_dir, "deconvolution", "subtype_fraction.txt"))
 meta <- read_table_auto(file.path(output_dir, "healthy_age_aligned_metadata.tsv"))
 
 source(file.path(repo_root, "analysis", "common", "age_groups.R"))

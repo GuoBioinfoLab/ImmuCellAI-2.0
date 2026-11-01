@@ -69,8 +69,12 @@ it does not define posterior averaging for ordinary VB runs.}
 \item{verbose}{Print per-sample or per-iteration progress.}
 }
 \value{
-A list containing sample-by-state, subtype, and major fraction
-  matrices, the hierarchy, genes used, and per-sample final references.
+A list containing subtype.fraction (terminal populations),
+type.fraction (middle-level groups), and lineage.fraction (top-level
+branches), all with samples in rows; plus the hierarchy, genes used, and
+per-sample final references. The hierarchy table retains its legacy column
+names: state_name identifies terminal subtypes, subtype identifies their
+parent cell types, and major_lineage identifies lineages.
 }
 \description{
 Lower-level engine supporting deterministic hierarchical or flat VB and a

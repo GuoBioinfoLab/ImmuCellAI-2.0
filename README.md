@@ -58,7 +58,7 @@ R 4.0 or later is required. The package imports only the R packages `stats`,
 Users who do not want the complete repository can download only the current R
 source package:
 
-**[Download ImmuCellAI2.0_0.1.9.tar.gz](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/download/v0.1.9/ImmuCellAI2.0_0.1.9.tar.gz)**
+**[Download ImmuCellAI2.0_0.2.0.tar.gz](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/download/v0.2.0/ImmuCellAI2.0_0.2.0.tar.gz)**
 
 All published package versions are available on the
 **[GitHub Releases page](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/latest)**.
@@ -70,7 +70,7 @@ After transferring this single file to an intranet server, install it from R:
 
 ```r
 install.packages(
-  "/path/to/ImmuCellAI2.0_0.1.9.tar.gz",
+  "/path/to/ImmuCellAI2.0_0.2.0.tar.gz",
   repos = NULL,
   type = "source"
 )
@@ -80,7 +80,7 @@ library(ImmuCellAI2.0)
 Alternatively, install it from a shell:
 
 ```bash
-R CMD INSTALL ImmuCellAI2.0_0.1.9.tar.gz
+R CMD INSTALL ImmuCellAI2.0_0.2.0.tar.gz
 ```
 
 ### Install directly from the repository
@@ -132,8 +132,8 @@ mixed in one analysis. See [`docs/INPUT_OUTPUT.md`](docs/INPUT_OUTPUT.md).
 
 ```r
 if (!requireNamespace("ImmuCellAI2.0", quietly = TRUE) ||
-    getNamespaceVersion("ImmuCellAI2.0") < "0.1.9") {
-  stop("Install ImmuCellAI2.0 v0.1.9 or later in a fresh R session; see Installation above.")
+    getNamespaceVersion("ImmuCellAI2.0") < "0.2.0") {
+  stop("Install ImmuCellAI2.0 v0.2.0 or later in a fresh R session; see Installation above.")
 }
 
 bulk <- ImmuCellAI2.0::read_expression_matrix("bulk_TPM.txt")
@@ -147,7 +147,7 @@ fit <- ImmuCellAI2.0::run_immucellai2(
 )
 
 ImmuCellAI2.0::write_deconvolution_outputs(fit, "ImmuCellAI2_results")
-head(fit$state.fraction[, 1:6])
+head(fit$subtype.fraction[, 1:6])
 ```
 
 `run_immucellai2()` automatically loads the packaged reference and markers,
@@ -185,8 +185,8 @@ have just upgraded the package, restart R before running the example.
 
 ```r
 if (!requireNamespace("ImmuCellAI2.0", quietly = TRUE) ||
-    getNamespaceVersion("ImmuCellAI2.0") < "0.1.9") {
-  stop("Install ImmuCellAI2.0 v0.1.9 or later in a fresh R session; see Installation above.")
+    getNamespaceVersion("ImmuCellAI2.0") < "0.2.0") {
+  stop("Install ImmuCellAI2.0 v0.2.0 or later in a fresh R session; see Installation above.")
 }
 
 setwd("path/to/ImmuCellAI-2.0")
@@ -200,11 +200,11 @@ fit <- ImmuCellAI2.0::run_immucellai2(
   n.cores = 2
 )
 
-dim(fit$state.fraction)
+dim(fit$subtype.fraction)
 # [1] 4 53
 
-fit$state.fraction[, 1:6, drop = FALSE]
-rowSums(fit$state.fraction)
+fit$subtype.fraction[, 1:6, drop = FALSE]
+rowSums(fit$subtype.fraction)
 
 output_dir <- "example_output/toy_ImmuCellAI2"
 ImmuCellAI2.0::write_deconvolution_outputs(fit, output_dir)
@@ -226,16 +226,27 @@ The returned object contains:
 
 | Field | Orientation | Description |
 |---|---|---|
-| `state.fraction` | sample x 53 states | Primary reported immune fractions |
-| `subtype.fraction` | sample x subtype | Fractions aggregated by internal hierarchy |
-| `major.fraction` | sample x major branch | Fractions aggregated by major branch |
-| `hierarchy` | table | State-to-subtype-to-major mapping used |
+| `subtype.fraction` | sample x 53 terminal subtypes | Primary reported immune fractions |
+| `type.fraction` | sample x cell type | Fractions aggregated at the middle level |
+| `lineage.fraction` | sample x lineage | Fractions aggregated at the top level |
+| `hierarchy` | table | Mapping used for lineage -> cell type -> subtype |
 | `genes.used` | vector | Genes retained after all intersections |
 | `settings` | list | Exact analysis settings and marker counts |
 
-Rows of `state.fraction` sum to one when `add.unknown = FALSE`. These values are
+Rows of `subtype.fraction` sum to one when `add.unknown = FALSE`. These values are
 relative fractions within the modeled immune compartment, not absolute cell
 counts or whole-tissue fractions.
+
+`write_deconvolution_outputs()` saves these matrices as `subtype_fraction.txt`,
+`type_fraction.txt`, and `lineage_fraction.txt`, respectively. The lineage
+groups follow the selected computational hierarchy; they are not necessarily
+the nine broad categories used for downstream reporting.
+
+**Changed in v0.2.0:** old `state.fraction` is now `subtype.fraction`; old
+`subtype.fraction` is now `type.fraction`; old `major.fraction` is now
+`lineage.fraction`. Values and inference are unchanged. Use a new output
+directory when upgrading, because the meaning of `subtype_fraction.txt` has
+changed. See [migration instructions](docs/INPUT_OUTPUT.md#upgrading-from-v019-or-earlier).
 
 ## Modes and UNKNOWN
 

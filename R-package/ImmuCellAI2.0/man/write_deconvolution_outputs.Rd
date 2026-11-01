@@ -12,5 +12,8 @@ write_deconvolution_outputs(result, out.dir)
 \item{out.dir}{Output directory.}
 }
 \description{
-Write deconvolution outputs
+Writes subtype_fraction.txt (terminal populations), type_fraction.txt
+(middle-level groups), lineage_fraction.txt (top-level branches), and
+hierarchy_used.txt. Legacy result objects and directories containing legacy
+fraction filenames are rejected to prevent mixing hierarchy levels.
 }

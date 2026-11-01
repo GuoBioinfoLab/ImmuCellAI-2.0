@@ -52,6 +52,9 @@ write_matrix_with_id <- function(mat, path, id_name = "sample") {
 
 run_standard_deconvolution <- function(expression_file, output_dir, n_cores = 1L) {
   require_packages(c("ImmuCellAI2.0", "data.table"))
+  if (getNamespaceVersion("ImmuCellAI2.0") < "0.2.0") {
+    stop("This workflow requires ImmuCellAI2.0 v0.2.0 or later. Upgrade and restart R.")
+  }
   expression_file <- assert_file(expression_file, "Expression matrix")
   dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 

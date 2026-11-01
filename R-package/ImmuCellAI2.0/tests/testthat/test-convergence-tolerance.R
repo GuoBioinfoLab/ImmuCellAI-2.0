@@ -52,7 +52,7 @@ test_that("matrix and standard wrappers propagate the new default", {
       inference.method = method, n.iter = 50, n.cores = 1)
     default <- suppressWarnings(do.call(deconvolve_bulk_matrix, arguments))
     explicit <- suppressWarnings(do.call(deconvolve_bulk_matrix, c(arguments, list(vb.tol = 1e-4))))
-    expect_equal(default$state.fraction, explicit$state.fraction, tolerance = 0)
+    expect_equal(default$subtype.fraction, explicit$subtype.fraction, tolerance = 0)
   }
   default <- suppressWarnings(run_immucellai2(bulk, reference = d$ref,
     marker.genes = rownames(d$ref), hierarchy.mode = "flat"))

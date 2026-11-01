@@ -90,7 +90,7 @@ PredictionColumns entry means that a method does not report the target.
 
 ~~~bash
 Rscript benchmarks/evaluate_predictions.R \
-  results/ImmuCellAI2/state_fraction.txt \
+  results/ImmuCellAI2/subtype_fraction.txt \
   path/to/truth_fraction.txt \
   results/ImmuCellAI2_evaluation \
   path/to/celltype_mapping.txt

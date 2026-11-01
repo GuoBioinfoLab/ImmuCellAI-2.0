@@ -76,21 +76,33 @@ read_expression_matrix <- function(file) {
 
 #' Write deconvolution outputs
 #'
+#' Writes subtype_fraction.txt (terminal populations), type_fraction.txt
+#' (middle-level groups), lineage_fraction.txt (top-level branches), and
+#' hierarchy_used.txt. Legacy result objects and directories containing legacy
+#' fraction filenames are rejected to prevent mixing hierarchy levels.
+#'
 #' @param result Result from deconvolve_bulk_matrix().
 #' @param out.dir Output directory.
 #' @export
 write_deconvolution_outputs <- function(result, out.dir) {
-  if (!dir.exists(out.dir)) dir.create(out.dir, recursive = TRUE)
-  if (!is.null(result$state.fraction)) {
-    utils::write.table(result$state.fraction, file.path(out.dir, "state_fraction.txt"),
-                       sep = "\t", quote = FALSE, col.names = NA)
+  if (any(c("state.fraction", "major.fraction") %in% names(result))) {
+    stop("Legacy result names detected. Migrate the result as documented in NEWS for v0.2.0 before exporting.")
   }
+  legacy.files <- file.path(out.dir, c("state_fraction.txt", "major_lineage_fraction.txt"))
+  if (any(file.exists(legacy.files))) {
+    stop("Legacy output files detected. Use a new output directory to avoid mixing hierarchy levels.")
+  }
+  if (!dir.exists(out.dir)) dir.create(out.dir, recursive = TRUE)
   if (!is.null(result$subtype.fraction)) {
     utils::write.table(result$subtype.fraction, file.path(out.dir, "subtype_fraction.txt"),
                        sep = "\t", quote = FALSE, col.names = NA)
   }
-  if (!is.null(result$major.fraction)) {
-    utils::write.table(result$major.fraction, file.path(out.dir, "major_lineage_fraction.txt"),
+  if (!is.null(result$type.fraction)) {
+    utils::write.table(result$type.fraction, file.path(out.dir, "type_fraction.txt"),
+                       sep = "\t", quote = FALSE, col.names = NA)
+  }
+  if (!is.null(result$lineage.fraction)) {
+    utils::write.table(result$lineage.fraction, file.path(out.dir, "lineage_fraction.txt"),
                        sep = "\t", quote = FALSE, col.names = NA)
   }
   if (!is.null(result$hierarchy)) {

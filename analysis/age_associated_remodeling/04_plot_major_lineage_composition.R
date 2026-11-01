@@ -4,7 +4,7 @@ source(config_file)
 source(file.path(repo_root, "analysis", "common", "analysis_utils.R"))
 require_packages(c("data.table", "dplyr", "tidyr", "ggplot2"))
 
-fraction <- read_fraction_matrix(file.path(output_dir, "deconvolution", "state_fraction.txt"))
+fraction <- read_fraction_matrix(file.path(output_dir, "deconvolution", "subtype_fraction.txt"))
 source(file.path(repo_root, "analysis", "common", "age_groups.R"))
 missing <- setdiff(unlist(figure5_major_cells), colnames(fraction))
 if (length(missing)) stop("Missing Figure 5 states: ", paste(missing, collapse = ", "))

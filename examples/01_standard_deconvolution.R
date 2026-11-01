@@ -1,6 +1,6 @@
 if (!requireNamespace("ImmuCellAI2.0", quietly = TRUE) ||
-    getNamespaceVersion("ImmuCellAI2.0") < "0.1.9") {
-  stop("Install ImmuCellAI2.0 v0.1.9 or later in a fresh R session; see README Installation.")
+    getNamespaceVersion("ImmuCellAI2.0") < "0.2.0") {
+  stop("Install ImmuCellAI2.0 v0.2.0 or later in a fresh R session; see README Installation.")
 }
 
 args <- commandArgs(trailingOnly = TRUE)
@@ -32,7 +32,7 @@ saveRDS(fit$settings, file.path(output_dir, "settings.rds"))
 writeLines(fit$genes.used, file.path(output_dir, "genes_used.txt"))
 capture.output(sessionInfo(), file = file.path(output_dir, "sessionInfo.txt"))
 
-cat("Samples:", nrow(fit$state.fraction), "\n")
-cat("Cell states:", ncol(fit$state.fraction), "\n")
+cat("Samples:", nrow(fit$subtype.fraction), "\n")
+cat("Cell subtypes:", ncol(fit$subtype.fraction), "\n")
 cat("Marker genes used:", length(fit$genes.used), "\n")
 cat("Results:", normalizePath(output_dir, mustWork = FALSE), "\n")

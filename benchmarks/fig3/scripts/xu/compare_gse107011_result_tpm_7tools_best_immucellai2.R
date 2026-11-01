@@ -42,6 +42,9 @@ if (length(missing_pkgs) > 0) {
 }
 
 library(ImmuCellAI2.0)
+if (getNamespaceVersion("ImmuCellAI2.0") < "0.2.0") {
+  stop("This script requires ImmuCellAI2.0 v0.2.0 or later. Upgrade and restart R.")
+}
 library(BayesPrism)
 library(CIBERSORT)
 library(CITMIC)
@@ -767,7 +770,7 @@ for (i in seq_len(nrow(method_grid))) {
       n.cores = n_cores,
       seed = 123
     )
-    pred <- ensure_samples_by_states(fit$state.fraction, colnames(bulk))
+    pred <- ensure_samples_by_states(fit$subtype.fraction, colnames(bulk))
     write_deconvolution_outputs(fit, file.path(out_dir, method))
     write.table(pred, fraction_file, sep = "\t", quote = FALSE, col.names = NA)
     add_status(method, "OK", "")

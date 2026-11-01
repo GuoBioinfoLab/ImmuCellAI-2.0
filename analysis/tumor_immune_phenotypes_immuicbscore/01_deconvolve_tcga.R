@@ -50,4 +50,4 @@ fit <- run_standard_deconvolution(
   output_dir = file.path(output_dir, "tcga_deconvolution"),
   n_cores = n_cores
 )
-message("TCGA deconvolution complete: ", nrow(fit$state.fraction), " samples.")
+message("TCGA deconvolution complete: ", nrow(fit$subtype.fraction), " samples.")

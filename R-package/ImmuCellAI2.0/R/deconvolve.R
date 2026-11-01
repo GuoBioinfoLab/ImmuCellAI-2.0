@@ -53,8 +53,12 @@ add_unknown_to_reference <- function(reference, hierarchy, unknown.state = "UNKN
 #' @param n.cores Number of samples processed concurrently.
 #' @param seed Reproducibility seed used for workers and legacy sampling.
 #' @param verbose Print per-sample or per-iteration progress.
-#' @return A list containing sample-by-state, subtype, and major fraction
-#'   matrices, the hierarchy, genes used, and per-sample final references.
+#' @return A list containing subtype.fraction (terminal populations),
+#'   type.fraction (middle-level groups), and lineage.fraction (top-level
+#'   branches), all with samples in rows; plus the hierarchy, genes used, and
+#'   per-sample final references. The hierarchy table retains its legacy column
+#'   names: state_name identifies terminal subtypes, subtype identifies their
+#'   parent cell types, and major_lineage identifies lineages.
 #' @export
  deconvolve_bulk_matrix <- function(
   bulk.mat,
@@ -213,9 +217,9 @@ add_unknown_to_reference <- function(reference, hierarchy, unknown.state = "UNKN
   ag <- aggregate_by_hierarchy(state.mat, hierarchy)
 
   list(
-    state.fraction = state.mat,
-    subtype.fraction = ag$subtype,
-    major.fraction = ag$major,
+    subtype.fraction = state.mat,
+    type.fraction = ag$subtype,
+    lineage.fraction = ag$major,
     hierarchy = hierarchy,
     hierarchy.mode = hierarchy.mode,
     inference.method = inference.method,

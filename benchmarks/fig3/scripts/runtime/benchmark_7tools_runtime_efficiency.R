@@ -44,6 +44,9 @@ if (length(missing_pkgs) > 0) {
 }
 
 library(ImmuCellAI2.0)
+if (getNamespaceVersion("ImmuCellAI2.0") < "0.2.0") {
+  stop("This script requires ImmuCellAI2.0 v0.2.0 or later. Upgrade and restart R.")
+}
 library(BayesPrism)
 library(CITMIC)
 library(ImmuCellAI)
@@ -454,7 +457,7 @@ results[["ImmuCellAI2_tcell_VB"]] <- benchmark_method(
       n.cores = n_cores,
       seed = 123
     )
-    fit$state.fraction
+    fit$subtype.fraction
   },
   genes.used = nrow(bulk_immucellai2),
   notes = immucellai2_note

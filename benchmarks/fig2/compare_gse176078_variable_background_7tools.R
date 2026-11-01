@@ -56,6 +56,9 @@ if (length(missing_pkgs) > 0) {
 }
 
 library(ImmuCellAI2.0)
+if (getNamespaceVersion("ImmuCellAI2.0") < "0.2.0") {
+  stop("This script requires ImmuCellAI2.0 v0.2.0 or later. Upgrade and restart R.")
+}
 if (isTRUE(run_bayesprism)) library(BayesPrism)
 if (isTRUE(run_citmic)) library(CITMIC)
 if (isTRUE(run_immucellai)) library(ImmuCellAI)
@@ -738,7 +741,7 @@ if (isTRUE(run_immucellai2) &&
     seed = 123
   )
   write_deconvolution_outputs(fit, file.path(out_dir, "ImmuCellAI2_tcell_VB_outputs"))
-  add_method("ImmuCellAI2_tcell_VB", fit$state.fraction, genes.used = nrow(bulk_immucellai2))
+  add_method("ImmuCellAI2_tcell_VB", fit$subtype.fraction, genes.used = nrow(bulk_immucellai2))
   })
 }
 

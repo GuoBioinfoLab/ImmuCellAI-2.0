@@ -27,11 +27,12 @@ deconvolve_bulk_fast(
 \item{n.iter}{Projected-gradient iterations.}
 }
 \value{
-Deconvolution result list.
+Deconvolution result list with subtype.fraction (terminal populations),
+type.fraction (middle-level groups), and lineage.fraction (top-level branches).
 }
 \description{
 Uses marker selection plus projected-gradient simplex fitting. In
-hierarchical mode, major lineages, subtypes, and states are fitted in a
+hierarchical mode, lineages, cell types, and terminal subtypes are fitted in a
 top-down product, which is much faster and more reproducible than MCMC for
 parameter sweeps.
 }

@@ -5,7 +5,7 @@ output_dir <- file.path(repo_root, "analysis", "tumor_immune_phenotypes_immuicbs
 tcga_expression_file <- file.path(data_dir, "TCGA_TPM_symbol.txt")
 tcga_clinical_file <- file.path(data_dir, "TCGA_clinical.tsv")
 tcga_survival_file <- file.path(data_dir, "TCGA_survival.tsv")
-tcga_fraction_file <- file.path(output_dir, "tcga_deconvolution", "state_fraction.txt")
+tcga_fraction_file <- file.path(output_dir, "tcga_deconvolution", "subtype_fraction.txt")
 tcga_cluster_file <- file.path(output_dir, "consensus_clustering", "consensus_class_k4.tsv")
 
 icb_fraction_file <- file.path(data_dir, "icb_immune_fractions.tsv")

@@ -24,7 +24,9 @@ deconvolve_marker_score(
 \item{normalize.scores}{If TRUE, normalize state scores within each sample.}
 }
 \value{
-Deconvolution-like result list with state.score and state.fraction.
+Deconvolution-like result list with state.score (raw terminal scores),
+subtype.fraction (terminal populations), type.fraction (middle-level
+groups), and lineage.fraction (top-level branches).
 }
 \description{
 This estimator is optimized for increasing-proportion spike-in simulations:

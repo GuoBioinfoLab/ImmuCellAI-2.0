@@ -15,8 +15,8 @@ test_that("basic deconvolution runs", {
     stringsAsFactors = FALSE
   )
   res <- deconvolve_bulk_matrix(bulk, ref, hierarchy, n.iter = 5, burn.in = 2, n.cores = 1)
-  expect_equal(nrow(res$state.fraction), 1)
-  expect_equal(ncol(res$state.fraction), 4)
+  expect_equal(nrow(res$subtype.fraction), 1)
+  expect_equal(ncol(res$subtype.fraction), 4)
 })
 
 test_that("variational Bayesian deconvolution runs", {
@@ -42,9 +42,9 @@ test_that("variational Bayesian deconvolution runs", {
     n.iter = 20,
     n.cores = 1
   )
-  expect_equal(nrow(res$state.fraction), 1)
-  expect_equal(ncol(res$state.fraction), 4)
-  expect_equal(round(sum(res$state.fraction[1, ]), 8), 1)
+  expect_equal(nrow(res$subtype.fraction), 1)
+  expect_equal(ncol(res$subtype.fraction), 4)
+  expect_equal(round(sum(res$subtype.fraction[1, ]), 8), 1)
   expect_equal(res$inference.method, "vb")
 })
 
@@ -71,9 +71,9 @@ test_that("flat variational Bayesian deconvolution runs", {
     n.iter = 20,
     n.cores = 1
   )
-  expect_equal(nrow(res$state.fraction), 1)
-  expect_equal(ncol(res$state.fraction), 4)
-  expect_equal(round(sum(res$state.fraction[1, ]), 8), 1)
+  expect_equal(nrow(res$subtype.fraction), 1)
+  expect_equal(ncol(res$subtype.fraction), 4)
+  expect_equal(round(sum(res$subtype.fraction[1, ]), 8), 1)
   expect_equal(res$inference.method, "flat_vb")
 })
 
@@ -106,13 +106,13 @@ test_that("fast marker score and alias evaluation run", {
 
   hierarchy <- create_default_53_hierarchy(colnames(ref), hierarchy.mode = "hybrid")
   res <- deconvolve_marker_score(bulk, ref, hierarchy = hierarchy, marker.n = 10)
-  expect_equal(nrow(res$state.fraction), 1)
-  expect_equal(ncol(res$state.fraction), 5)
-  expect_equal(round(sum(res$state.fraction[1, ]), 8), 1)
+  expect_equal(nrow(res$subtype.fraction), 1)
+  expect_equal(ncol(res$subtype.fraction), 5)
+  expect_equal(round(sum(res$subtype.fraction[1, ]), 8), 1)
 
   sample.info <- extract_sample_truth_from_names(colnames(bulk))
   ev <- evaluate_prediction_matrix(
-    res$state.fraction,
+    res$subtype.fraction,
     sample.info,
     target.mapper = map_simulation_target_to_states
   )

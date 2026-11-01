@@ -324,12 +324,12 @@ run_experiment1_benchmark <- function(
     write_deconvolution_outputs(res, method.dir)
 
     state.eval <- evaluate_prediction_matrix(
-      pred.mat = res$state.fraction,
+      pred.mat = res$subtype.fraction,
       sample.info = sample.info,
       target.mapper = identity
     )
 
-    panel.mat <- build_bayesprism_panel(res$state.fraction)
+    panel.mat <- build_bayesprism_panel(res$subtype.fraction)
     panel.eval <- evaluate_prediction_matrix(
       pred.mat = panel.mat,
       sample.info = sample.info,
@@ -432,7 +432,7 @@ run_fast_hierarchy_grid <- function(
         marker.n = marker.n,
         normalize.scores = TRUE
       )
-      add_result(paste0("marker_score_fraction_", marker.n), res.frac$state.fraction)
+      add_result(paste0("marker_score_fraction_", marker.n), res.frac$subtype.fraction)
     }
 
     if (isTRUE(include.simplex)) {
@@ -445,7 +445,7 @@ run_fast_hierarchy_grid <- function(
           marker.n = marker.n,
           n.iter = n.iter
         )
-        add_result(paste0("simplex_", mode, "_", marker.n), res$state.fraction)
+        add_result(paste0("simplex_", mode, "_", marker.n), res$subtype.fraction)
       }
     }
   }
