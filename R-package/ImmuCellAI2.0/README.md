@@ -84,6 +84,16 @@ and `major_lineage` for terminal subtype, parent cell type, and lineage.
 
 ## Custom reference
 
+To adapt the method to another population panel or species, supply a new
+reference rather than retraining a supervised classifier. For livestock data,
+prepare species-matched reference profiles and a bulk matrix with matching gene
+identifiers and compatible, non-log-transformed expression values, preferably
+TPM. Reference construction and gene-identifier mapping are performed outside
+the package. The custom workflow holds the reference fixed and estimates
+sample-specific mixture weights without bulk training labels. Validate results
+independently for the target species; the synthetic example is not a livestock
+benchmark. See the [preparation instructions](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0#custom-reference).
+
 Download the [example bulk matrix](https://raw.githubusercontent.com/GuoBioinfoLab/ImmuCellAI-2.0/main/example_data/custom_reference/bulk_TPM.txt)
 and [example reference matrix](https://raw.githubusercontent.com/GuoBioinfoLab/ImmuCellAI-2.0/main/example_data/custom_reference/custom_reference_TPM.txt)
 into your R working directory (`getwd()`) before running this example.

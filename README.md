@@ -233,9 +233,37 @@ nine broad categories used for downstream reporting.
 
 ## Custom reference
 
+### Adapting the method to new datasets or species
+
+For users wishing to "retrain" the method, adaptation is performed by supplying
+a new reference atlas rather than retraining a supervised classifier. The
+custom-reference workflow keeps the supplied reference profiles fixed and
+estimates mixture weights separately for each bulk sample.
+
+For livestock immunity datasets, such as cattle, pig, or sheep studies:
+
+1. Prepare a reference for the target species and relevant populations, with
+   one representative expression profile per population. For example, average
+   non-log-transformed TPM profiles from independently annotated, purified or
+   sorted samples within each population. Reference construction is performed
+   outside the package.
+2. Prepare non-negative, non-log-transformed bulk and reference expression
+   matrices on a compatible scale, preferably TPM. Use matching gene identifiers
+   in both matrices; the software does not perform species conversion or
+   orthologue mapping.
+3. Run `run_immucellai2_custom()` as shown below, replacing the example paths
+   with your own bulk and species-matched reference files. No training labels
+   or known mixture proportions are required for the bulk samples.
+
+This interface allows alternative references to be supplied; it does not
+establish accuracy in livestock. Validate the chosen reference and inferred
+proportions using independent data from the intended species and application.
+
+### Example inputs and analysis
+
 Supply a bulk matrix and a reference matrix with genes in rows and samples or
 reference populations in columns. The first column of each tab-delimited file
-contains gene symbols. Non-negative TPM values on a compatible scale are
+contains matching gene identifiers. Non-negative TPM values on a compatible scale are
 recommended; reference population names can be chosen freely.
 
 Example files: [bulk TPM matrix](example_data/custom_reference/bulk_TPM.txt) and
