@@ -175,13 +175,11 @@ The full command-line-style example is
 ## Example workflow
 
 [`Example_expression.txt`](https://raw.githubusercontent.com/GuoBioinfoLab/ImmuCellAI-2.0/main/example_data/Example_expression.txt)
-contains **80 samples across 15,179 genes**, extracted from the
-GSE146771 benchmark in Figure 2B. There are 40 samples targeting CD4Tn and 40
-targeting CD8Tn, with target proportions from 0.005 to 0.2 in increments of 0.005.
-The first column contains gene symbols. Sample names combine the target cell type
-and its known mixture proportion: `CD4Tn_0.005`, for example, denotes a mixed
-sample with a CD4Tn proportion of 0.005 (0.5%). Expression values are unchanged
-from the benchmark input.
+contains the processed TPM expression matrix for **28 ICB samples from SRP070710**
+used in the manuscript, with **36,192 genes**. The first column contains gene
+symbols, and the remaining columns retain the original sequencing-run accessions
+(`SRR3184279` to `SRR3184306`). Expression values are unchanged from the manuscript
+input and have not been log-transformed.
 
 After installing the package and downloading the repository, run the following
 code directly in the R or RStudio console. Replace the path in `setwd()` with
@@ -192,10 +190,10 @@ requiring a separate `library()` call.
 ```r
 setwd("path/to/ImmuCellAI-2.0")
 
-# Import the Figure 2B pseudo-bulk expression matrix.
+# Import the SRP070710 bulk RNA-seq expression matrix.
 bulk <- ImmuCellAI2.0::read_expression_matrix("example_data/Example_expression.txt")
 dim(bulk)
-# [1] 15179    80
+# [1] 36192    28
 
 # Estimate immune-cell proportions.
 fit <- ImmuCellAI2.0::run_immucellai2(
@@ -207,7 +205,7 @@ fit <- ImmuCellAI2.0::run_immucellai2(
 
 # Inspect the three output levels and terminal-subtype proportions.
 dim(fit$subtype.fraction)
-# [1] 80 53
+# [1] 28 53
 dim(fit$type.fraction)
 dim(fit$lineage.fraction)
 head(fit$subtype.fraction[, 1:6, drop = FALSE])
@@ -215,21 +213,21 @@ rowSums(fit$subtype.fraction)
 
 # Export the results.
 ImmuCellAI2.0::write_deconvolution_outputs(
-  fit, "example_output/fig2_pseudobulk_ImmuCellAI2"
+  fit, "example_output/SRP070710_ImmuCellAI2"
 )
 ```
 
 The three fraction tables and `hierarchy_used.txt` are written to
-`example_output/fig2_pseudobulk_ImmuCellAI2/`. Each row of the subtype-fraction table
+`example_output/SRP070710_ImmuCellAI2/`. Each row of the subtype-fraction table
 represents one input sample, with weights summing to one across the 53 modeled
 immune subtypes.
 
 The same workflow is available as
-[`examples/05_fig2_pseudobulk_deconvolution.R`](examples/05_fig2_pseudobulk_deconvolution.R).
+[`examples/05_SRP070710_deconvolution.R`](examples/05_SRP070710_deconvolution.R).
 From the repository root, it can also be run with:
 
 ```r
-source("examples/05_fig2_pseudobulk_deconvolution.R", encoding = "UTF-8")
+source("examples/05_SRP070710_deconvolution.R", encoding = "UTF-8")
 ```
 
 ## Output
