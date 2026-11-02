@@ -1,0 +1,8 @@
+source(file.path(code_dir, "shared/plotting.R"), local = TRUE, encoding = "UTF-8")
+plots <- list()
+for (panel in panels) {
+  plots[[panel]] <- build_panel(panel)
+  p <- plots[[panel]]
+  files <- c(files, save_plot(p$plot, paste0("Supplement_Fig4_", panel), p$width, p$height))
+}
+if (all(LETTERS[1:8] %in% panels)) files <- c(files, save_plot(combine_panels(plots[LETTERS[1:8]]), "Supplement_Fig4_complete", 13.6, 8.5))

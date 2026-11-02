@@ -27,3 +27,14 @@ benchmarks/fig2/data/*
 
 # Redundant local reference export
 /data/
+
+# Generated manuscript figures and analysis outputs
+/Code/**/output*/
+/Code/**/*.pdf
+/Code/**/*.png
+/Code/**/*.jpg
+/Code/**/*.jpeg
+/Code/**/*.svg
+/Code/**/*.tif
+/Code/**/*.tiff
+/Code/**/*.eps
