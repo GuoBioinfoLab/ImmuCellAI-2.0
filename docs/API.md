@@ -122,34 +122,11 @@ capture.output(sessionInfo(), file = "ImmuCellAI2_results/sessionInfo.txt")
 
 ## Custom reference atlas
 
-### Reference adaptation instead of supervised retraining
-
-The custom-reference deconvolution workflow does not train a classifier or learn
-a new reference atlas from unlabelled bulk samples. Users adapt it to a new
-population panel or species by preparing their own reference and supplying it
-to `run_immucellai2_custom()`. The reference remains fixed during inference;
-only the sample-specific mixture weights are estimated.
-
-For a livestock application, prepare a species-matched reference with one
-column per relevant population, using independently annotated expression
-profiles. One preparation strategy is to average non-log-transformed TPM
-profiles of purified or sorted samples within each population. These reference
-preparation and annotation steps are outside the package. The supplied
-populations need not match the bundled 53 labels.
-
-Use non-negative, non-log-transformed expression on a compatible scale in the
-bulk and reference matrices. Gene identifiers must match exactly, including
-case and identifier convention; symbols or stable gene IDs can be used for
-custom references. The software does not perform cross-species gene conversion,
-orthologue mapping, or automatic cell annotation. Replace both paths in the
-example below with the prepared files. Bulk training labels and known mixture
-proportions are not required.
-
-The interface supports supplying these inputs, but livestock performance has
-not been established by the synthetic example. Independently validate the
-reference and inferred proportions for the target species and application.
-
-### Example files and execution
+For users wishing to "retrain" the method for a new dataset or species, such as
+livestock immunity studies, prepare a species-matched reference expression
+matrix with one column per cell population and a bulk expression matrix with
+matching gene identifiers. Use non-negative, non-log-transformed TPM values and
+supply both files to `run_immucellai2_custom()` as shown below.
 
 The repository includes a [bulk TPM matrix](../example_data/custom_reference/bulk_TPM.txt)
 and a [reference TPM matrix](../example_data/custom_reference/custom_reference_TPM.txt).
