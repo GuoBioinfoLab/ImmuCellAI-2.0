@@ -175,7 +175,7 @@ The full command-line-style example is
 ## Example workflow
 
 [`Example_expression.txt`](https://raw.githubusercontent.com/GuoBioinfoLab/ImmuCellAI-2.0/main/example_data/Example_expression.txt)
-contains **80 pseudo-bulk samples across 15,179 genes**, extracted from the
+contains **80 samples across 15,179 genes**, extracted from the
 GSE146771 benchmark in Figure 2B. There are 40 samples targeting CD4Tn and 40
 targeting CD8Tn, with target proportions from 0.005 to 0.2 in increments of 0.005.
 The first column contains gene symbols. Sample names combine the target cell type
