@@ -84,6 +84,13 @@ and `major_lineage` for terminal subtype, parent cell type, and lineage.
 
 ## Custom reference
 
+Download the [example bulk matrix](https://raw.githubusercontent.com/GuoBioinfoLab/ImmuCellAI-2.0/main/example_data/custom_reference/bulk_TPM.txt)
+and [example reference matrix](https://raw.githubusercontent.com/GuoBioinfoLab/ImmuCellAI-2.0/main/example_data/custom_reference/custom_reference_TPM.txt)
+into your R working directory (`getwd()`) before running this example.
+The files contain synthetic TPM data for 1,500 genes, three reference populations,
+and four bulk samples. The gene and population labels are illustrative, not
+biological annotations.
+
 ~~~r
 fit <- ImmuCellAI2.0::run_immucellai2_custom(
   bulk = "bulk_TPM.txt",

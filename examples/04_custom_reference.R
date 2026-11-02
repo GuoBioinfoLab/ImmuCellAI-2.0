@@ -1,6 +1,10 @@
 args <- commandArgs(trailingOnly = TRUE)
-if (length(args) < 2L) {
-  stop("Usage: Rscript examples/04_custom_reference.R bulk_TPM.txt custom_reference_TPM.txt [output_dir] [cores]")
+if (!length(args)) {
+  args <- c("example_data/custom_reference/bulk_TPM.txt",
+            "example_data/custom_reference/custom_reference_TPM.txt")
+}
+if (length(args) < 2L || length(args) > 4L) {
+  stop("Usage: Rscript examples/04_custom_reference.R [bulk_TPM.txt custom_reference_TPM.txt [output_dir] [cores]]; with no arguments, run the bundled demo from the repository root.")
 }
 output_dir <- if (length(args) >= 3L) args[3] else "custom_reference_results"
 n_cores <- if (length(args) >= 4L) as.integer(args[4]) else 1L

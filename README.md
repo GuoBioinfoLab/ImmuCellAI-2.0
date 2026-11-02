@@ -238,10 +238,17 @@ reference populations in columns. The first column of each tab-delimited file
 contains gene symbols. Non-negative TPM values on a compatible scale are
 recommended; reference population names can be chosen freely.
 
+Example files: [bulk TPM matrix](example_data/custom_reference/bulk_TPM.txt) and
+[custom reference TPM matrix](example_data/custom_reference/custom_reference_TPM.txt).
+This synthetic demo contains 1,500 genes, three reference populations, and four
+bulk samples; the [known mixture weights](example_data/custom_reference/truth_fraction.txt)
+are provided for comparison. Synthetic gene and population names are for
+demonstration only. Run the following from the repository root:
+
 ```r
 fit <- ImmuCellAI2.0::run_immucellai2_custom(
-  bulk = "bulk_TPM.txt",
-  reference = "custom_reference_TPM.txt"
+  bulk = "example_data/custom_reference/bulk_TPM.txt",
+  reference = "example_data/custom_reference/custom_reference_TPM.txt"
 )
 head(fit$subtype.fraction)
 ImmuCellAI2.0::write_deconvolution_outputs(fit, "custom_reference_results")
