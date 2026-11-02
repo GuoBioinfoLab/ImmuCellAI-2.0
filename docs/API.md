@@ -122,9 +122,8 @@ capture.output(sessionInfo(), file = "ImmuCellAI2_results/sessionInfo.txt")
 
 ## Custom reference atlas
 
-The repository includes a [bulk TPM matrix](../example_data/custom_reference/bulk_TPM.txt),
-a [reference TPM matrix](../example_data/custom_reference/custom_reference_TPM.txt),
-and [known mixture weights](../example_data/custom_reference/truth_fraction.txt).
+The repository includes a [bulk TPM matrix](../example_data/custom_reference/bulk_TPM.txt)
+and a [reference TPM matrix](../example_data/custom_reference/custom_reference_TPM.txt).
 This is a synthetic input-format demonstration with 1,500 genes, three reference
 populations, and four bulk samples, not a biological validation dataset. Each
 expression column sums to one million. Run from the repository root:
@@ -140,8 +139,7 @@ ImmuCellAI2.0::write_deconvolution_outputs(fit, "custom_reference_results")
 
 The files can be regenerated with `Rscript examples/00_make_custom_reference_demo.R`.
 The supplied gene labels are synthetic; for real data, use matching gene
-identifiers in the bulk and reference matrices. The truth table is not an input
-to deconvolution.
+identifiers in the bulk and reference matrices.
 
 Both inputs can be numeric matrices or tab-delimited files with gene symbols in
 the first column. Rows are genes; bulk columns are samples and reference columns

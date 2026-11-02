@@ -1,5 +1,0 @@
-sample	Population_A	Population_B	Population_C
-Custom_1	0.7	0.2	0.1
-Custom_2	0.2	0.3	0.5
-Custom_3	0.1	0.75	0.15
-Custom_4	0.35	0.15	0.5

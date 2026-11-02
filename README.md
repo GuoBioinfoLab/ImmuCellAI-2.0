@@ -241,8 +241,7 @@ recommended; reference population names can be chosen freely.
 Example files: [bulk TPM matrix](example_data/custom_reference/bulk_TPM.txt) and
 [custom reference TPM matrix](example_data/custom_reference/custom_reference_TPM.txt).
 This synthetic demo contains 1,500 genes, three reference populations, and four
-bulk samples; the [known mixture weights](example_data/custom_reference/truth_fraction.txt)
-are provided for comparison. Synthetic gene and population names are for
+bulk samples. Synthetic gene and population names are for
 demonstration only. Run the following from the repository root:
 
 ```r

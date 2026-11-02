@@ -29,5 +29,4 @@ write_matrix <- function(x, filename, row_label) {
 }
 write_matrix(bulk, "bulk_TPM.txt", "gene")
 write_matrix(reference, "custom_reference_TPM.txt", "gene")
-write_matrix(truth, "truth_fraction.txt", "sample")
 cat("Synthetic custom-reference demo:", normalizePath(out_dir), "\n")
