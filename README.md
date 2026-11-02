@@ -38,9 +38,8 @@ GitHub Actions on the current R release using the versioned `windows-latest` and
 `ubuntu-latest` hosted environments; exact runner image versions are recorded in
 each workflow run.
 
-The recorded demo timing below was obtained on Windows 11 with an Intel Core
-Ultra 7 268V CPU and 32 GB RAM; substantially less memory is sufficient for
-the bundled four-sample demo.
+The recorded installation timing below was obtained on Windows 11 with an Intel
+Core Ultra 7 268V CPU and 32 GB RAM.
 
 ## Installation
 
@@ -175,54 +174,6 @@ The full command-line-style example is
 
 ## Example workflow
 
-The repository includes a small synthetic TPM matrix
-[`example_data/toy_bulk_TPM.txt`](example_data/toy_bulk_TPM.txt) and its known
-mixture proportions
-[`example_data/toy_truth_fraction.txt`](example_data/toy_truth_fraction.txt).
-After installing the package and downloading the repository, run the following
-code directly in the R or RStudio console. Replace the path in `setwd()` with
-your repository folder, which contains `example_data/` and `examples/`.
-Run the complete block below. The `ImmuCellAI2.0::` prefix calls functions from
-the installed package without requiring a separate `library()` call.
-
-```r
-setwd("path/to/ImmuCellAI-2.0")
-
-bulk <- ImmuCellAI2.0::read_expression_matrix("example_data/toy_bulk_TPM.txt")
-
-fit <- ImmuCellAI2.0::run_immucellai2(
-  bulk = bulk,
-  hierarchy.mode = "tcell",
-  add.unknown = FALSE,
-  n.cores = 2
-)
-
-dim(fit$subtype.fraction)
-# [1] 4 53
-
-dim(fit$type.fraction)
-dim(fit$lineage.fraction)
-
-fit$subtype.fraction[, 1:6, drop = FALSE]
-rowSums(fit$subtype.fraction)
-
-output_dir <- "example_output/toy_ImmuCellAI2"
-ImmuCellAI2.0::write_deconvolution_outputs(fit, output_dir)
-saveRDS(fit$settings, file.path(output_dir, "settings.rds"))
-writeLines(fit$genes.used, file.path(output_dir, "genes_used.txt"))
-capture.output(sessionInfo(), file = file.path(output_dir, "sessionInfo.txt"))
-```
-
-The console displays the dimensions at all three hierarchy levels, the first
-six subtype fractions for each sample, and the subtype row sums (approximately
-1). The complete fraction tables
-and run settings are saved in `example_output/toy_ImmuCellAI2/`. The known mixture
-proportions are provided for comparison and are not used as inference input.
-On the test system described above, the four-sample demo took approximately
-11 seconds with two CPU cores; runtime varies across systems.
-
-## Fig2 pseudo-bulk example
-
 [`Example_expression.txt`](https://raw.githubusercontent.com/GuoBioinfoLab/ImmuCellAI-2.0/main/example_data/Example_expression.txt)
 contains **80 pseudo-bulk samples across 15,179 genes**, extracted from the
 GSE146771 benchmark in Figure 2B. There are 40 samples targeting CD4Tn and 40
@@ -233,7 +184,10 @@ sample with a CD4Tn proportion of 0.005 (0.5%). Expression values are unchanged
 from the benchmark input.
 
 After installing the package and downloading the repository, run the following
-in the R or RStudio console.
+code directly in the R or RStudio console. Replace the path in `setwd()` with
+your repository folder, which contains `example_data/` and `examples/`.
+The `ImmuCellAI2.0::` prefix calls functions from the installed package without
+requiring a separate `library()` call.
 
 ```r
 setwd("path/to/ImmuCellAI-2.0")
