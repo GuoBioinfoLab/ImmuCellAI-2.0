@@ -256,10 +256,7 @@ nine broad categories used for downstream reporting.
 
 ## Custom reference
 
-For users wishing to "retrain" the method for a new dataset or species, such as
-livestock immunity studies, prepare a species-matched reference expression
-matrix with one column per cell population and a bulk expression matrix with
-matching gene identifiers. Use non-negative, non-log-transformed TPM values and
+Users wishing to apply our deconvolution algorithm to a new species or an alternative reference atlas can provide a reference expression matrix with one column per cell population, together with a bulk expression matrix from the same species using matching gene identifiers. Use non-negative, non-log-transformed TPM values and
 supply both files to `run_immucellai2_custom()` as shown below.
 
 Supply a bulk matrix and a reference matrix with genes in rows and samples or
