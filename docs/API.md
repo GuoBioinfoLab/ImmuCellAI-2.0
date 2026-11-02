@@ -41,9 +41,14 @@ ImmuCellAI2.0::run_immucellai2(
 
 ### Inference arguments
 
-- hierarchy.mode: `tcell` or `flat`.
-  tcell is the principal manuscript setting.
-- add.unknown: add a residual component. The principal analyses use FALSE.
+- hierarchy.mode: `"tcell"` (default) applies an internal hierarchy within the
+  CD4 and CD8 T-cell branches, leaving other populations independent. `"flat"`
+  places known populations in one common pool without biological grouping.
+- add.unknown: `FALSE` (default) estimates known populations only; `TRUE` adds
+  an `UNKNOWN` residual component whose weight is jointly estimated with the
+  known populations. All mixture weights, including `UNKNOWN` when enabled,
+  sum to one. The residual is neither an identified cell population nor a
+  calibrated fraction of omitted cells.
 - pseudo.depth: fixed pseudo-count mass used after within-sample scaling.
 - n.iter: maximum number of deterministic posterior-mean updates.
 - vb.tol: stop when the largest absolute terminal-subtype fraction change is smaller
@@ -53,6 +58,21 @@ ImmuCellAI2.0::run_immucellai2(
 - n.cores: number of samples processed concurrently.
 - seed: random seed used for reproducible worker initialization. The VB
   updates themselves are deterministic.
+
+`inference.method = "vb"` is a fixed setting of `run_immucellai2()`, not a
+user-supplied argument to that function. The lower-level
+`deconvolve_bulk_matrix()` accepts three inference methods:
+
+- `"vb"`: deterministic posterior-mean updates using the selected hierarchy.
+- `"flat_vb"`: a single-level deterministic Bayesian model without hierarchical
+  weight updates. This is also the engine used by `run_immucellai2_custom()`.
+- `"mcmc"`: the legacy stochastic Gibbs-sampling method.
+
+`hierarchy.mode` specifies population grouping; `inference.method` selects the
+estimation engine. Setting `hierarchy.mode = "flat"` in `run_immucellai2()` does
+not switch its engine to `"flat_vb"`. When calling `deconvolve_bulk_matrix()`
+directly, specify `inference.method` explicitly: its legacy default is
+`"mcmc"`, unlike the standard entry point.
 
 ## Packaged resources
 
