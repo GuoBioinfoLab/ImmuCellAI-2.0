@@ -7,6 +7,7 @@
 
 # Reproduced outputs and local protected data
 examples/output/
+/example_output/
 
 # Retired workflows retained locally, replaced on GitHub by Code/
 /analysis/

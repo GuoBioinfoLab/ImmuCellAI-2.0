@@ -221,6 +221,61 @@ proportions are provided for comparison and are not used as inference input.
 On the test system described above, the four-sample demo took approximately
 11 seconds with two CPU cores; runtime varies across systems.
 
+## Real bulk RNA-seq example
+
+In addition to the synthetic example above,
+[`Example_expression.txt`](https://raw.githubusercontent.com/GuoBioinfoLab/ImmuCellAI-2.0/main/example_data/Example_expression.txt)
+provides non-log-transformed TPM expression from **18 real bulk RNA-seq samples**
+across **36,192 genes**. The first column contains gene symbols, and the remaining
+columns are samples identified by their sequencing-run accessions.
+
+After installing the package and downloading the repository, run the following
+in the R or RStudio console. No additional normalization or log transformation
+is needed for this supplied TPM matrix.
+
+```r
+setwd("path/to/ImmuCellAI-2.0")
+
+# Import the real expression matrix.
+bulk <- ImmuCellAI2.0::read_expression_matrix("example_data/Example_expression.txt")
+dim(bulk)
+# [1] 36192    18
+
+# Estimate immune-cell proportions.
+fit <- ImmuCellAI2.0::run_immucellai2(
+  bulk = bulk,
+  hierarchy.mode = "tcell",
+  add.unknown = FALSE,
+  n.cores = 2
+)
+
+# Inspect the three output levels and terminal-subtype proportions.
+dim(fit$subtype.fraction)
+# [1] 18 53
+dim(fit$type.fraction)
+dim(fit$lineage.fraction)
+head(fit$subtype.fraction[, 1:6, drop = FALSE])
+rowSums(fit$subtype.fraction)
+
+# Export the results.
+ImmuCellAI2.0::write_deconvolution_outputs(
+  fit, "example_output/real_bulk_ImmuCellAI2"
+)
+```
+
+The three fraction tables and `hierarchy_used.txt` are written to
+`example_output/real_bulk_ImmuCellAI2/`. Each row of the subtype-fraction table
+represents one input sample, with weights summing to one across the 53 modeled
+immune subtypes.
+
+The same workflow is available as
+[`examples/05_real_bulk_deconvolution.R`](examples/05_real_bulk_deconvolution.R).
+From the repository root, it can also be run with:
+
+```r
+source("examples/05_real_bulk_deconvolution.R", encoding = "UTF-8")
+```
+
 ## Output
 
 For the bundled reference, the three fraction matrices have samples in rows and the corresponding
