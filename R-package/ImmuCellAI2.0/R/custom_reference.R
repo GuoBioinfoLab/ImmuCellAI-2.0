@@ -102,14 +102,14 @@ run_immucellai2_custom <- function(
                        major_lineage = populations, stringsAsFactors = FALSE)
   fit <- deconvolve_bulk_matrix(
     bulk.mat = bulk, reference = reference, hierarchy = labels,
-    hierarchy.mode = "flat", inference.method = "flat_vb",
+    hierarchy.mode = "flat", inference.method = "vb",
     add.unknown = FALSE, use.unknown.update = FALSE,
     pseudo.depth = pseudo.depth, n.iter = n.iter, vb.tol = vb.tol,
-    alpha.state = alpha, n.cores = n.cores, seed = seed, verbose = verbose
+    alpha.major = alpha, n.cores = n.cores, seed = seed, verbose = verbose
   )
   result <- fit[c("subtype.fraction", "genes.used", "inference.method", "phi.final.list")]
   result$settings <- list(
-    workflow = "custom_reference", inference.method = "flat_vb",
+    workflow = "custom_reference", inference.method = "vb",
     gene.selection = "all_shared_informative", genes.shared = length(common),
     genes.used = length(fit$genes.used), reference.populations = populations,
     n.cores = n.cores, pseudo.depth = pseudo.depth, n.iter = n.iter,

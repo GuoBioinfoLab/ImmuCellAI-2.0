@@ -49,9 +49,13 @@ test_that("VB stops below the new tolerance and still honors overrides and caps"
 test_that("matrix and standard wrappers propagate the new default", {
   d <- convergence_fixture()
   bulk <- matrix(d$counts, ncol = 1, dimnames = list(names(d$counts), "S1"))
-  for (method in c("vb", "flat_vb")) {
-    arguments <- list(bulk.mat = bulk, reference = d$ref, hierarchy = d$hierarchy,
-      inference.method = method, n.iter = 50, n.cores = 1)
+  for (mode in c("tcell", "flat")) {
+    hierarchy <- if (mode == "flat") {
+      data.frame(state_name = colnames(d$ref), subtype = colnames(d$ref),
+                 major_lineage = colnames(d$ref))
+    } else d$hierarchy
+    arguments <- list(bulk.mat = bulk, reference = d$ref, hierarchy = hierarchy,
+      hierarchy.mode = mode, inference.method = "vb", n.iter = 50, n.cores = 1)
     default <- suppressWarnings(do.call(deconvolve_bulk_matrix, arguments))
     explicit <- suppressWarnings(do.call(deconvolve_bulk_matrix, c(arguments, list(vb.tol = 1e-4))))
     expect_equal(default$subtype.fraction, explicit$subtype.fraction, tolerance = 0)

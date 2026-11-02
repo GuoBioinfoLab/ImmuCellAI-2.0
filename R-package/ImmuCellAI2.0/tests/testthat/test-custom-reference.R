@@ -31,7 +31,7 @@ test_that("custom reference uses every shared valid gene and no bundled resource
   expect_equal(unname(rowSums(fit$subtype.fraction)), c(1, 1), tolerance = 1e-12)
   expect_lt(max(abs(unname(fit$subtype.fraction) - unname(x$truth))), 0.01)
   expect_false(any(c("hierarchy", "type.fraction", "lineage.fraction") %in% names(fit)))
-  expect_identical(fit$inference.method, "flat_vb")
+  expect_identical(fit$inference.method, "vb")
   expect_identical(fit$settings$gene.selection, "all_shared_informative")
   expect_equal(fit$settings$genes.used, 1200L)
   expect_equal(fit$settings$genes.shared, 1202L)
@@ -45,8 +45,8 @@ test_that("custom updates match the existing flat engine and posterior mean form
   for (iterations in c(1L, 50L)) {
     fit <- run_immucellai2_custom(x$bulk, x$ref, n.iter = iterations)
     core <- deconvolve_bulk_matrix(x$bulk, x$ref, hierarchy = labels,
-      hierarchy.mode = "flat", inference.method = "flat_vb", add.unknown = FALSE,
-      use.unknown.update = FALSE, n.iter = iterations, vb.tol = 1e-4)
+      hierarchy.mode = "flat", inference.method = "vb", add.unknown = FALSE,
+      alpha.major = 1, use.unknown.update = FALSE, n.iter = iterations, vb.tol = 1e-4)
     expect_identical(fit$subtype.fraction, core$subtype.fraction)
     expect_identical(fit$phi.final.list, core$phi.final.list)
   }

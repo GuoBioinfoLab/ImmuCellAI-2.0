@@ -61,18 +61,20 @@ ImmuCellAI2.0::run_immucellai2(
 
 `inference.method = "vb"` is a fixed setting of `run_immucellai2()`, not a
 user-supplied argument to that function. The lower-level
-`deconvolve_bulk_matrix()` accepts three inference methods:
+`deconvolve_bulk_matrix()` accepts two inference methods:
 
-- `"vb"`: deterministic posterior-mean updates using the selected hierarchy.
-- `"flat_vb"`: a single-level deterministic Bayesian model without hierarchical
-  weight updates. This is also the engine used by `run_immucellai2_custom()`.
+- `"vb"`: deterministic posterior-mean updates using the selected hierarchy
+  mode, including `"flat"`.
 - `"mcmc"`: the legacy stochastic Gibbs-sampling method.
 
 `hierarchy.mode` specifies population grouping; `inference.method` selects the
-estimation engine. Setting `hierarchy.mode = "flat"` in `run_immucellai2()` does
-not switch its engine to `"flat_vb"`. When calling `deconvolve_bulk_matrix()`
-directly, specify `inference.method` explicitly: its legacy default is
-`"mcmc"`, unlike the standard entry point.
+estimation engine. For deterministic flat inference, use
+`hierarchy.mode = "flat"` with `inference.method = "vb"` in the lower-level API,
+or just `hierarchy.mode = "flat"` in `run_immucellai2()`.
+`run_immucellai2_custom()` selects flat deterministic inference automatically
+and reports `"vb"`. When calling `deconvolve_bulk_matrix()` directly, specify
+`inference.method` explicitly: its legacy default is `"mcmc"`, unlike the
+standard entry point.
 
 ## Packaged resources
 

@@ -54,7 +54,7 @@ test_that("standard outputs follow subtype, type, lineage in every hierarchy mod
 
 test_that("all matrix inference and auxiliary estimators use the same output names", {
   x <- output_fixture()
-  for (method in c("vb", "flat_vb", "mcmc")) {
+  for (method in c("vb", "mcmc")) {
     fit <- deconvolve_bulk_matrix(x$bulk, x$ref, hierarchy.mode = "tcell",
                                  inference.method = method, n.iter = 4, burn.in = 2)
     expect_fraction_levels(fit)

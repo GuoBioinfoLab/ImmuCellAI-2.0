@@ -37,7 +37,7 @@ add_unknown_to_reference <- function(reference, hierarchy, unknown.state = "UNKN
 #' @param reference Gene-by-state non-negative reference matrix.
 #' @param hierarchy Optional table with state_name, subtype, and major_lineage.
 #' @param hierarchy.mode One of `flat` or `tcell`.
-#' @param inference.method One of vb, flat_vb, or the legacy mcmc path.
+#' @param inference.method One of `vb` or the legacy `mcmc` path.
 #' @param add.unknown Add an optional latent residual state.
 #' @param unknown.state Name assigned to the residual state.
 #' @param unknown.mode Initial residual profile: uniform or reference mean.
@@ -65,7 +65,7 @@ add_unknown_to_reference <- function(reference, hierarchy, unknown.state = "UNKN
   reference,
  hierarchy = NULL,
   hierarchy.mode = c("flat", "tcell"),
-  inference.method = c("mcmc", "vb", "flat_vb"),
+  inference.method = c("mcmc", "vb"),
   add.unknown = FALSE,
   unknown.state = "UNKNOWN",
   unknown.mode = c("uniform", "mean"),
@@ -128,7 +128,9 @@ add_unknown_to_reference <- function(reference, hierarchy, unknown.state = "UNKN
     if (sum(bulk.vec) <= 0) return(NULL)
     bulk.count <- round(bulk.vec / sum(bulk.vec) * pseudo.depth)
     names(bulk.count) <- rownames(bulk)
-    if (inference.method == "flat_vb") {
+    # Independent branches reduce the VB update to one Dirichlet posterior.
+    if (inference.method == "vb" && hierarchy.mode == "flat" &&
+        !anyDuplicated(hierarchy$major_lineage) && !anyDuplicated(hierarchy$subtype)) {
       fit <- run_flat_vb_model(
         bulk.vec = bulk.count,
         phi.ref = phi.ref,
@@ -138,7 +140,7 @@ add_unknown_to_reference <- function(reference, hierarchy, unknown.state = "UNKN
         burn.in = burn.in,
         tol = vb.tol,
         use.unknown.update = use.unknown.update,
-        alpha.state = alpha.state,
+        alpha.state = alpha.major,
         prior.theta = prior.theta,
         adaptive.params = adaptive.params,
         verbose = verbose
@@ -191,7 +193,7 @@ add_unknown_to_reference <- function(reference, hierarchy, unknown.state = "UNKN
       varlist = c(
         "bulk", "phi.ref", "hierarchy", "state.labels", "unknown.state", "pseudo.depth",
         "n.iter", "burn.in", "alpha.major", "alpha.sub", "alpha.state", "vb.tol", "prior.theta",
-        "inference.method", "use.unknown.update", "adaptive.params", "verbose",
+        "inference.method", "hierarchy.mode", "use.unknown.update", "adaptive.params", "verbose",
         "normalize_prob", "safe_col_normalize", "sample_dirichlet_safe",
         "make_initial_theta_generic", "update_theta_hierarchical", "update_Z_hierarchical",
         "make_state_prior_from_hierarchy", "posterior_mean_theta_hierarchical", "expected_state_counts",

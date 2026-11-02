@@ -9,7 +9,7 @@ deconvolve_bulk_matrix(
   reference,
   hierarchy = NULL,
   hierarchy.mode = c("flat", "tcell"),
-  inference.method = c("mcmc", "vb", "flat_vb"),
+  inference.method = c("mcmc", "vb"),
   add.unknown = FALSE,
   unknown.state = "UNKNOWN",
   unknown.mode = c("uniform", "mean"),
@@ -37,7 +37,7 @@ deconvolve_bulk_matrix(
 
 \item{hierarchy.mode}{One of \code{flat} or \code{tcell}.}
 
-\item{inference.method}{One of vb, flat_vb, or the legacy mcmc path.}
+\item{inference.method}{One of \code{vb} or the legacy \code{mcmc} path.}
 
 \item{add.unknown}{Add an optional latent residual state.}
 

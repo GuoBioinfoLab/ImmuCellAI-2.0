@@ -59,22 +59,23 @@ test_that("flat variational Bayesian deconvolution runs", {
   colnames(bulk) <- "S1"
   hierarchy <- data.frame(
     state_name = colnames(ref),
-    subtype = c("A", "A", "B", "B"),
-    major_lineage = c("Immune1", "Immune1", "Immune2", "Immune2"),
+    subtype = colnames(ref),
+    major_lineage = colnames(ref),
     stringsAsFactors = FALSE
   )
   res <- deconvolve_bulk_matrix(
     bulk,
     ref,
     hierarchy,
-    inference.method = "flat_vb",
+    hierarchy.mode = "flat",
+    inference.method = "vb",
     n.iter = 20,
     n.cores = 1
   )
   expect_equal(nrow(res$subtype.fraction), 1)
   expect_equal(ncol(res$subtype.fraction), 4)
   expect_equal(round(sum(res$subtype.fraction[1, ]), 8), 1)
-  expect_equal(res$inference.method, "flat_vb")
+  expect_equal(res$inference.method, "vb")
 })
 
 test_that("tcell hierarchy leaves non-T states independent", {

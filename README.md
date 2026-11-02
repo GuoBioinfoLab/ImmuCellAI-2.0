@@ -162,7 +162,7 @@ optional unknown component in the bundled-reference workflow:
 | Setting | Values | Meaning |
 |---|---|---|
 | `hierarchy.mode` | `"tcell"` (default), `"flat"` | `"tcell"` applies an internal hierarchy within the CD4 and CD8 T-cell branches. `"flat"` places known populations in one common pool without biological hierarchy grouping. |
-| `inference.method` | `"vb"` (standard workflow); `"flat_vb"` and `"mcmc"` in the lower-level API | `"vb"` uses deterministic posterior-mean updates with the selected hierarchy. `"flat_vb"` uses a single-level deterministic Bayesian model. `"mcmc"` is the legacy stochastic Gibbs-sampling method. |
+| `inference.method` | `"vb"` (standard workflow); `"mcmc"` in the lower-level API | `"vb"` uses deterministic posterior-mean updates with the selected hierarchy mode, including `"flat"`. `"mcmc"` is the legacy stochastic Gibbs-sampling method. |
 | `add.unknown` | `FALSE` (default), `TRUE` | `FALSE` estimates only the supplied known populations. `TRUE` jointly estimates an additional `UNKNOWN` residual weight; known and unknown weights together sum to one. This residual is not an identified cell population or a calibrated fraction of omitted cells. |
 
 `run_immucellai2()` fixes the inference method to `"vb"`; `inference.method`
