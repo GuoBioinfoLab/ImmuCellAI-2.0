@@ -259,9 +259,7 @@ head(fit$subtype.fraction)
 ImmuCellAI2.0::write_deconvolution_outputs(fit, "custom_reference_results")
 ```
 
-This workflow uses all shared genes with positive expression in both inputs,
-without an immune-marker panel, biological hierarchy, or added unknown
-component. It applies deterministic flat Bayesian posterior-mean inference.
+This workflow uses all shared genes with positive expression in both inputs. It applies deterministic flat Bayesian posterior-mean inference.
 The result contains one column per supplied reference population, with
 sample-specific mixture weights summing to one. Only `subtype_fraction.txt` is
 exported; no cell-type or lineage aggregations are inferred. The genes used and
