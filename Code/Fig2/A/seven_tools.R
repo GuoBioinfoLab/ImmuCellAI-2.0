@@ -653,7 +653,7 @@ reference_all <- reference_all[keep, , drop = FALSE]
 
 sample_info <- extract_variable_sample_info(colnames(bulk_all))
 
-hierarchy_base <- create_default_53_hierarchy(colnames(reference_all), hierarchy.mode = "tcell_only")
+hierarchy_base <- create_default_53_hierarchy(colnames(reference_all), hierarchy.mode = "tcell")
 hierarchy_base <- ImmuneHierDeconv:::validate_hierarchy(hierarchy_base, reference_all)
 reference_all <- reference_all[, hierarchy_base$state_name, drop = FALSE]
 
@@ -722,13 +722,13 @@ if (isTRUE(run_immunehier) &&
     !reuse_method("ImmuneHier_tcell_only_VB", genes.used = nrow(bulk_immunehier))) {
   safe_run("ImmuneHier_tcell_only_VB", {
   message("Running ImmuneHier tcell_only VB...")
-  hierarchy <- create_default_53_hierarchy(colnames(reference_immunehier), hierarchy.mode = "tcell_only")
+  hierarchy <- create_default_53_hierarchy(colnames(reference_immunehier), hierarchy.mode = "tcell")
   hierarchy <- ImmuneHierDeconv:::validate_hierarchy(hierarchy, reference_immunehier)
   fit <- deconvolve_bulk_matrix(
     bulk.mat = bulk_immunehier,
     reference = reference_immunehier,
     hierarchy = hierarchy,
-    hierarchy.mode = "tcell_only",
+    hierarchy.mode = "tcell",
     inference.method = "vb",
     add.unknown = FALSE,
     pseudo.depth = 1e5,
@@ -749,7 +749,7 @@ if (isTRUE(run_bayesprism) &&
     !reuse_method("BayesPrism_first_state_chain600_burn500")) {
   safe_run("BayesPrism_first_state_chain600_burn500", {
   message("Running BayesPrism chain.length=", chain_length, ", burn.in=", burn_in, "...")
-  hierarchy_bp <- create_default_53_hierarchy(colnames(reference_external), hierarchy.mode = "tcell_only")
+  hierarchy_bp <- create_default_53_hierarchy(colnames(reference_external), hierarchy.mode = "tcell")
   hierarchy_bp <- ImmuneHierDeconv:::validate_hierarchy(hierarchy_bp, reference_external)
   reference.bp <- t(reference_external[, hierarchy_bp$state_name, drop = FALSE])
   mixture.bp <- t(bulk_external)

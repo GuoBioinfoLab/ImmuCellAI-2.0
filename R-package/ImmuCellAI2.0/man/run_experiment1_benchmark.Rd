@@ -9,7 +9,6 @@ run_experiment1_benchmark(
   reference,
   out.dir = "experiment1_current_method_benchmark",
   sample.info = NULL,
-  include.hybrid = FALSE,
   n.iter = 150,
   burn.in = 50,
   n.cores = 1,
@@ -26,8 +25,6 @@ run_experiment1_benchmark(
 
 \item{sample.info}{Optional sample truth table. If NULL, extracted from sample names.}
 
-\item{include.hybrid}{Whether to include hybrid variants.}
-
 \item{n.iter}{Number of iterations. Default 150.}
 
 \item{burn.in}{Burn-in iterations. Default 50.}
@@ -43,6 +40,5 @@ list containing model results, state metrics, BayesPrism-panel metrics and summa
 }
 \description{
 This runs the current package under controlled settings:
-flat no UNKNOWN, flat + UNKNOWN, hierarchical no UNKNOWN, hierarchical + UNKNOWN,
-and optionally hybrid no UNKNOWN / hybrid + UNKNOWN.
+flat no UNKNOWN, flat + UNKNOWN, tcell no UNKNOWN, and tcell + UNKNOWN.
 }

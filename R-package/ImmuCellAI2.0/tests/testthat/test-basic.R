@@ -87,13 +87,6 @@ test_that("tcell hierarchy leaves non-T states independent", {
 })
 
 
-test_that("tcell_only remains a backward-compatible alias", {
-  states <- c("CD4Tcm", "CD4Tem", "CD8Tcm", "BGC", "cMo")
-  canonical <- create_default_53_hierarchy(states, hierarchy.mode = "tcell")
-  legacy <- create_default_53_hierarchy(states, hierarchy.mode = "tcell_only")
-  expect_equal(legacy, canonical)
-  expect_equal(immucellai2_defaults()$hierarchy.mode, "tcell")
-})
 test_that("fast marker score and alias evaluation run", {
   set.seed(2)
   ref <- matrix(rexp(120 * 5), nrow = 120, ncol = 5)
@@ -104,7 +97,7 @@ test_that("fast marker score and alias evaluation run", {
   rownames(bulk) <- rownames(ref)
   colnames(bulk) <- "CD4Tmemory_1"
 
-  hierarchy <- create_default_53_hierarchy(colnames(ref), hierarchy.mode = "hybrid")
+  hierarchy <- create_default_53_hierarchy(colnames(ref), hierarchy.mode = "tcell")
   res <- deconvolve_marker_score(bulk, ref, hierarchy = hierarchy, marker.n = 10)
   expect_equal(nrow(res$subtype.fraction), 1)
   expect_equal(ncol(res$subtype.fraction), 5)

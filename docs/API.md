@@ -41,7 +41,7 @@ ImmuCellAI2.0::run_immucellai2(
 
 ### Inference arguments
 
-- hierarchy.mode: tcell, flat, hierarchical, or hybrid.
+- hierarchy.mode: `tcell` or `flat`.
   tcell is the principal manuscript setting.
 - add.unknown: add a residual component. The principal analyses use FALSE.
 - pseudo.depth: fixed pseudo-count mass used after within-sample scaling.

@@ -117,8 +117,6 @@ aggregations are produced. Only `subtype_fraction.txt` is exported.
 
 - tcell: refines CD4/CD8 branches; all other subtypes remain independent.
 - flat: applies no grouped hierarchy and is useful as a sensitivity analysis.
-- hierarchical: applies the full broad immune hierarchy.
-- hybrid: combines broader grouping with selected subtype refinements.
 - add.unknown = TRUE: adds a residual component for unexplained expression;
   the residual is not an annotated biological cell population.
 

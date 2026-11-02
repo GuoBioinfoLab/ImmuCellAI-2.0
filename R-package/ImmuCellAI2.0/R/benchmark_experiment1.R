@@ -242,14 +242,12 @@ summarize_metrics <- function(metrics, method, level = "state") {
 #' Run Experiment 1 benchmark for current method variants
 #'
 #' This runs the current package under controlled settings:
-#' flat no UNKNOWN, flat + UNKNOWN, hierarchical no UNKNOWN, hierarchical + UNKNOWN,
-#' and optionally hybrid no UNKNOWN / hybrid + UNKNOWN.
+#' flat no UNKNOWN, flat + UNKNOWN, tcell no UNKNOWN, and tcell + UNKNOWN.
 #'
 #' @param bulk.mat Gene x sample bulk matrix.
 #' @param reference Gene x state reference matrix.
 #' @param out.dir Output directory.
 #' @param sample.info Optional sample truth table. If NULL, extracted from sample names.
-#' @param include.hybrid Whether to include hybrid variants.
 #' @param n.iter Number of iterations. Default 150.
 #' @param burn.in Burn-in iterations. Default 50.
 #' @param n.cores Number of cores.
@@ -262,7 +260,6 @@ run_experiment1_benchmark <- function(
   reference,
   out.dir = "experiment1_current_method_benchmark",
   sample.info = NULL,
-  include.hybrid = FALSE,
   n.iter = 150,
   burn.in = 50,
   n.cores = 1,
@@ -276,20 +273,11 @@ run_experiment1_benchmark <- function(
   }
 
   methods <- data.frame(
-    Method = c("flat_no_UNKNOWN", "flat_UNKNOWN", "hierarchical_no_UNKNOWN", "hierarchical_UNKNOWN"),
-    hierarchy.mode = c("flat", "flat", "hierarchical", "hierarchical"),
+    Method = c("flat_no_UNKNOWN", "flat_UNKNOWN", "tcell_no_UNKNOWN", "tcell_UNKNOWN"),
+    hierarchy.mode = c("flat", "flat", "tcell", "tcell"),
     add.unknown = c(FALSE, TRUE, FALSE, TRUE),
     stringsAsFactors = FALSE
   )
-
-  if (isTRUE(include.hybrid)) {
-    methods <- rbind(methods, data.frame(
-      Method = c("hybrid_no_UNKNOWN", "hybrid_UNKNOWN"),
-      hierarchy.mode = c("hybrid", "hybrid"),
-      add.unknown = c(FALSE, TRUE),
-      stringsAsFactors = FALSE
-    ))
-  }
 
   result.list <- list()
   state.metric.list <- list()
@@ -418,7 +406,7 @@ run_fast_hierarchy_grid <- function(
       res.score <- deconvolve_marker_score(
         bulk.mat = bulk.mat,
         reference = reference,
-        hierarchy = create_default_53_hierarchy(colnames(reference), hierarchy.mode = "hybrid"),
+        hierarchy = create_default_53_hierarchy(colnames(reference), hierarchy.mode = "tcell"),
         marker.n = marker.n,
         normalize.scores = FALSE
       )
@@ -428,7 +416,7 @@ run_fast_hierarchy_grid <- function(
       res.frac <- deconvolve_marker_score(
         bulk.mat = bulk.mat,
         reference = reference,
-        hierarchy = create_default_53_hierarchy(colnames(reference), hierarchy.mode = "hybrid"),
+        hierarchy = create_default_53_hierarchy(colnames(reference), hierarchy.mode = "tcell"),
         marker.n = marker.n,
         normalize.scores = TRUE
       )
@@ -436,7 +424,7 @@ run_fast_hierarchy_grid <- function(
     }
 
     if (isTRUE(include.simplex)) {
-      for (mode in c("flat", "hierarchical", "hybrid")) {
+      for (mode in c("flat", "tcell")) {
         message("Running simplex_", mode, "_", marker.n, " ...")
         res <- deconvolve_bulk_fast(
           bulk.mat = bulk.mat,

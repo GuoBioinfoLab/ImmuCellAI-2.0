@@ -33,8 +33,8 @@ genes, flat deterministic inference, and no unknown component.}
 \item{marker.genes}{Optional character vector or marker file. If omitted,
 the packaged 5,510-gene panel is used. Only applies to the bundled reference.}
 
-\item{hierarchy.mode}{One of `tcell`, `flat`, `hierarchical`, or
-`hybrid`. The manuscript workflow uses `tcell`.}
+\item{hierarchy.mode}{One of \code{tcell} or \code{flat}. The manuscript workflow
+uses \code{tcell}.}
 
 \item{add.unknown}{Add an optional residual state for sensitivity analysis.
 The manuscript workflow uses `FALSE`.}

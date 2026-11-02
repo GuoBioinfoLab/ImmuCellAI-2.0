@@ -98,103 +98,6 @@ create_flat_53_hierarchy <- function(state.labels) {
   hierarchy
 }
 
-#' Refine T-cell subtype labels in a hierarchy table
-#'
-#' This creates the refined T-cell hierarchy used for the strict hierarchical
-#' benchmark: CD4/CD8 memory and naive groups are separate; helper, Treg, Tr1,
-#' Tfh, Tc, Tex, MAIT, NKT and gdT are separate subtypes.
-#'
-#' @param hierarchy data.frame with state_name, subtype, major_lineage.
-#' @return Modified hierarchy.
-#' @export
-refine_tcell_subtypes <- function(hierarchy) {
-  hierarchy <- as.data.frame(hierarchy, stringsAsFactors = FALSE)
-  required <- c("state_name", "subtype", "major_lineage")
-  miss <- setdiff(required, colnames(hierarchy))
-  if (length(miss) > 0) stop("hierarchy is missing columns: ", paste(miss, collapse = ", "))
-
-  hierarchy$subtype[hierarchy$state_name %in% c("CD4Tcm", "CD4Tem", "CD4Temra", "CD4Trm")] <- "CD4 Memory T cell"
-  hierarchy$subtype[hierarchy$state_name %in% c("CD8Tcm", "CD8Tem", "CD8Temra", "CD8Trm")] <- "CD8 Memory T cell"
-  hierarchy$subtype[hierarchy$state_name %in% c("CD4Tn", "CD4Tnaive")] <- "CD4 T naive"
-  hierarchy$subtype[hierarchy$state_name %in% c("CD8Tn", "CD8Tnaive")] <- "CD8 T naive"
-  hierarchy$subtype[hierarchy$state_name %in% c("Treg")] <- "Treg"
-  hierarchy$subtype[hierarchy$state_name %in% c("Tr1")] <- "Tr1"
-  hierarchy$subtype[hierarchy$state_name %in% c("Th1", "Th2", "Th17", "Th1/17", "Th1/Th17", "Th1.Th17", "Th1_Th17")] <- "Helper T"
-  hierarchy$subtype[hierarchy$state_name %in% c("Tfh")] <- "Tfh"
-  hierarchy$subtype[hierarchy$state_name %in% c("Tc")] <- "Tc"
-  hierarchy$subtype[hierarchy$state_name %in% c("Tex", "exhausted_T")] <- "Tex"
-  hierarchy$subtype[hierarchy$state_name %in% c("MAIT")] <- "MAIT"
-  hierarchy$subtype[hierarchy$state_name %in% c("NKT")] <- "NKT"
-  hierarchy$subtype[hierarchy$state_name %in% c("gdT")] <- "gdT"
-
-  refined.t.subtypes <- c(
-    "CD4 Memory T cell", "CD8 Memory T cell", "CD4 T naive", "CD8 T naive",
-    "Treg", "Tr1", "Helper T", "Tfh", "Tc", "Tex", "MAIT", "NKT", "gdT"
-  )
-  hierarchy$major_lineage[hierarchy$subtype %in% refined.t.subtypes] <- "Lymphoid"
-  rownames(hierarchy) <- NULL
-  hierarchy
-}
-
-#' Refine monocyte subtype labels in a hierarchy table
-#'
-#' This splits cMo/intMo/ncMo into independent subtypes under Myeloid.
-#'
-#' @param hierarchy data.frame with state_name, subtype, major_lineage.
-#' @return Modified hierarchy.
-#' @export
-refine_monocyte_subtypes <- function(hierarchy) {
-  hierarchy <- as.data.frame(hierarchy, stringsAsFactors = FALSE)
-  required <- c("state_name", "subtype", "major_lineage")
-  miss <- setdiff(required, colnames(hierarchy))
-  if (length(miss) > 0) stop("hierarchy is missing columns: ", paste(miss, collapse = ", "))
-
-  hierarchy$subtype[hierarchy$state_name %in% c("cMo", "CMonocyte")] <- "cMo"
-  hierarchy$subtype[hierarchy$state_name %in% c("intMo", "iMo", "IMonocyte")] <- "intMo"
-  hierarchy$subtype[hierarchy$state_name %in% c("ncMo", "NMonocyte")] <- "ncMo"
-  hierarchy$major_lineage[hierarchy$subtype %in% c("cMo", "intMo", "ncMo")] <- "Myeloid"
-  rownames(hierarchy) <- NULL
-  hierarchy
-}
-
-#' Create a hybrid 53-state hierarchy
-#'
-#' Hybrid mode reduces strong hierarchy where it previously hurt performance:
-#' CD8 memory/naive remains grouped, CD4 memory is grouped with helper states,
-#' and monocytes are split into independent cMo/intMo/ncMo subtypes.
-#'
-#' @param state.labels Character vector of state names.
-#' @return data.frame with state_name, subtype, major_lineage.
-#' @export
-create_hybrid_53_hierarchy <- function(state.labels) {
-  hierarchy <- base_53_hierarchy(state.labels)
-
-  hierarchy$subtype[hierarchy$state_name %in% c("CD4Tn", "CD4Tnaive")] <- "CD4 T naive"
-  hierarchy$subtype[hierarchy$state_name %in% c(
-    "CD4Tcm", "CD4Tem", "CD4Temra", "CD4Trm",
-    "Th1", "Th2", "Th17", "Th1/17", "Th1/Th17", "Th1.Th17", "Th1_Th17"
-  )] <- "CD4 Memory/Helper T"
-  hierarchy$subtype[hierarchy$state_name %in% c("CD8Tn", "CD8Tnaive")] <- "CD8 T naive"
-  hierarchy$subtype[hierarchy$state_name %in% c("CD8Tcm", "CD8Tem", "CD8Temra", "CD8Trm")] <- "CD8 Memory T cell"
-  hierarchy$subtype[hierarchy$state_name %in% c("Tfh")] <- "Tfh"
-  hierarchy$subtype[hierarchy$state_name %in% c("Treg")] <- "Treg"
-  hierarchy$subtype[hierarchy$state_name %in% c("Tr1")] <- "Tr1"
-  hierarchy$subtype[hierarchy$state_name %in% c("Tc")] <- "Tc"
-  hierarchy$subtype[hierarchy$state_name %in% c("Tex", "exhausted_T")] <- "Tex"
-  hierarchy$subtype[hierarchy$state_name %in% c("MAIT")] <- "MAIT"
-  hierarchy$subtype[hierarchy$state_name %in% c("NKT")] <- "NKT"
-  hierarchy$subtype[hierarchy$state_name %in% c("gdT")] <- "gdT"
-  hierarchy <- refine_monocyte_subtypes(hierarchy)
-
-  lymphoid.subtypes <- c(
-    "CD4 T naive", "CD4 Memory/Helper T", "CD8 T naive", "CD8 Memory T cell",
-    "Tfh", "Treg", "Tr1", "Tc", "Tex", "MAIT", "NKT", "gdT"
-  )
-  hierarchy$major_lineage[hierarchy$subtype %in% lymphoid.subtypes] <- "Lymphoid"
-  rownames(hierarchy) <- NULL
-  hierarchy
-}
-
 #' Create the T-cell refined hierarchy
 #'
 #' Only CD4/CD8 T-cell related states are modeled with an internal hierarchy.
@@ -239,38 +142,19 @@ create_tcell_53_hierarchy <- function(state.labels) {
   hierarchy
 }
 
-#' Legacy alias for the T-cell refined hierarchy
-#'
-#' `create_tcell_only_53_hierarchy()` is retained for scripts written before
-#' version 0.1.8. New code should use `create_tcell_53_hierarchy()`.
-#'
-#' @inheritParams create_tcell_53_hierarchy
-#' @return data.frame with state_name, subtype, and major_lineage.
-#' @export
-create_tcell_only_53_hierarchy <- function(state.labels) {
-  create_tcell_53_hierarchy(state.labels)
-}
-
 normalize_hierarchy_mode <- function(hierarchy.mode) {
-  mode <- match.arg(
-    hierarchy.mode,
-    choices = c("flat", "hierarchical", "hybrid", "tcell", "tcell_only")
-  )
-  if (identical(mode, "tcell_only")) mode <- "tcell"
-  mode
+  match.arg(hierarchy.mode, choices = c("flat", "tcell"))
 }
 
 #' Create default 53-state hierarchy
 #'
 #' @param state.labels Cell-type names, usually colnames(reference).
-#' @param hierarchy.mode One of flat, hierarchical, hybrid, or tcell. The legacy value tcell_only is accepted as an alias for tcell.
-#' @param refine.tcell.subtypes Backward-compatible option. Used only when hierarchy.mode = "hierarchical".
+#' @param hierarchy.mode One of `flat` or `tcell`.
 #' @return data.frame with state_name, subtype, and major_lineage.
 #' @export
 create_default_53_hierarchy <- function(
   state.labels,
-  hierarchy.mode = c("flat", "hierarchical", "hybrid", "tcell", "tcell_only"),
-  refine.tcell.subtypes = TRUE
+  hierarchy.mode = c("flat", "tcell")
 ) {
   hierarchy.mode <- normalize_hierarchy_mode(hierarchy.mode)
 
@@ -278,20 +162,7 @@ create_default_53_hierarchy <- function(
     return(create_flat_53_hierarchy(state.labels))
   }
 
-  if (hierarchy.mode == "hybrid") {
-    return(create_hybrid_53_hierarchy(state.labels))
-  }
-
-  if (hierarchy.mode == "tcell") {
-    return(create_tcell_53_hierarchy(state.labels))
-  }
-
-  hierarchy <- base_53_hierarchy(state.labels)
-  if (isTRUE(refine.tcell.subtypes)) {
-    hierarchy <- refine_tcell_subtypes(hierarchy)
-  }
-  rownames(hierarchy) <- NULL
-  hierarchy
+  create_tcell_53_hierarchy(state.labels)
 }
 
 validate_hierarchy <- function(hierarchy, reference) {

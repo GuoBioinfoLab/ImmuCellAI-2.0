@@ -411,7 +411,7 @@ patch_immucellai_gsva()
 
 message("Reading reference matrix...")
 reference_all <- read_expression_matrix(reference_file)
-hierarchy_all <- create_default_53_hierarchy(colnames(reference_all), hierarchy.mode = "tcell_only")
+hierarchy_all <- create_default_53_hierarchy(colnames(reference_all), hierarchy.mode = "tcell")
 hierarchy_all <- ImmuneHierDeconv:::validate_hierarchy(hierarchy_all, reference_all)
 reference_all <- reference_all[, hierarchy_all$state_name, drop = FALSE]
 
@@ -438,13 +438,13 @@ results <- list()
 results[["ImmuneHier_tcell_only_VB"]] <- benchmark_method(
   "ImmuneHier_tcell_only_VB",
   function() {
-    hierarchy <- create_default_53_hierarchy(colnames(reference_immunehier), hierarchy.mode = "tcell_only")
+    hierarchy <- create_default_53_hierarchy(colnames(reference_immunehier), hierarchy.mode = "tcell")
     hierarchy <- ImmuneHierDeconv:::validate_hierarchy(hierarchy, reference_immunehier)
     fit <- deconvolve_bulk_matrix(
       bulk.mat = bulk_immunehier,
       reference = reference_immunehier,
       hierarchy = hierarchy,
-      hierarchy.mode = "tcell_only",
+      hierarchy.mode = "tcell",
       inference.method = "vb",
       add.unknown = FALSE,
       pseudo.depth = 1e5,
@@ -500,7 +500,7 @@ results[["ImmuCellAI_native"]] <- benchmark_method(
 results[["BayesPrism_first_state_chain600_burn500"]] <- benchmark_method(
   "BayesPrism_first_state_chain600_burn500",
   function() {
-    hierarchy_bp <- create_default_53_hierarchy(colnames(reference_all), hierarchy.mode = "tcell_only")
+    hierarchy_bp <- create_default_53_hierarchy(colnames(reference_all), hierarchy.mode = "tcell")
     hierarchy_bp <- ImmuneHierDeconv:::validate_hierarchy(hierarchy_bp, reference_all)
     reference.bp <- t(reference_all[, hierarchy_bp$state_name, drop = FALSE])
     mixture.bp <- t(bulk_all)

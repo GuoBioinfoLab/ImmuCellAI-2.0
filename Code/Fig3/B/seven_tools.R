@@ -687,7 +687,7 @@ truth_all <- truth_all[common_samples, , drop = FALSE]
 truth_all <- truth_all[, intersect(colnames(truth_all), names(external_state_map)), drop = FALSE]
 if (ncol(truth_all) == 0L) stop("No evaluable truth cell types.")
 
-hierarchy_base <- create_default_53_hierarchy(colnames(reference_all), hierarchy.mode = "tcell_only")
+hierarchy_base <- create_default_53_hierarchy(colnames(reference_all), hierarchy.mode = "tcell")
 hierarchy_base <- ImmuneHierDeconv:::validate_hierarchy(hierarchy_base, reference_all)
 reference_all <- reference_all[, hierarchy_base$state_name, drop = FALSE]
 
@@ -787,7 +787,7 @@ if (isTRUE(run_bayesprism) &&
     !reuse_method("BayesPrism_first_state_chain600_burn500")) {
   safe_run("BayesPrism_first_state_chain600_burn500", {
   message("Running BayesPrism chain.length=", chain_length, ", burn.in=", burn_in, "...")
-  hierarchy_bp <- create_default_53_hierarchy(colnames(reference_external), hierarchy.mode = "tcell_only")
+  hierarchy_bp <- create_default_53_hierarchy(colnames(reference_external), hierarchy.mode = "tcell")
   hierarchy_bp <- ImmuneHierDeconv:::validate_hierarchy(hierarchy_bp, reference_external)
   reference.bp <- t(reference_external[, hierarchy_bp$state_name, drop = FALSE])
   mixture.bp <- t(bulk_external)

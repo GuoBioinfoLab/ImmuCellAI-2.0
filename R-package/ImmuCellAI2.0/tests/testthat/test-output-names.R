@@ -35,7 +35,7 @@ test_that("standard outputs follow subtype, type, lineage in every hierarchy mod
   x <- output_fixture()
   local_mocked_bindings(load_immucellai2_reference = function() x$ref,
                         load_immucellai2_markers = function() rownames(x$ref))
-  for (mode in c("tcell", "tcell_only", "flat", "hierarchical", "hybrid")) {
+  for (mode in c("tcell", "flat")) {
     for (unknown in c(FALSE, TRUE)) {
       fit <- run_immucellai2(x$bulk, hierarchy.mode = mode,
                             add.unknown = unknown, n.iter = 3)
