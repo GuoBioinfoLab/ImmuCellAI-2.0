@@ -7,23 +7,10 @@
 
 # Reproduced outputs and local protected data
 examples/output/
-analysis/icb/reproduced_results/
-analysis/icb/data/*.tsv
-analysis/**/config.R
-analysis/archive_paths.R
-analysis/local_sources/
-analysis/**/results/
-analysis/age_associated_remodeling/data/*
-!analysis/age_associated_remodeling/data/README.md
-analysis/infectious_disease_states/data/*
-!analysis/infectious_disease_states/data/README.md
-analysis/tumor_immune_phenotypes_immuicbscore/data/*
-!analysis/tumor_immune_phenotypes_immuicbscore/data/README.md
-benchmarks/output/
-benchmarks/fig2/config.R
-benchmarks/fig3/config.R
-benchmarks/fig2/data/*
-!benchmarks/fig2/data/README.md
+
+# Retired workflows retained locally, replaced on GitHub by Code/
+/analysis/
+/benchmarks/
 
 # Redundant local reference export
 /data/

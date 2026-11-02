@@ -133,7 +133,7 @@ See the repository-level documentation:
 - docs/INPUT_OUTPUT.md: matrix formats and validation rules.
 - docs/REPRODUCIBILITY.md: reporting checklist.
 - examples/: executable standard, sensitivity, and validation workflows.
-- benchmarks/: cohort metadata and performance metric scripts.
+- [Code/](../../Code): manuscript figure analysis and plotting scripts.
 
 The supported manuscript workflow and `run_immucellai2()` use deterministic
 VB inference. The historical Python Gibbs/MCMC implementation is not included
