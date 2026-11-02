@@ -47,8 +47,8 @@ ImmuCellAI2.0::run_immucellai2(
 - add.unknown: `FALSE` (default) estimates known populations only; `TRUE` adds
   an `UNKNOWN` residual component whose weight is jointly estimated with the
   known populations. All mixture weights, including `UNKNOWN` when enabled,
-  sum to one. The residual is neither an identified cell population nor a
-  calibrated fraction of omitted cells.
+  sum to one. Set `TRUE` only when the sample is known to contain components
+  not represented in the reference; otherwise, keep `FALSE`.
 - pseudo.depth: fixed pseudo-count mass used after within-sample scaling.
 - n.iter: maximum number of deterministic posterior-mean updates.
 - vb.tol: stop when the largest absolute terminal-subtype fraction change is smaller
