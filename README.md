@@ -175,8 +175,8 @@ The full command-line-style example is
 ## Example workflow
 
 [`Example_expression.txt`](https://raw.githubusercontent.com/GuoBioinfoLab/ImmuCellAI-2.0/main/example_data/Example_expression.txt)
-contains the processed TPM expression matrix for **28 ICB samples from SRP070710**
-used in the manuscript, with **36,192 genes**. The first column contains gene
+contains the processed TPM expression matrix for **28 samples**
+ with **36,192 genes**. The first column contains gene
 symbols, and the remaining columns retain the original sequencing-run accessions
 (`SRR3184279` to `SRR3184306`). Expression values are unchanged from the manuscript
 input and have not been log-transformed.
