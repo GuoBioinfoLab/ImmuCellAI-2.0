@@ -293,6 +293,8 @@ See [custom-reference details](docs/API.md#custom-reference-atlas) and the
 Please cite the ImmuCellAI 2.0 manuscript when using this implementation. The
 final bibliographic record will be added after publication.
 
+Processed data and analysis source data: [Zenodo](https://zenodo.org/records/23765763).
+
 ## License
 
 MIT License. See [`LICENSE`](LICENSE).
