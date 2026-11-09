@@ -163,7 +163,7 @@ the bundled-reference workflow:
 
 | Setting | Values | Meaning |
 |---|---|---|
-| `tissue.type` | `"tumor"` (default), `"non-tumor"` | Use all 53 bundled subtypes, or remove TAM and MDSC before fitting the 51 remaining subtypes. This option is available in v0.4.0 and later. |
+| `tissue.type` | `"tumor"` (default), `"non-tumor"` | Models 53 immune cell types for tumor tissue and 51 for healthy tissue. |
 | `hierarchy.mode` | `"tcell"` (default), `"flat"` | `"tcell"` applies an internal hierarchy within the CD4 and CD8 T-cell branches. `"flat"` places known populations in one common pool without biological hierarchy grouping. |
 | `inference.method` | `"vb"` (standard workflow); `"mcmc"` in the lower-level API | `"vb"` uses deterministic posterior-mean updates with the selected hierarchy mode, including `"flat"`. `"mcmc"` is the legacy stochastic Gibbs-sampling method. |
 | `add.unknown` | `FALSE` (default), `TRUE` | `FALSE` estimates only the supplied known populations. `TRUE` jointly estimates an additional `UNKNOWN` residual weight; known and unknown weights together sum to one. Set `TRUE` only when the sample is known to contain components not represented in the reference. |
