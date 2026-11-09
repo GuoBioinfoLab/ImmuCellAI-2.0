@@ -10,6 +10,15 @@
 The manuscript implementation is the R package under
 `R-package/ImmuCellAI2.0/`.
 
+## Install the source package
+
+Download [ImmuCellAI2.0_0.4.0.tar.gz](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/download/v0.4.0/ImmuCellAI2.0_0.4.0.tar.gz)
+and install it from R:
+
+~~~r
+install.packages("/path/to/ImmuCellAI2.0_0.4.0.tar.gz", repos = NULL, type = "source")
+~~~
+
 ## Install from GitHub
 
 ~~~r
@@ -19,6 +28,7 @@ if (!requireNamespace("remotes", quietly = TRUE)) {
 
 remotes::install_github(
   "GuoBioinfoLab/ImmuCellAI-2.0",
+  ref = "v0.4.0",
   subdir = "R-package/ImmuCellAI2.0",
   upgrade = "never"
 )
@@ -35,7 +45,8 @@ length(load_immucellai2_markers())
 ~~~
 
 The final two commands should report 53 reference columns and 5,510 marker
-genes.
+genes. Version 0.4.0 adds the `tissue.type` argument to the standard workflow;
+see [non-tumor analysis](../README.md#non-tumor-analysis).
 
 ## Install from a downloaded repository
 

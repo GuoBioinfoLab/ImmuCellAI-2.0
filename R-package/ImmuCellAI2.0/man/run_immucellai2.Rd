@@ -18,7 +18,8 @@ run_immucellai2(
   alpha.sub = 5,
   alpha.state = 1,
   seed = 123,
-  verbose = FALSE
+  verbose = FALSE,
+  tissue.type = "tumor"
 )
 }
 \arguments{
@@ -53,6 +54,11 @@ concentrations.}
 \item{seed}{Reproducibility seed.}
 
 \item{verbose}{Print per-sample progress when running on one core.}
+
+\item{tissue.type}{For the bundled reference, \code{"tumor"} (default) retains
+all 53 subtypes; \code{"non-tumor"} removes TAM and MDSC before inference.
+Marker selection and the requested hierarchy mode are unchanged.
+Do not supply this argument with a custom reference.}
 }
 \value{
 For the bundled reference, the result from \code{\link{deconvolve_bulk_matrix}}

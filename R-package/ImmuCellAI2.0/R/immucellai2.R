@@ -8,6 +8,7 @@
 #' @export
 immucellai2_defaults <- function() {
   list(
+    tissue.type = "tumor",
     hierarchy.mode = "tcell",
     inference.method = "vb",
     add.unknown = FALSE,
@@ -92,6 +93,10 @@ load_immucellai2_markers <- function(file = NULL) {
 #'   concentrations.
 #' @param seed Reproducibility seed.
 #' @param verbose Print per-sample progress when running on one core.
+#' @param tissue.type For the bundled reference, `"tumor"` (default) retains
+#'   all 53 subtypes; `"non-tumor"` removes TAM and MDSC before inference.
+#'   Marker selection and the requested hierarchy mode are unchanged.
+#'   Do not supply this argument with a custom reference.
 #' @return For the bundled reference, the result from [deconvolve_bulk_matrix()]
 #'   plus a `settings` field. For a supplied reference, the result from
 #'   [run_immucellai2_custom()], without hierarchy aggregations.
@@ -110,9 +115,17 @@ run_immucellai2 <- function(
   alpha.sub = 5,
   alpha.state = 1,
   seed = 123,
-  verbose = FALSE
+  verbose = FALSE,
+  tissue.type = "tumor"
 ) {
+  if (!is.character(tissue.type) || length(tissue.type) != 1L ||
+      is.na(tissue.type) || !tissue.type %in% c("tumor", "non-tumor")) {
+    stop('`tissue.type` must be either "tumor" or "non-tumor".')
+  }
   if (!is.null(reference)) {
+    if (!missing(tissue.type)) {
+      stop("`tissue.type` applies only to the bundled reference.")
+    }
     if (!missing(marker.genes) || !missing(hierarchy.mode) || !missing(add.unknown) ||
         !missing(alpha.major) || !missing(alpha.sub)) {
       stop("Custom references use all shared genes, flat inference, and no UNKNOWN. ",
@@ -129,6 +142,9 @@ run_immucellai2 <- function(
     bulk <- read_expression_matrix(bulk)
   }
   reference <- load_immucellai2_reference()
+  if (tissue.type == "non-tumor") {
+    reference <- reference[, !colnames(reference) %in% c("TAM", "MDSC"), drop = FALSE]
+  }
   if (is.null(marker.genes)) {
     marker.genes <- load_immucellai2_markers()
   } else if (is.character(marker.genes) && length(marker.genes) == 1L && file.exists(marker.genes)) {
@@ -177,6 +193,7 @@ run_immucellai2 <- function(
     verbose = verbose
   )
   result$settings <- list(
+    tissue.type = tissue.type,
     hierarchy.mode = hierarchy.mode,
     inference.method = "vb",
     add.unknown = add.unknown,

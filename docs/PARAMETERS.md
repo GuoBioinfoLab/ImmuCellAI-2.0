@@ -2,6 +2,7 @@
 
 | Parameter | Default value | Meaning |
 |---|---:|---|
+| `tissue.type` | `tumor` | Use all 53 bundled reference subtypes; `non-tumor` excludes TAM and MDSC before fitting |
 | `hierarchy.mode` | `tcell` | Hierarchical refinement within CD4 and CD8 branches only |
 | `inference.method` | `vb` | Deterministic posterior-mean iteration |
 | `add.unknown` | `FALSE` | Optional residual state disabled |

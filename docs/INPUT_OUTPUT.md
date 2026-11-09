@@ -26,8 +26,10 @@ hierarchy, or an added unknown component. See the
 
 ## Output orientation and interpretation
 
-For the bundled-reference workflow, `subtype.fraction` is samples by terminal cell subtypes (53 with the bundled
-reference and UNKNOWN disabled). `type.fraction` and `lineage.fraction` are
+For the bundled-reference workflow with UNKNOWN disabled, `subtype.fraction`
+has 53 columns by default and 51 with `tissue.type = "non-tumor"`. In the latter
+case, TAM and MDSC are absent from the fitted reference and all output levels.
+`type.fraction` and `lineage.fraction` are
 aggregations at the middle and top levels, respectively. Each matrix contains
 sample-level compositional weights, not within-parent conditional proportions.
 Fractions sum to one across the modeled populations at each level. They describe

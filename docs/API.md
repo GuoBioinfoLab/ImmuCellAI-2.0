@@ -20,7 +20,8 @@ ImmuCellAI2.0::run_immucellai2(
   alpha.sub = 5,
   alpha.state = 1,
   seed = 123,
-  verbose = FALSE
+  verbose = FALSE,
+  tissue.type = "tumor"
 )
 ~~~
 
@@ -38,6 +39,11 @@ ImmuCellAI2.0::run_immucellai2(
 - marker.genes: optional character vector or one-gene-per-line text file.
   For the bundled reference, the packaged 5,510-gene panel is used when omitted.
   This option is not used with a custom reference.
+- tissue.type: `"tumor"` (default) uses all 53 bundled subtypes.
+  `"non-tumor"` drops TAM and MDSC from the bundled reference before fitting,
+  retaining the marker panel and requested hierarchy mode. The fit records
+  the choice in `settings$tissue.type`. Do not pass this option with a custom
+  reference.
 
 ### Inference arguments
 

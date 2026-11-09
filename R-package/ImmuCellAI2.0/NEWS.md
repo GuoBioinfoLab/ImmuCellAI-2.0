@@ -1,3 +1,11 @@
+# ImmuCellAI2.0 0.4.0
+
+- Add `tissue.type` to the bundled-reference workflow. The default `"tumor"`
+  retains all 53 reference subtypes; `"non-tumor"` removes TAM and MDSC
+  before fitting without changing the marker panel or hierarchy mode.
+- Record the selected tissue type in the standard fit settings. The
+  custom-reference workflow remains unchanged.
+
 # ImmuCellAI2.0 0.3.0
 
 - Add run_immucellai2_custom() for arbitrary reference populations, using all

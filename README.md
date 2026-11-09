@@ -2,12 +2,12 @@
 
 ImmuCellAI 2.0 is a reference-based method for high-resolution immune-cell
 deconvolution of bulk RNA-seq TPM profiles. It estimates the relative abundance
-of 53 immune-cell subtypes using a curated reference atlas and deterministic
+of up to 53 immune-cell subtypes using a curated reference atlas and deterministic
 variational Bayesian (VB) inference, with targeted hierarchical refinement
 within the CD4 and CD8 T-cell compartments.
 
-Results follow the hierarchy **lineage -> cell type -> subtype**. The primary
-53-subtype result is `fit$subtype.fraction`; aggregated cell-type and lineage
+Results follow the hierarchy **lineage -> cell type -> subtype**. Subtype
+fractions are returned in `fit$subtype.fraction`; aggregated cell-type and lineage
 results are available as `fit$type.fraction` and `fit$lineage.fraction`.
 
 This repository contains the complete R implementation used for the current
@@ -51,7 +51,7 @@ R 4.0 or later is required. The package imports only the R packages `stats`,
 Users who do not want the complete repository can download only the current R
 source package:
 
-**[Download ImmuCellAI2.0_0.3.0.tar.gz](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/download/v0.3.0/ImmuCellAI2.0_0.3.0.tar.gz)**
+**[Download ImmuCellAI2.0_0.4.0.tar.gz](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/download/v0.4.0/ImmuCellAI2.0_0.4.0.tar.gz)**
 
 All published package versions are available on the
 **[GitHub Releases page](https://github.com/GuoBioinfoLab/ImmuCellAI-2.0/releases/latest)**.
@@ -63,7 +63,7 @@ After transferring this single file to an intranet server, install it from R:
 
 ```r
 install.packages(
-  "/path/to/ImmuCellAI2.0_0.3.0.tar.gz",
+  "/path/to/ImmuCellAI2.0_0.4.0.tar.gz",
   repos = NULL,
   type = "source"
 )
@@ -73,7 +73,7 @@ library(ImmuCellAI2.0)
 Alternatively, install it from a shell:
 
 ```bash
-R CMD INSTALL ImmuCellAI2.0_0.3.0.tar.gz
+R CMD INSTALL ImmuCellAI2.0_0.4.0.tar.gz
 ```
 
 ### Install directly from the repository
@@ -87,6 +87,7 @@ if (!requireNamespace("remotes", quietly = TRUE)) {
 }
 remotes::install_github(
   "GuoBioinfoLab/ImmuCellAI-2.0",
+  ref = "v0.4.0",
   subdir = "R-package/ImmuCellAI2.0"
 )
 ```
@@ -128,6 +129,7 @@ bulk <- ImmuCellAI2.0::read_expression_matrix("bulk_TPM.txt")
 
 fit <- ImmuCellAI2.0::run_immucellai2(
   bulk = bulk,
+  tissue.type = "tumor",
   hierarchy.mode = "tcell",
   add.unknown = FALSE,
   n.cores = 8,
@@ -143,6 +145,7 @@ intersects them with the bulk matrix, and uses the following default settings:
 
 ```r
 ImmuCellAI2.0::immucellai2_defaults()
+# tissue.type      = "tumor"
 # hierarchy.mode   = "tcell"
 # inference.method = "vb"
 # add.unknown      = FALSE
@@ -155,11 +158,12 @@ ImmuCellAI2.0::immucellai2_defaults()
 # seed             = 123
 ```
 
-The three settings below control population grouping, inference, and the
-optional unknown component in the bundled-reference workflow:
+These settings control the modeled populations, hierarchy, and inference in
+the bundled-reference workflow:
 
 | Setting | Values | Meaning |
 |---|---|---|
+| `tissue.type` | `"tumor"` (default), `"non-tumor"` | Use all 53 bundled subtypes, or remove TAM and MDSC before fitting the 51 remaining subtypes. This option is available in v0.4.0 and later. |
 | `hierarchy.mode` | `"tcell"` (default), `"flat"` | `"tcell"` applies an internal hierarchy within the CD4 and CD8 T-cell branches. `"flat"` places known populations in one common pool without biological hierarchy grouping. |
 | `inference.method` | `"vb"` (standard workflow); `"mcmc"` in the lower-level API | `"vb"` uses deterministic posterior-mean updates with the selected hierarchy mode, including `"flat"`. `"mcmc"` is the legacy stochastic Gibbs-sampling method. |
 | `add.unknown` | `FALSE` (default), `TRUE` | `FALSE` estimates only the supplied known populations. `TRUE` jointly estimates an additional `UNKNOWN` residual weight; known and unknown weights together sum to one. Set `TRUE` only when the sample is known to contain components not represented in the reference. |
@@ -168,6 +172,23 @@ optional unknown component in the bundled-reference workflow:
 is reported in its settings but is **not an argument to this function**.
 Alternative inference methods are available through `deconvolve_bulk_matrix()`;
 see [`docs/API.md`](docs/API.md#inference-arguments).
+
+### Non-tumor analysis
+
+```r
+fit_non_tumor <- ImmuCellAI2.0::run_immucellai2(
+  bulk = bulk,
+  tissue.type = "non-tumor",
+  add.unknown = FALSE
+)
+ImmuCellAI2.0::write_deconvolution_outputs(fit_non_tumor, "ImmuCellAI2_non_tumor")
+```
+
+This mode uses the 51 remaining reference subtypes after removing TAM and MDSC
+before fitting. It keeps the standard marker panel and requested hierarchy mode.
+The tissue type is recorded in `fit_non_tumor$settings$tissue.type`. Select the
+mode according to the input samples; the package does not detect tissue type.
+This option applies only to the bundled reference.
 
 The full command-line-style example is
 [`examples/01_standard_deconvolution.R`](examples/01_standard_deconvolution.R).
