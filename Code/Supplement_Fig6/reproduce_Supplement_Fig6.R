@@ -4,7 +4,7 @@ source_files <- Filter(function(x) is.character(x) && length(x) == 1L && !is.na(
                        lapply(sys.frames(), function(x) x$ofile))
 if (length(source_files)) {
   entry <- tail(source_files, 1L)[[1L]]
-  args <- getOption("Supplement_Fig6_1022.args", "--plots")
+  args <- getOption("Supplement_Fig6.args", "--plots")
 } else {
   file_arg <- grep("^--file=", commandArgs(FALSE), value = TRUE)
   if (!length(file_arg)) stop("Use source() or Rscript.")
@@ -19,13 +19,13 @@ main <- function() {
     if (i == length(args) || startsWith(args[i + 1L], "--")) stop("Missing value for ", flag)
     args[i + 1L]
   }
-  data_dir <- normalizePath(option("--data-dir", getOption("Supplement_Fig6_1022.data_dir",
+  data_dir <- normalizePath(option("--data-dir", getOption("Supplement_Fig6.data_dir",
                           file.path(code_dir, "../../Data/Supplement_Fig6_1022"))), winslash = "/", mustWork = TRUE)
-  output_dir <- option("--output-dir", getOption("Supplement_Fig6_1022.output_dir", file.path(code_dir, "output_plot")))
-  panels <- option("--panel", getOption("Supplement_Fig6_1022.panels", LETTERS[1:10]))
+  output_dir <- option("--output-dir", getOption("Supplement_Fig6.output_dir", file.path(code_dir, "output_plot")))
+  panels <- option("--panel", getOption("Supplement_Fig6.panels", LETTERS[1:10]))
   if (identical(panels, "all")) panels <- LETTERS[1:10]
-  output_format <- option("--format", getOption("Supplement_Fig6_1022.format", "both"))
-  dpi <- as.integer(option("--dpi", getOption("Supplement_Fig6_1022.dpi", 300L)))
+  output_format <- option("--format", getOption("Supplement_Fig6.format", "both"))
+  dpi <- as.integer(option("--dpi", getOption("Supplement_Fig6.dpi", 300L)))
   stopifnot(is.character(args), length(panels) > 0L, !anyDuplicated(panels),
             all(panels %in% LETTERS[1:10]), length(output_format) == 1L,
             output_format %in% c("pdf", "png", "both"), length(dpi) == 1L, !is.na(dpi), dpi >= 72)
@@ -46,7 +46,7 @@ main <- function() {
                              statistics = survival_results$statistics[panel, , drop = FALSE])
   }
   for (panel in c("I", "J")) source(file.path(code_dir, panel, "analyze.R"), local = TRUE, encoding = "UTF-8")
-  cat("PASS: Supplement_Fig6_1022 frozen-data analysis and numeric checks.\n")
+  cat("PASS: Supplement_Fig6 frozen-data analysis and numeric checks.\n")
   files <- character()
   if (("--plots" %in% args || "--panel" %in% args) && !"--verify-only" %in% args) {
     dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
