@@ -95,10 +95,6 @@ For a downloaded complete repository:
 remotes::install_local("R-package/ImmuCellAI2.0")
 ```
 
-Installation from a local source archive took approximately 3 seconds on the
-tested desktop. Installation directly from GitHub typically takes 1-3 minutes,
-depending mainly on network speed and whether `remotes` is already installed.
-
 Detailed installation and troubleshooting instructions are in
 [`docs/INSTALLATION.md`](docs/INSTALLATION.md), and the public API is documented
 in [`docs/API.md`](docs/API.md).
