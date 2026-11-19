@@ -137,10 +137,13 @@ head(fit$subtype.fraction[, 1:6])
 intersects them with the bulk matrix, and uses the following default settings:
 
 ```r
-ImmuCellAI2.0::immucellai2_defaults()
+defaults <- ImmuCellAI2.0::immucellai2_defaults()
+defaults[c(
+  "tissue.type", "hierarchy.mode", "add.unknown", "pseudo.depth", "n.iter",
+  "vb.tol", "alpha.major", "alpha.sub", "alpha.state", "seed"
+)]
 # tissue.type      = "tumor"
 # hierarchy.mode   = "tcell"
-# inference.method = "vb"
 # add.unknown      = FALSE
 # pseudo.depth     = 1e5
 # n.iter           = 50
@@ -151,19 +154,16 @@ ImmuCellAI2.0::immucellai2_defaults()
 # seed             = 123
 ```
 
-The options below allow users to tailor the modeled tissue context, hierarchy, inference method, and treatment of unmodeled signals to their analysis needs:
+For routine analyses, the numerical inference settings above are recommended
+and generally do not require adjustment. The following options can be selected
+to match the tissue context, hierarchy, and handling of unmodeled signals in the
+bundled-reference workflow:
 
 | Setting | Values | Meaning |
 |---|---|---|
 | `tissue.type` | `"tumor"` (default), `"non-tumor"` | Models 53 immune cell types for tumor tissue and 51 for healthy tissue. |
 | `hierarchy.mode` | `"tcell"` (default), `"flat"` | `"tcell"` applies an internal hierarchy within the CD4 and CD8 T-cell branches. `"flat"` places known populations in one common pool without biological hierarchy grouping. |
-| `inference.method` | `"vb"` (standard workflow); `"mcmc"` in the lower-level API | `"vb"` uses deterministic posterior-mean updates with the selected hierarchy mode, including `"flat"`. `"mcmc"` is the legacy stochastic Gibbs-sampling method. |
 | `add.unknown` | `FALSE` (default), `TRUE` | `FALSE` estimates only the supplied known populations. `TRUE` jointly estimates an additional `UNKNOWN` residual weight; known and unknown weights together sum to one. Set `TRUE` only when the sample is known to contain components not represented in the reference. |
-
-`run_immucellai2()` fixes the inference method to `"vb"`; `inference.method`
-is reported in its settings but is **not an argument to this function**.
-Alternative inference methods are available through `deconvolve_bulk_matrix()`;
-see [`docs/API.md`](docs/API.md#inference-arguments).
 
 ### Non-tumor analysis
 
