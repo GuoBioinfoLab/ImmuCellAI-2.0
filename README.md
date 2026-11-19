@@ -154,8 +154,7 @@ defaults[c(
 # seed             = 123
 ```
 
-For routine analyses, the numerical inference settings above are recommended
-and generally do not require adjustment. The following options can be selected
+For routine analyses, the following options can be selected
 to match the tissue context, hierarchy, and handling of unmodeled signals in the
 bundled-reference workflow:
 
