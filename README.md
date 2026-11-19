@@ -161,7 +161,7 @@ bundled-reference workflow:
 | Setting | Values | Meaning |
 |---|---|---|
 | `tissue.type` | `"tumor"` (default), `"non-tumor"` | Models 53 immune cell types for tumor tissue and 51 for healthy tissue. |
-| `hierarchy.mode` | `"hierarchy"` (default), `"flat"` | `"hierarchy"` applies an internal hierarchy within the CD4 and CD8 T-cell branches. `"flat"` places known populations in one common pool without biological hierarchy grouping. |
+| `hierarchy.mode` | `"hierarchy"` (default), `"flat"` | `"hierarchy"` applies an internal hierarchy within the branches. `"flat"` places known populations in one common pool without biological hierarchy grouping. |
 | `add.unknown` | `FALSE` (default), `TRUE` | `FALSE` estimates only the supplied known populations. `TRUE` jointly estimates an additional `UNKNOWN` residual weight; known and unknown weights together sum to one. Set `TRUE` only when the sample is known to contain components not represented in the reference. |
 
 ### Non-tumor analysis
