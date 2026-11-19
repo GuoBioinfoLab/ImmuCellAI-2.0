@@ -151,8 +151,7 @@ ImmuCellAI2.0::immucellai2_defaults()
 # seed             = 123
 ```
 
-These settings control the modeled populations, hierarchy, and inference in
-the bundled-reference workflow:
+The options below allow users to tailor the modeled tissue context, hierarchy, inference method, and treatment of unmodeled signals to their analysis needs:
 
 | Setting | Values | Meaning |
 |---|---|---|
