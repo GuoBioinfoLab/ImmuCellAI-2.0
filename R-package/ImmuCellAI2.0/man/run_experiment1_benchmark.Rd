@@ -40,5 +40,5 @@ list containing model results, state metrics, BayesPrism-panel metrics and summa
 }
 \description{
 This runs the current package under controlled settings:
-flat no UNKNOWN, flat + UNKNOWN, tcell no UNKNOWN, and tcell + UNKNOWN.
+flat no UNKNOWN, flat + UNKNOWN, hierarchy no UNKNOWN, and hierarchy + UNKNOWN.
 }

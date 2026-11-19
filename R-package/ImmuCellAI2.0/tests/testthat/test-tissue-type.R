@@ -19,7 +19,7 @@ test_that("non-tumor removes reference profiles before standard inference", {
   expect_setequal(colnames(tumor$subtype.fraction), colnames(d$ref))
 
   ref <- d$ref[d$markers, !colnames(d$ref) %in% c("TAM", "MDSC"), drop = FALSE]
-  for (mode in c("tcell", "flat")) {
+  for (mode in c("hierarchy", "flat")) {
     fit <- run_immucellai2(d$bulk, hierarchy.mode = mode, tissue.type = "non-tumor")
     expected <- deconvolve_bulk_matrix(d$bulk[d$markers, ], ref,
       hierarchy.mode = mode, inference.method = "vb", n.iter = 50)

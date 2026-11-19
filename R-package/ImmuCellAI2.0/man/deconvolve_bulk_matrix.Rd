@@ -8,7 +8,7 @@ deconvolve_bulk_matrix(
   bulk.mat,
   reference,
   hierarchy = NULL,
-  hierarchy.mode = c("flat", "tcell"),
+  hierarchy.mode = c("hierarchy", "flat"),
   inference.method = c("mcmc", "vb"),
   add.unknown = FALSE,
   unknown.state = "UNKNOWN",
@@ -35,7 +35,7 @@ deconvolve_bulk_matrix(
 
 \item{hierarchy}{Optional table with state_name, subtype, and major_lineage.}
 
-\item{hierarchy.mode}{One of \code{flat} or \code{tcell}.}
+\item{hierarchy.mode}{One of \code{hierarchy} or \code{flat}.}
 
 \item{inference.method}{One of \code{vb} or the legacy \code{mcmc} path.}
 

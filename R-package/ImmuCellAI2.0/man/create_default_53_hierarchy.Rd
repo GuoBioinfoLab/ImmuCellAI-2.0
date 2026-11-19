@@ -6,13 +6,13 @@
 \usage{
 create_default_53_hierarchy(
   state.labels,
-  hierarchy.mode = c("flat", "tcell")
+  hierarchy.mode = c("hierarchy", "flat")
 )
 }
 \arguments{
 \item{state.labels}{Cell-type names, usually colnames(reference).}
 
-\item{hierarchy.mode}{One of \code{flat} or \code{tcell}.}
+\item{hierarchy.mode}{One of \code{hierarchy} or \code{flat}.}
 }
 \value{
 data.frame with state_name, subtype, and major_lineage.

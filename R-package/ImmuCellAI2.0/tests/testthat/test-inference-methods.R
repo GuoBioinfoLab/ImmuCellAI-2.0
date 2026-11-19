@@ -42,7 +42,7 @@ test_that("automatic flat updates preserve the independent-branch posterior", {
 test_that("both hierarchy modes propagate to parallel VB workers", {
   x <- inference_method_fixture()
   colnames(x$ref) <- c("CD4Tcm", "CD4Tem", "BGC")
-  for (mode in c("tcell", "flat")) {
+  for (mode in c("hierarchy", "flat")) {
     for (unknown in c(FALSE, TRUE)) {
       args <- list(bulk.mat = x$bulk, reference = x$ref, hierarchy.mode = mode,
                    inference.method = "vb", add.unknown = unknown, n.iter = 3)

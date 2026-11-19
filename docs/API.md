@@ -10,7 +10,7 @@ ImmuCellAI2.0::run_immucellai2(
   bulk,
   reference = NULL,
   marker.genes = NULL,
-  hierarchy.mode = "tcell",
+  hierarchy.mode = "hierarchy",
   add.unknown = FALSE,
   n.cores = 1,
   pseudo.depth = 1e5,
@@ -47,7 +47,7 @@ ImmuCellAI2.0::run_immucellai2(
 
 ### Inference arguments
 
-- hierarchy.mode: `"tcell"` (default) applies an internal hierarchy within the
+- hierarchy.mode: `"hierarchy"` (default) applies an internal hierarchy within the
   CD4 and CD8 T-cell branches, leaving other populations independent. `"flat"`
   places known populations in one common pool without biological grouping.
 - add.unknown: `FALSE` (default) estimates known populations only; `TRUE` adds

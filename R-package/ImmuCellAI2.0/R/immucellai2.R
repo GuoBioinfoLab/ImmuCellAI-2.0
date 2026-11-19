@@ -9,7 +9,7 @@
 immucellai2_defaults <- function() {
   list(
     tissue.type = "tumor",
-    hierarchy.mode = "tcell",
+    hierarchy.mode = "hierarchy",
     inference.method = "vb",
     add.unknown = FALSE,
     pseudo.depth = 1e5,
@@ -81,8 +81,8 @@ load_immucellai2_markers <- function(file = NULL) {
 #'   flat deterministic inference, and no unknown component.
 #' @param marker.genes Optional character vector or marker file. If omitted,
 #'   the packaged 5,510-gene panel is used. Only applies to the bundled reference.
-#' @param hierarchy.mode One of `tcell` or `flat`. The manuscript workflow
-#'   uses `tcell`.
+#' @param hierarchy.mode One of `hierarchy` or `flat`. The former applies the
+#'   curated CD4/CD8 T-cell hierarchy.
 #' @param add.unknown Add an optional residual state for sensitivity analysis.
 #'   The manuscript workflow uses `FALSE`.
 #' @param n.cores Number of samples processed concurrently.
@@ -105,7 +105,7 @@ run_immucellai2 <- function(
   bulk,
   reference = NULL,
   marker.genes = NULL,
-  hierarchy.mode = "tcell",
+  hierarchy.mode = "hierarchy",
   add.unknown = FALSE,
   n.cores = 1,
   pseudo.depth = 1e5,

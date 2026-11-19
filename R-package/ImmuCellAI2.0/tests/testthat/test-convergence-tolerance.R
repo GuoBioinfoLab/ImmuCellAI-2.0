@@ -49,7 +49,7 @@ test_that("VB stops below the new tolerance and still honors overrides and caps"
 test_that("matrix and standard wrappers propagate the new default", {
   d <- convergence_fixture()
   bulk <- matrix(d$counts, ncol = 1, dimnames = list(names(d$counts), "S1"))
-  for (mode in c("tcell", "flat")) {
+  for (mode in c("hierarchy", "flat")) {
     hierarchy <- if (mode == "flat") {
       data.frame(state_name = colnames(d$ref), subtype = colnames(d$ref),
                  major_lineage = colnames(d$ref))

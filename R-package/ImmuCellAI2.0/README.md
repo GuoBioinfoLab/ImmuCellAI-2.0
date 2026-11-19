@@ -40,7 +40,7 @@ bulk <- ImmuCellAI2.0::read_expression_matrix("bulk_TPM.txt")
 
 fit <- ImmuCellAI2.0::run_immucellai2(
   bulk = bulk,
-  hierarchy.mode = "tcell",
+  hierarchy.mode = "hierarchy",
   add.unknown = FALSE,
   n.cores = 8,
   pseudo.depth = 1e5,
@@ -58,7 +58,7 @@ head(fit$subtype.fraction)
 
 run_immucellai2() loads the bundled atlas and marker panel, intersects gene
 symbols, removes unusable genes, and records all settings in the returned
-object. The manuscript default is hierarchy.mode = "tcell" with
+object. The manuscript default is hierarchy.mode = "hierarchy" with
 add.unknown = FALSE. The default `tissue.type = "tumor"` retains all 53
 reference subtypes. For non-tumor samples, use
 `run_immucellai2(bulk, tissue.type = "non-tumor")` to fit with 51 reference
@@ -120,7 +120,7 @@ aggregations are produced. Only `subtype_fraction.txt` is exported.
 
 ## Analysis modes
 
-- tcell: refines CD4/CD8 branches; all other subtypes remain independent.
+- hierarchy: refines CD4/CD8 branches; all other subtypes remain independent.
 - flat: applies no grouped hierarchy and is useful as a sensitivity analysis.
 - add.unknown = TRUE: adds a residual component for unexplained expression;
   the residual is not an annotated biological cell population.

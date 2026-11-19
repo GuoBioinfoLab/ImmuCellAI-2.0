@@ -78,7 +78,7 @@ test_that("flat variational Bayesian deconvolution runs", {
   expect_equal(res$inference.method, "vb")
 })
 
-test_that("tcell hierarchy leaves non-T states independent", {
+test_that("hierarchy mode leaves non-T states independent", {
   h <- create_tcell_53_hierarchy(c("CD4Tcm", "CD4Tem", "CD8Tcm", "BGC", "cMo"))
   expect_equal(h$major_lineage[h$state_name == "CD4Tcm"], "CD4T")
   expect_equal(h$subtype[h$state_name == "CD4Tem"], "CD4 Memory T")
@@ -98,7 +98,7 @@ test_that("fast marker score and alias evaluation run", {
   rownames(bulk) <- rownames(ref)
   colnames(bulk) <- "CD4Tmemory_1"
 
-  hierarchy <- create_default_53_hierarchy(colnames(ref), hierarchy.mode = "tcell")
+  hierarchy <- create_default_53_hierarchy(colnames(ref), hierarchy.mode = "hierarchy")
   res <- deconvolve_marker_score(bulk, ref, hierarchy = hierarchy, marker.n = 10)
   expect_equal(nrow(res$subtype.fraction), 1)
   expect_equal(ncol(res$subtype.fraction), 5)

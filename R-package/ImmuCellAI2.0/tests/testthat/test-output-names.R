@@ -35,7 +35,7 @@ test_that("standard outputs follow subtype, type, lineage in every hierarchy mod
   x <- output_fixture()
   local_mocked_bindings(load_immucellai2_reference = function() x$ref,
                         load_immucellai2_markers = function() rownames(x$ref))
-  for (mode in c("tcell", "flat")) {
+  for (mode in c("hierarchy", "flat")) {
     for (unknown in c(FALSE, TRUE)) {
       fit <- run_immucellai2(x$bulk, hierarchy.mode = mode,
                             add.unknown = unknown, n.iter = 3)
@@ -44,7 +44,7 @@ test_that("standard outputs follow subtype, type, lineage in every hierarchy mod
       for (field in c("subtype.fraction", "type.fraction", "lineage.fraction")) {
         expect_identical("UNKNOWN" %in% colnames(fit[[field]]), unknown)
       }
-      if (mode == "tcell" && !unknown) {
+      if (mode == "hierarchy" && !unknown) {
         expect_equal(ncol(fit$type.fraction), 4L)
         expect_equal(ncol(fit$lineage.fraction), 3L)
       }
@@ -55,11 +55,11 @@ test_that("standard outputs follow subtype, type, lineage in every hierarchy mod
 test_that("all matrix inference and auxiliary estimators use the same output names", {
   x <- output_fixture()
   for (method in c("vb", "mcmc")) {
-    fit <- deconvolve_bulk_matrix(x$bulk, x$ref, hierarchy.mode = "tcell",
+    fit <- deconvolve_bulk_matrix(x$bulk, x$ref, hierarchy.mode = "hierarchy",
                                  inference.method = method, n.iter = 4, burn.in = 2)
     expect_fraction_levels(fit)
   }
-  expect_fraction_levels(deconvolve_bulk_fast(x$bulk, x$ref, hierarchy.mode = "tcell",
+  expect_fraction_levels(deconvolve_bulk_fast(x$bulk, x$ref, hierarchy.mode = "hierarchy",
                                              marker.n = 10, n.iter = 3))
   expect_fraction_levels(deconvolve_marker_score(x$bulk, x$ref, marker.n = 10))
 })

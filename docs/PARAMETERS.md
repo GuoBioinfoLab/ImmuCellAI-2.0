@@ -3,7 +3,7 @@
 | Parameter | Default value | Meaning |
 |---|---:|---|
 | `tissue.type` | `tumor` | Use all 53 bundled reference subtypes; `non-tumor` excludes TAM and MDSC before fitting |
-| `hierarchy.mode` | `tcell` | Hierarchical refinement within CD4 and CD8 branches only |
+| `hierarchy.mode` | `hierarchy` | Hierarchical refinement within CD4 and CD8 branches only |
 | `inference.method` | `vb` | Deterministic posterior-mean iteration |
 | `add.unknown` | `FALSE` | Optional residual state disabled |
 | `pseudo.depth` | `100000` | Total pseudo-count mass assigned to each sample |
@@ -25,8 +25,8 @@ one sample. The VB updates within an individual sample are sequential.
 
 The four-mode comparison used during development is:
 
-1. `tcell`, UNKNOWN off;
-2. `tcell`, UNKNOWN on;
+1. `hierarchy`, UNKNOWN off;
+2. `hierarchy`, UNKNOWN on;
 3. `flat`, UNKNOWN off;
 4. `flat`, UNKNOWN on.
 

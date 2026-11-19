@@ -10,7 +10,7 @@ n_cores <- if (length(args) >= 3L) as.integer(args[3]) else 1L
 bulk <- ImmuCellAI2.0::read_expression_matrix(bulk_file)
 fit <- ImmuCellAI2.0::run_immucellai2(
   bulk = bulk,
-  hierarchy.mode = "tcell",
+  hierarchy.mode = "hierarchy",
   add.unknown = FALSE,
   n.cores = n_cores,
   pseudo.depth = 1e5,

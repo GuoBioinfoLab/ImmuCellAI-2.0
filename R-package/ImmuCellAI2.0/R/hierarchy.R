@@ -143,18 +143,19 @@ create_tcell_53_hierarchy <- function(state.labels) {
 }
 
 normalize_hierarchy_mode <- function(hierarchy.mode) {
-  match.arg(hierarchy.mode, choices = c("flat", "tcell"))
+  if (identical(hierarchy.mode, "tcell")) hierarchy.mode <- "hierarchy"
+  match.arg(hierarchy.mode, choices = c("hierarchy", "flat"))
 }
 
 #' Create default 53-state hierarchy
 #'
 #' @param state.labels Cell-type names, usually colnames(reference).
-#' @param hierarchy.mode One of `flat` or `tcell`.
+#' @param hierarchy.mode One of `hierarchy` or `flat`.
 #' @return data.frame with state_name, subtype, and major_lineage.
 #' @export
 create_default_53_hierarchy <- function(
   state.labels,
-  hierarchy.mode = c("flat", "tcell")
+  hierarchy.mode = c("hierarchy", "flat")
 ) {
   hierarchy.mode <- normalize_hierarchy_mode(hierarchy.mode)
 

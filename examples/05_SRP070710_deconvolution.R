@@ -5,7 +5,7 @@ print(dim(bulk))
 
 fit <- ImmuCellAI2.0::run_immucellai2(
   bulk = bulk,
-  hierarchy.mode = "tcell",
+  hierarchy.mode = "hierarchy",
   add.unknown = FALSE,
   n.cores = 2
 )

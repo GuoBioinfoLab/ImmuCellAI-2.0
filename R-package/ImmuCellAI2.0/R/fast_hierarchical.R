@@ -83,7 +83,7 @@ deconvolve_marker_score <- function(
   ref <- ref[keep, , drop = FALSE]
 
   if (is.null(hierarchy)) {
-    hierarchy <- create_default_53_hierarchy(colnames(ref), hierarchy.mode = "tcell")
+    hierarchy <- create_default_53_hierarchy(colnames(ref), hierarchy.mode = "hierarchy")
   }
   hierarchy <- validate_hierarchy(hierarchy, ref)
   ref <- ref[, hierarchy$state_name, drop = FALSE]
@@ -179,14 +179,14 @@ fit_flat_simplex <- function(reference, bulk, marker.n = 400, n.iter = 80) {
 #' Fast deterministic hierarchical deconvolution
 #'
 #' Uses marker selection plus projected-gradient simplex fitting. In
-#' tcell mode, lineages, cell types, and terminal subtypes are fitted in a
+#' hierarchy mode, lineages, cell types, and terminal subtypes are fitted in a
 #' top-down product, which is much faster and more reproducible than MCMC for
 #' parameter sweeps.
 #'
 #' @param bulk.mat Gene x sample bulk expression matrix.
 #' @param reference Gene x state reference expression matrix.
 #' @param hierarchy Optional hierarchy table.
-#' @param hierarchy.mode One of `tcell` or `flat`.
+#' @param hierarchy.mode One of `hierarchy` or `flat`.
 #' @param marker.n Number of markers per state.
 #' @param n.iter Projected-gradient iterations.
 #' @return Deconvolution result list with subtype.fraction (terminal populations),
@@ -196,7 +196,7 @@ deconvolve_bulk_fast <- function(
   bulk.mat,
   reference,
   hierarchy = NULL,
-  hierarchy.mode = "tcell",
+  hierarchy.mode = "hierarchy",
   marker.n = 400,
   n.iter = 80
 ) {

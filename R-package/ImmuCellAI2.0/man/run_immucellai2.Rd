@@ -8,7 +8,7 @@ run_immucellai2(
   bulk,
   reference = NULL,
   marker.genes = NULL,
-  hierarchy.mode = "tcell",
+  hierarchy.mode = "hierarchy",
   add.unknown = FALSE,
   n.cores = 1,
   pseudo.depth = 1e+05,
@@ -34,8 +34,8 @@ genes, flat deterministic inference, and no unknown component.}
 \item{marker.genes}{Optional character vector or marker file. If omitted,
 the packaged 5,510-gene panel is used. Only applies to the bundled reference.}
 
-\item{hierarchy.mode}{One of \code{tcell} or \code{flat}. The manuscript workflow
-uses \code{tcell}.}
+\item{hierarchy.mode}{One of \code{hierarchy} or \code{flat}. The manuscript workflow
+uses \code{hierarchy}.}
 
 \item{add.unknown}{Add an optional residual state for sensitivity analysis.
 The manuscript workflow uses `FALSE`.}

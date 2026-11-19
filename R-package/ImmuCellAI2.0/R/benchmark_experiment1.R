@@ -242,7 +242,7 @@ summarize_metrics <- function(metrics, method, level = "state") {
 #' Run Experiment 1 benchmark for current method variants
 #'
 #' This runs the current package under controlled settings:
-#' flat no UNKNOWN, flat + UNKNOWN, tcell no UNKNOWN, and tcell + UNKNOWN.
+#' flat no UNKNOWN, flat + UNKNOWN, hierarchy no UNKNOWN, and hierarchy + UNKNOWN.
 #'
 #' @param bulk.mat Gene x sample bulk matrix.
 #' @param reference Gene x state reference matrix.
@@ -273,8 +273,8 @@ run_experiment1_benchmark <- function(
   }
 
   methods <- data.frame(
-    Method = c("flat_no_UNKNOWN", "flat_UNKNOWN", "tcell_no_UNKNOWN", "tcell_UNKNOWN"),
-    hierarchy.mode = c("flat", "flat", "tcell", "tcell"),
+    Method = c("flat_no_UNKNOWN", "flat_UNKNOWN", "hierarchy_no_UNKNOWN", "hierarchy_UNKNOWN"),
+    hierarchy.mode = c("flat", "flat", "hierarchy", "hierarchy"),
     add.unknown = c(FALSE, TRUE, FALSE, TRUE),
     stringsAsFactors = FALSE
   )
@@ -406,7 +406,7 @@ run_fast_hierarchy_grid <- function(
       res.score <- deconvolve_marker_score(
         bulk.mat = bulk.mat,
         reference = reference,
-        hierarchy = create_default_53_hierarchy(colnames(reference), hierarchy.mode = "tcell"),
+        hierarchy = create_default_53_hierarchy(colnames(reference), hierarchy.mode = "hierarchy"),
         marker.n = marker.n,
         normalize.scores = FALSE
       )
@@ -416,7 +416,7 @@ run_fast_hierarchy_grid <- function(
       res.frac <- deconvolve_marker_score(
         bulk.mat = bulk.mat,
         reference = reference,
-        hierarchy = create_default_53_hierarchy(colnames(reference), hierarchy.mode = "tcell"),
+        hierarchy = create_default_53_hierarchy(colnames(reference), hierarchy.mode = "hierarchy"),
         marker.n = marker.n,
         normalize.scores = TRUE
       )
@@ -424,7 +424,7 @@ run_fast_hierarchy_grid <- function(
     }
 
     if (isTRUE(include.simplex)) {
-      for (mode in c("flat", "tcell")) {
+      for (mode in c("flat", "hierarchy")) {
         message("Running simplex_", mode, "_", marker.n, " ...")
         res <- deconvolve_bulk_fast(
           bulk.mat = bulk.mat,

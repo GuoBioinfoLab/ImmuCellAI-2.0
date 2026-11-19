@@ -36,7 +36,7 @@ add_unknown_to_reference <- function(reference, hierarchy, unknown.state = "UNKN
 #' @param bulk.mat Gene-by-sample non-negative expression matrix.
 #' @param reference Gene-by-state non-negative reference matrix.
 #' @param hierarchy Optional table with state_name, subtype, and major_lineage.
-#' @param hierarchy.mode One of `flat` or `tcell`.
+#' @param hierarchy.mode One of `hierarchy` or `flat`.
 #' @param inference.method One of `vb` or the legacy `mcmc` path.
 #' @param add.unknown Add an optional latent residual state.
 #' @param unknown.state Name assigned to the residual state.
@@ -64,7 +64,7 @@ add_unknown_to_reference <- function(reference, hierarchy, unknown.state = "UNKN
   bulk.mat,
   reference,
  hierarchy = NULL,
-  hierarchy.mode = c("flat", "tcell"),
+  hierarchy.mode = c("hierarchy", "flat"),
   inference.method = c("mcmc", "vb"),
   add.unknown = FALSE,
   unknown.state = "UNKNOWN",

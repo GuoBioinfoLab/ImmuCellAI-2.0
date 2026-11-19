@@ -8,7 +8,7 @@ deconvolve_bulk_fast(
   bulk.mat,
   reference,
   hierarchy = NULL,
-  hierarchy.mode = "tcell",
+  hierarchy.mode = "hierarchy",
   marker.n = 400,
   n.iter = 80
 )
@@ -20,7 +20,7 @@ deconvolve_bulk_fast(
 
 \item{hierarchy}{Optional hierarchy table.}
 
-\item{hierarchy.mode}{One of \code{tcell} or \code{flat}.}
+\item{hierarchy.mode}{One of \code{hierarchy} or \code{flat}.}
 
 \item{marker.n}{Number of markers per state.}
 
@@ -32,7 +32,7 @@ type.fraction (middle-level groups), and lineage.fraction (top-level branches).
 }
 \description{
 Uses marker selection plus projected-gradient simplex fitting. In
-tcell mode, lineages, cell types, and terminal subtypes are fitted in a
+hierarchy mode, lineages, cell types, and terminal subtypes are fitted in a
 top-down product, which is much faster and more reproducible than MCMC for
 parameter sweeps.
 }

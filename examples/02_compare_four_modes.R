@@ -11,7 +11,7 @@ n_cores <- if (length(args) >= 3L) as.integer(args[3]) else 1L
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
 design <- data.frame(
-  mode = c("tcell", "tcell", "flat", "flat"),
+  mode = c("hierarchy", "hierarchy", "flat", "flat"),
   unknown = c(FALSE, TRUE, FALSE, TRUE),
   stringsAsFactors = FALSE
 )

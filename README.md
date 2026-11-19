@@ -123,7 +123,7 @@ bulk <- ImmuCellAI2.0::read_expression_matrix("bulk_TPM.txt")
 fit <- ImmuCellAI2.0::run_immucellai2(
   bulk = bulk,
   tissue.type = "tumor",
-  hierarchy.mode = "tcell",
+  hierarchy.mode = "hierarchy",
   add.unknown = FALSE,
   n.cores = 8,
   seed = 123
@@ -143,7 +143,7 @@ defaults[c(
   "vb.tol", "alpha.major", "alpha.sub", "alpha.state", "seed"
 )]
 # tissue.type      = "tumor"
-# hierarchy.mode   = "tcell"
+# hierarchy.mode   = "hierarchy"
 # add.unknown      = FALSE
 # pseudo.depth     = 1e5
 # n.iter           = 50
@@ -161,7 +161,7 @@ bundled-reference workflow:
 | Setting | Values | Meaning |
 |---|---|---|
 | `tissue.type` | `"tumor"` (default), `"non-tumor"` | Models 53 immune cell types for tumor tissue and 51 for healthy tissue. |
-| `hierarchy.mode` | `"tcell"` (default), `"flat"` | `"tcell"` applies an internal hierarchy within the CD4 and CD8 T-cell branches. `"flat"` places known populations in one common pool without biological hierarchy grouping. |
+| `hierarchy.mode` | `"hierarchy"` (default), `"flat"` | `"hierarchy"` applies an internal hierarchy within the CD4 and CD8 T-cell branches. `"flat"` places known populations in one common pool without biological hierarchy grouping. |
 | `add.unknown` | `FALSE` (default), `TRUE` | `FALSE` estimates only the supplied known populations. `TRUE` jointly estimates an additional `UNKNOWN` residual weight; known and unknown weights together sum to one. Set `TRUE` only when the sample is known to contain components not represented in the reference. |
 
 ### Non-tumor analysis
@@ -207,7 +207,7 @@ dim(bulk)
 # Estimate immune-cell proportions.
 fit <- ImmuCellAI2.0::run_immucellai2(
   bulk = bulk,
-  hierarchy.mode = "tcell",
+  hierarchy.mode = "hierarchy",
   add.unknown = FALSE,
   n.cores = 2
 )
