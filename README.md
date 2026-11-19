@@ -27,9 +27,6 @@ https://guolab.wchscu.cn/ImmuCellAI2/
   all tested at version 4.6.0).
 - **Installation helper:** `remotes` is used by the commands below (tested at
   version 2.5.0).
-- **Optional packages:** `testthat` 3.3.2 was used for package tests; benchmark
-  and downstream analysis scripts list additional packages at the top of each
-  script.
 - **Hardware:** no non-standard hardware, GPU, or high-performance computing
   environment is required. Multicore CPUs can process samples concurrently.
 
