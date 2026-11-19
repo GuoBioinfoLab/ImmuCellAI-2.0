@@ -184,11 +184,8 @@ fit_non_tumor <- ImmuCellAI2.0::run_immucellai2(
 ImmuCellAI2.0::write_deconvolution_outputs(fit_non_tumor, "ImmuCellAI2_non_tumor")
 ```
 
-This mode uses the 51 remaining reference subtypes after removing TAM and MDSC
-before fitting. It keeps the standard marker panel and requested hierarchy mode.
-The tissue type is recorded in `fit_non_tumor$settings$tissue.type`. Select the
-mode according to the input samples; the package does not detect tissue type.
-This option applies only to the bundled reference.
+This mode is suitable for analyzing data derived from non-tumor tissue samples. Select the
+mode according to the input samples.
 
 The full command-line-style example is
 [`examples/01_standard_deconvolution.R`](examples/01_standard_deconvolution.R).
